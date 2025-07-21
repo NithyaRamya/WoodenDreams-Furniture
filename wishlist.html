@@ -8,7 +8,7 @@
   body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background: linear-gradient(to right, #f0f4f7, #d9e4ec);
+    background: linear-gradient(to right,#FFF3E3, #f3d5ae,#FFF3E3);
     color: #333;
   }
 
@@ -16,8 +16,13 @@
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
+  
   }
-
+.wishlist-title{
+  text-align: center;
+  color: chocolate;
+  margin-bottom: 10px;
+}
   .wishlist-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -25,11 +30,12 @@
   }
 
   .wishlist-item {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right,rgb(255, 243, 227));
+    
+    box-shadow: 0 4px 12px rgb(192, 142, 76);
     padding: 16px;
     transition: transform 0.3s ease;
+    border-radius: 0 20px 0 20px;
     position: relative;
   }
 
@@ -94,11 +100,12 @@
     background-color: #166bb3;
   }
 
-  .wishlist-empty {
+  .wishlist-empty p{
     text-align: center;
     font-size: 18px;
     padding: 60px;
-    color: #777;
+    color: darkgoldenrod;
+    min-width: 200px;
   }
 
   .wishlist-buttons {
@@ -301,7 +308,7 @@
     container.innerHTML = "";
 
     if (wishlist.length === 0) {
-      container.innerHTML = "<p class='wishlist-empty'>No items in your wishlist.</p>";
+      container.innerHTML = "<p class='wishlist-empty'><marquee> 💖No items in your wishlist.</marquee></p>";
       return;
     }
 
@@ -329,18 +336,43 @@
     renderWishlist();
   }
 
-  function moveToCart(index) {
-    const product = wishlist[index];
-    cart.push(product);
-    wishlist.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    
-    renderWishlist();
-    alert("Moved to cart!");
+ function moveToCart(index) {
+  const product = wishlist[index];
+
+  // Check if price is already a number, otherwise clean it
+  let numericPrice;
+  if (typeof product.price === "number") {
+    numericPrice = product.price;
+  } else {
+    numericPrice = parseInt(product.price.replace(/[^\d]/g, ''), 10);
   }
 
+  const productToAdd = {
+    ...product,
+    price: numericPrice,
+    quantity: 1
+  };
+
+  cart.push(productToAdd);
+  wishlist.splice(index, 1);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
   renderWishlist();
+  updateCartCount();
+  alert("Moved to cart!");
+}
+
+  renderWishlist();
+
+function updateCartCount() {
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCount = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  document.querySelectorAll('.cart-count').forEach(el => {
+    el.textContent = cartCount;
+  });
+}
 </script>
 <script src="script.js"></script>
 <script>

@@ -406,3 +406,26 @@ function updateCartCount() {
     el.textContent = cartItems.length;
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const cartIcon = document.getElementById("cart-icon");
+
+  if (cartIcon) {
+    cartIcon.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+      if (isLoggedIn) {
+        window.location.href = "shop.html";
+      } else {
+        const loginForm = document.getElementById("login-form");
+        if (loginForm) {
+          loginForm.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // fallback: go to index.html if login-form not found
+          window.location.href = "index.html";
+        }
+      }
+    });
+  }
+});
