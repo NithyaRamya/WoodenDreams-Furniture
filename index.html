@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wooden Dreams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Header -->
+
+    
+    <div class="page-content">
+        <!-- Header -->
+        <header>
+            <div class="logo-section">
+                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
+                <h1>Wooden Dreams</h1>
+            </div>
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="categories.html">Categories</a>
+                <a href="shop.html">Shop</a>
+                <a href="blog.html">Blog</a>
+                <a href="#footer-social">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <div>
+                    <img src="images/material-symbols_search.png" alt="Search">
+                    <p>Search</p>
+                </div>
+
+                 <div class="cart-icon">
+                   <a style="text-decoration:none;color:white" href="cart.html">
+                    <img src="images/Group 189.png" alt="Cart Icon">
+                    <p>Cart <span class="cart-count">0</span></p>
+                    </a>
+
+                </div>
+                <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
+  <div>
+    <img src="images/Heart.png" alt="Liked">
+    <p>Liked</p>
+  </div>
+</a>
+                <button class="login-btn">Sign Up / Sign In</button>
+
+            </div>
+            
+    </div>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-bar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="mobile-header-icons">
+                <div>
+                    <img src="images/material-symbols_search.png" alt="Search">
+                    <p>Search</p>
+                </div>
+                <div class="cart-icon">
+                    <img src="images/Group 189.png" alt="Cart Icon">
+                    <p>Cart <span class="cart-count">0</span></p>
+
+                </div>
+
+
+                <div>
+                    <img src="images/Group 190.png" alt="Liked">
+                    <p>Liked</p>
+                </div>
+                <button class="login-btn">Sign Up / Sign In</button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden">
+            <div class="mobile-logo-section">
+                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
+                <h1>Wooden Dreams</h1>
+            </div>
+            <a href="#" class="active">Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="categories.html">Categories</a>
+            <a href="shop.html">Shop</a>
+            <a href="blog.html">Blog</a>
+            <a href="#footer-social">Contact</a>
+        </div>
+    </div>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-box">
+        <p class="arrival">New Arrival</p>
+        <h2>Discover Our <br>New Collection</h2>
+        <p class="subtext">Experience the art of wooden craftsmanship in our latest collection</p>
+        <button class="buy-now">BUY NOW</button>
+      </div>
+    </section>
+
+
+
+  </div>
+  <div class="modal-overlay">
+    <div class="modal-box">
+      <button class="close-btn"><img src="images/material-symbols_cancel.png"></button>
+      <div class="modal-content">
+        <div class="left-panel">
+          <img src="images/Group_206-removebg-preview.png" alt="Logo" class="logo" />
+          <h1 class="brand-name">Wooden Dreams</h1>
+          <p class="welcome-text">Welcome’s You !</p>
+          <img src="images/Cloud sofa three seater + ottoman_2 2.png" alt="Sofa" class="sofa-img" />
+        </div>
+        <div class="right-panel">
+          <h2 class="login-heading">Log In</h2>
+          <form id="login-form">
+            <input type="email" placeholder="Enter your Email Address" autocomplete="off" required />
+            <input type="password" placeholder="Enter Password" autocomplete="new-password" required />
+            <div class="remember-me">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Remember Me</label>
+              <button type="submit" class="sign-in-btn">Sign In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const modal = document.querySelector(".modal-overlay");
+      const pageContent = document.querySelector(".page-content");
+      const loginButtons = document.querySelectorAll(".login-btn");
+      const closeBtn = document.querySelector(".close-btn");
+      const loginForm = document.getElementById("login-form");
+
+      loginButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          modal.classList.add("active");
+          pageContent.classList.add("blur");
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+        pageContent.classList.remove("blur");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+          pageContent.classList.remove("blur");
+        }
+      });
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        window.location.href = "home.html";
+      });
+    });
+
+  </script>
+  <script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+</body>
+
+</html>
