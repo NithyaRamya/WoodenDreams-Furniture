@@ -290,8 +290,6 @@
 
   <!-- Include products.js or copy its contents here -->
   <script>
-   
-
     // Paste your entire sampleProducts array here or load products.js
     const sampleProducts = [
       {
@@ -309,9 +307,9 @@
           "Ideal for apartments, office receptions, and guest rooms."
         ],
         images: [
-          "images/s1 (1).png",
-          "images/s1 (2).png",
-          "images/s1 (1).png"
+          "images/products/modern-sofa.jpg",
+          "images/products/modern-sofa-2.jpg",
+          "images/products/modern-sofa-3.jpg"
         ], additionalInfo: {
           material: "Premium Teak Wood",
           dimensions: "120 x 70 x 75 cm",
@@ -336,9 +334,9 @@
           "Compact footprint, fits easily in any space."
         ],
         images: [
-          "images/Rectangle 286 q.png",
-          "images/t1.jpg",
-          "images/t1.jpg"
+          "images/Rectangle 286 q_thumbnail_1920x1080.png",
+          "images/products/modern-sofa-2.jpg",
+          "images/products/modern-sofa-3.jpg"
         ],
         additionalInfo: {
           material: "Solid Sheesham Wood",
@@ -367,9 +365,9 @@
           "Ideal for families or binge-watchers."
         ],
         images: [
-          "images/pingky1 (1).png",
-          "images/pingky1 (2).png",
-          "images/pingky1 (1).png"
+          "images/products/modern-sofa.jpg",
+          "images/products/modern-sofa-2.jpg",
+          "images/products/modern-sofa-3.jpg"
         ], additionalInfo: {
           material: "Engineered Wood Frame with Velvet Upholstery",
           dimensions: "200 x 90 x 80 cm",
@@ -397,9 +395,9 @@
           "Ready to use: just unbox and place."
         ],
         images: [
-            "images/thumbnail1 (1).png",
-          "images/thumbnail1 (4).png",
-          "images/thumbnail1 (2).png"
+          "images/products/modern-sofa.jpg",
+          "images/products/modern-sofa-2.jpg",
+          "images/products/modern-sofa-3.jpg"
         ], additionalInfo: {
           Material: "Acacia wood, waterproof fabric cushions",
 
@@ -422,9 +420,9 @@
         ],
 
         images: [
-          "images/j1.jpg",
-          "images/j2.png",
-          "images/j3.png"
+          "images/Images j_thumbnail_1280x720.png",
+          "images/products/modern-sofa-2.jpg",
+          "images/products/modern-sofa-3.jpg"
         ], additionalInfo: {
           material: "Recycled Pine Wood with Jute Upholstery",
           dimensions: "140 x 90 x 78 cm",
@@ -455,9 +453,9 @@
         ],
 
         images: [
-          "images/thumbnail1 (1).png",
-          "images/thumbnail1 (3).png",
-          "images/thumbnail1 (5).png"
+          "images/products/modern-sofa.jpg",
+          "images/products/modern-sofa-2.jpg",
+          "images/products/modern-sofa-3.jpg"
         ],
         additionalInfo: {
           material: "Leatherette",
@@ -484,9 +482,9 @@
         ],
 
         images: [
-            "images/product3-thumb1.png",
-          "images/product3-thumb2.png",
-          "images/product3-thumb3.png"
+          "images/products/modern-sofa.jpg",
+          "images/products/modern-sofa-2.jpg",
+          "images/products/modern-sofa-3.jpg"
         ], additionalInfo: {
           material: "Rattan & Metal",
           dimensions: "120 x 75 x 80 cm",
@@ -513,7 +511,7 @@
         ],
         images: [
           "images/sofa1.png",
-          "images/Group 146.png",
+          "images/sofa2.png",
           "images/Group 146.png"
         ],
 
@@ -601,9 +599,9 @@
         ],
 
         images: [
-          "images/product2-thumb1.png",
-          "images/product2-thumb2.png",
-          "images/product2-thumb3.png"
+          "images/products/oak-chair.jpg",
+          "images/products/oak-chair-2.jpg",
+          "images/products/oak-chair-3.jpg"
         ], additionalInfo: {
           Material: "Linen fabric, Solid wood base",
           ColorOptions: "Slate Grey, Olive Green",
@@ -701,11 +699,16 @@
       document.getElementById('product-price').textContent = `Rp ${parseInt(product.price).toLocaleString('id-ID')}`;
       document.getElementById('product-description').textContent = product.description ? product.description[0] : '';
       document.getElementById('product-long-description').textContent = product.description ? product.description.join(' ') : '';
-      //document.getElementById('info-tab').textContent = product.additionalInfo ? product.additionalInfo[0] : '';
+      
       // Main image
       const mainImage = document.getElementById('main-image');
-      mainImage.src = product.image || (product.images && product.images[0]);
-mainImage.alt = product.name;
+      if (product.images && product.images.length) {
+        mainImage.src = product.images[0];
+        mainImage.alt = product.name;
+      } else {
+        mainImage.src = product.image;
+        mainImage.alt = product.name;
+      }
 
       // Thumbnails container
       const thumbnailsContainer = document.getElementById('thumbnail-container');
