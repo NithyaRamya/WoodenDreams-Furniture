@@ -36,7 +36,7 @@
                 </div>
 
                  <div class="cart-icon">
-                   <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
+                   <a style="text-decoration:none;color:white" href="cart.html"  class="nav-link login-required">
                     <img src="images/Group 189.png" alt="Cart Icon">
                     <p>Cart <span class="cart-count">0</span></p>
                     </a>
@@ -481,18 +481,10 @@
                 }
             });
 
-            loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    // Set login status
-    localStorage.setItem("isLoggedIn", "true");
-
-    modal.classList.remove("active");
-    pageContent.classList.remove("blur");
-
-    alert("🛒 Login successful!");
-
-    // Optional: redirect to previously intended page
-});
+     loginForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                window.location.href = "index.html";
+            });
         });
 
     </script>
@@ -539,7 +531,7 @@
                 card.className = "product-card";
                 card.innerHTML = `
         <div class="badge-container">
-  ${product.badge ? <span class="badge">${product.badge}</span> : ""}
+  ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
 </div>
 <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
       <img src="${product.image}" alt="${product.name}" />   
@@ -603,7 +595,7 @@
                 card.className = "product-card";
                 card.innerHTML = `
       <div class="badge-container">
-        ${product.badge ? <span class="newbadge">${product.badge}</span> : ""}
+        ${product.badge ? `<span class="newbadge">${product.badge}</span>` : ""}
       </div>
       <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
       <img src="${product.image}" alt="${product.name}" />
@@ -677,8 +669,20 @@
         });
 
     </script>
-    
+   
     <script>
+         document.querySelectorAll(".login-required").forEach(link => {
+  link.addEventListener("click", function (e) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (!isLoggedIn) {
+      e.preventDefault();
+      document.querySelector(".modal-overlay").classList.add("active");
+      document.querySelector(".page-content").classList.add("blur");
+      alert("Please login to continue shopping.");
+    }
+  });
+});
+
         document.querySelector('.buy-now').addEventListener('click', function () {
             window.location.href = 'shop.html';
         });
@@ -688,21 +692,6 @@
   document.addEventListener("DOMContentLoaded", updateCartCount);
 </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".login-required").forEach(link => {
-      link.addEventListener("click", function (e) {
-        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-        if (!isLoggedIn) {
-          e.preventDefault(); // stop <a> from redirecting
-          document.querySelector(".modal-overlay").classList.add("active");
-          document.querySelector(".page-content").classList.add("blur");
-          alert("Please login to continue shopping");
-        }
-      });
-    });
-  });
-</script>
 
 
 </body>
