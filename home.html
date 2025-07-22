@@ -35,10 +35,10 @@
                     <p>Search</p>
                 </div>
 
-                 <div class="cart-icon">
-                   <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
-                    <img src="images/Group 189.png" alt="Cart Icon">
-                    <p>Cart <span class="cart-count">0</span></p>
+                <div class="cart-icon">
+                    <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
+                        <img src="images/Group 189.png" alt="Cart Icon">
+                        <p>Cart <span class="cart-count">0</span></p>
                     </a>
 
                 </div>
@@ -449,7 +449,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         function toggleMenu() {
             document.getElementById("mobile-menu").classList.toggle("hidden");
@@ -482,17 +482,17 @@
             });
 
             loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    // Set login status
-    localStorage.setItem("isLoggedIn", "true");
+                e.preventDefault();
+                // Set login status
+                localStorage.setItem("isLoggedIn", "true");
 
-    modal.classList.remove("active");
-    pageContent.classList.remove("blur");
+                modal.classList.remove("active");
+                pageContent.classList.remove("blur");
 
-    alert("🛒 Login successful!");
+                alert("🛒 Login successful!");
 
-    // Optional: redirect to previously intended page
-});
+                // Optional: redirect to previously intended page
+            });
         });
 
     </script>
@@ -654,56 +654,67 @@
             }
         }
 
-        const clearCartBtn = document.getElementById("clear-cart");
 
+
+    </script>
+    <script>
         function clearCart() {
-            cart.length = 0;
-            saveCart();
+            localStorage.removeItem("cart"); // Clear from localStorage
+            const cartCountElements = document.querySelectorAll(".cart-count");
+            cartCountElements.forEach(el => el.textContent = "0"); // Update UI
+            alert("🛒 Cart cleared!");
         }
 
-        if (clearCartBtn) {
-            clearCartBtn.addEventListener("click", clearCart);
-        }
-
-        document.querySelectorAll("input[name='material'], input[name='country'], input[name='seating'], input[name='price']").forEach(input => {
-            input.addEventListener("change", applyFilters);
+        document.addEventListener("DOMContentLoaded", function () {
+            const clearCartBtn = document.getElementById("clear-cart");
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener("click", clearCart);
+            }
         });
-
-        // Initial render
         document.addEventListener("DOMContentLoaded", () => {
             renderProducts();
             renderNewArrivals();
             updateCartBadge();
         });
-
     </script>
-    
+
+
     <script>
         document.querySelector('.buy-now').addEventListener('click', function () {
             window.location.href = 'shop.html';
         });
     </script>
-    
-<script>
-  document.addEventListener("DOMContentLoaded", updateCartCount);
-</script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".login-required").forEach(link => {
-      link.addEventListener("click", function (e) {
-        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-        if (!isLoggedIn) {
-          e.preventDefault(); // stop <a> from redirecting
-          document.querySelector(".modal-overlay").classList.add("active");
-          document.querySelector(".page-content").classList.add("blur");
-          alert("Please login to continue shopping");
-        }
-      });
-    });
-  });
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", updateCartCount);
+    </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".login-required").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+                    if (!isLoggedIn) {
+                        e.preventDefault(); // stop <a> from redirecting
+                        document.querySelector(".modal-overlay").classList.add("active");
+                        document.querySelector(".page-content").classList.add("blur");
+                        alert("Please login to continue shopping");
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartCountElements = document.querySelectorAll(".cart-count");
+
+            cartCountElements.forEach(el => {
+                el.textContent = cart.length;
+            });
+        });
+    </script>
 
 </body>
 
