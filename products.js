@@ -104,7 +104,14 @@ const sampleProducts = [
     price: 25000,
     image: "images/Rectangle 286 p.png",
     badge: "New",
-    description: "Sophisticated yet understated, the Syltherine 2-seater blends mid-century modern charm with high-density cushioning for superior comfort. With clean lines and a supportive back, it's ideal for tight living spaces without compromising style.Tailored silhouette with button-tufted back.Robust hardwood frame with webbing and spring support.Plush seating foam wrapped in poly-fill.Smooth linen-blend fabric that’s skin-friendly. Sky Gray, Burgundy, Sand.Apartments, office receptions, and guest rooms.",
+      description: [
+      "Sophisticated yet understated, the Syltherine 2-seater blends mid-century modern charm with high-density cushioning for superior comfort.",
+      "Tailored silhouette with button-tufted back.",
+      "Robust hardwood frame with webbing and spring support.",
+      "Plush seating foam wrapped in poly-fill.",
+      "Smooth linen-blend fabric that’s skin-friendly.",
+      "Ideal for apartments, office receptions, and guest rooms."
+    ],
     images: [
       "images/products/modern-sofa.jpg",
       "images/products/modern-sofa-2.jpg",
@@ -123,7 +130,15 @@ const sampleProducts = [
     price: 15000,
     image: "images/Rectangle 286 q.png",
     badge: "New",
-    description: "A bold statement piece, the Lolito 1-seater is designed for maximum impact in a compact form. Its wide arms, vibrant upholstery, and boxy silhouette add personality to any room. Great as an accent chair or lounge seat.Lounge-ReadyRounded armrests and vintage legs give it a retro flair.Solid hardwood core with supportive elastic belts.Durable twill in muted tones.Compact footprint, fits easily in any space.",
+    description: [
+  "A bold statement piece designed for maximum impact in a compact form.",
+  "Wide arms, vibrant upholstery, and boxy silhouette add personality.",
+  "Great as an accent chair or lounge seat.",
+  "Rounded armrests and vintage legs give it a retro flair.",
+  "Solid hardwood core with supportive elastic belts.",
+  "Durable twill in muted tones.",
+  "Compact footprint, fits easily in any space."
+],
     images: [
       "images/Rectangle 286 q_thumbnail_1920x1080.png",
       "images/products/modern-sofa-2.jpg",
@@ -145,7 +160,16 @@ const sampleProducts = [
     price: 50000,
     image: "images/Images i.png",
     badge: "New",
-    description: "Sleek and versatile, the Pingky 3-seater fits seamlessly into both modern and transitional spaces. With its tufted back, wide seat depth, and durable upholstery, it’s built for long Netflix nights and friendly gatherings.Bold & Cozy Contemporary boxy form with deep seating.Frame Engineered wood and solid base frame construction.Suede-textured microfiber for a premium look.Three-layered seat and back cushions for cloud-like comfort.Add-ons: Includes throw pillows with cover options.Ideal for families or binge-watchers.",
+   description: [
+  "Sleek and versatile 3-seater fits both modern and transitional spaces.",
+  "Tufted back and wide seat depth for extended comfort.",
+  "Boxy contemporary form with deep seating.",
+  "Engineered wood and solid base frame construction.",
+  "Suede-textured microfiber gives a premium look.",
+  "Three-layered seat and back cushions for cloud-like comfort.",
+  "Includes throw pillows with cover options.",
+  "Ideal for families or binge-watchers."
+],
     images: [
       "images/products/modern-sofa.jpg",
       "images/products/modern-sofa-2.jpg",
@@ -165,7 +189,17 @@ const sampleProducts = [
     price: 30000,
     image: "images/Images q.png",
     badge: "New",
-    description: "The Patio 2-seater is your all-weather friend for breezy outdoor seating. Crafted with treated acacia wood and weather-resistant cushions, it’s perfect for balconies, patios, and garden corners. Lightweight yet sturdy, it combines function with flair.Designed for patios, balconies, and sunrooms.Powder-coated metal with faux wood arm inserts.Quick-dry foam wrapped in weather-resistant fabric.Fade-proof and mold-resistant materials.Adjustable tilt for lounging or upright support.Hose down or wipe with damp cloth.Just unbox and place.",
+   description: [
+  "All-weather 2-seater perfect for breezy outdoor seating.",
+  "Crafted with treated acacia wood and weather-resistant cushions.",
+  "Designed for patios, balconies, and sunrooms.",
+  "Powder-coated metal with faux wood arm inserts.",
+  "Quick-dry foam wrapped in weather-resistant fabric.",
+  "Fade-proof and mold-resistant materials.",
+  "Adjustable tilt for lounging or upright support.",
+  "Easy maintenance: hose down or wipe with damp cloth.",
+  "Ready to use: just unbox and place."
+],
     images: [
       "images/products/modern-sofa.jpg",
       "images/products/modern-sofa-2.jpg",
@@ -184,7 +218,13 @@ const sampleProducts = [
     price: 20000,
     image: "images/Images j.png",
     badge: "New",
-    description: "With its plush cushioning, supportive arms, and smooth curved design, the Grifo 2-seater is all about comfort without compromise. It’s an elegant choice for those who love lounging without taking up too much space.",
+   description: [
+  "Plush cushioning and supportive arms for all-day comfort.",
+  "Smooth curved design fits modern interiors.",
+  "Elegant and space-saving 2-seater option.",
+  "Ideal for lounging in style without bulk."
+],
+
     images: [
       "images/Images j_thumbnail_1280x720.png",
       "images/products/modern-sofa-2.jpg",
@@ -205,7 +245,19 @@ const sampleProducts = [
     price: 18000,
     image: "images/Rectangle 276 h.png",
     badge: "New",
-    description: "True to its name, Leviosa is a floating comfort experience. This 1-seater recliner features adjustable reclining positions, a pop-up footrest, and soft lumbar support—perfect for movie nights or post-work relaxation.Single-seater with clean curves and floating effect.Ergonomic shaping to cradle your back and spine.Bent ply with a strong support base.Smoky Gray, Linen White.Reading corners, café-style layouts.Easy to move, shift, and style.Memory foam seating for prolonged comfort.Uses sustainable materials and low-VOC adhesives.",
+    description: [
+  "Floating comfort experience with adjustable reclining positions.",
+  "Pop-up footrest and soft lumbar support included.",
+  "Single-seater recliner with clean curves and floating effect.",
+  "Ergonomic shaping to cradle your back and spine.",
+  "Bent ply with a strong support base.",
+  "Available in Smoky Gray and Linen White.",
+  "Great for reading corners, café-style layouts.",
+  "Easy to move, shift, and style.",
+  "Memory foam seating for prolonged comfort.",
+  "Uses sustainable materials and low-VOC adhesives."
+],
+
     images: [
       "images/products/modern-sofa.jpg",
       "images/products/modern-sofa-2.jpg",
@@ -226,7 +278,15 @@ const sampleProducts = [
     price: 25000,
     image: "images/Rectangle 281.png",
     badge: "New",
-    description: "Modern, minimal, and airy—Respira is a compact 2-seater sofa designed to breathe elegance into smaller spaces. Crafted with solid wood legs and upholstered in breathable linen fabric, it offers medium-firm cushioning for optimal posture support. Ideal for apartments, reading corners, or cozy lounges. Scandinavian-inspired with a minimalist and airy look.Frame Material: Crafted from solid kiln-dried teak wood for durability and strength.Premium woven fabric in neutral tones, offering a soft and breathable texture.",
+    description: [
+  "Modern, minimal, and airy 2-seater design.",
+  "Perfect for smaller spaces like apartments and reading corners.",
+  "Crafted from solid kiln-dried teak wood for durability.",
+  "Medium-firm cushioning for optimal posture support.",
+  "Scandinavian-inspired with a minimalist and airy look.",
+  "Premium woven fabric in neutral tones for breathable comfort."
+],
+
     images: [
       "images/products/modern-sofa.jpg",
       "images/products/modern-sofa-2.jpg",
@@ -245,7 +305,16 @@ const sampleProducts = [
     price: 50000,
     image: "images/Group 146.png",
     badge: "New",
-    description: "The Muggo sofa redefines relaxation with its ultra-plush back cushions and wide seating. With its low-profile modern frame and soft-touch fabric, this 3-seater adds warmth and sophistication to any contemporary living room. Built to last with a solid pine wood frame.Modern Rustic Charm: Blends rustic wood with modern clean lines.Handcrafted from solid Sheesham wood with a warm walnut finish.Wide and deep seats designed for all-day lounging.Soft chenille upholstery resists wear and fading.Supports up to 300 kg total.Includes two bolsters for extra arm or back support.",
+    description: [
+  "Ultra-plush back cushions and wide seating for total relaxation.",
+  "Low-profile modern frame with soft-touch fabric.",
+  "Blends rustic wood with modern clean lines.",
+  "Handcrafted from solid Sheesham wood with warm walnut finish.",
+  "Wide and deep seats designed for all-day lounging.",
+  "Soft chenille upholstery resists wear and fading.",
+  "Supports up to 300 kg total.",
+  "Includes two bolsters for extra arm or back support."
+],
     images: [
       "images/sofa1.png",
       "images/sofa2.png",
@@ -268,7 +337,16 @@ const sampleProducts = [
     price: 15000,
     image: "images/image 2.png",
     badge: "New",
-    description: "Compact and charming, the Potty armchair is a one-seater marvel for modern spaces. With its playful silhouette, high backrest, and ergonomic arm support, it’s perfect for curling up with a book or accentuating a cozy corner. Ideal as an accent or reading chair.Solid mango wood base with natural wood grain finish.Dual-layer cushioning with a soft bounce.Slight recline and contoured back for posture support.Velvet-touch fabric in pastel shades.",
+    description: [
+  "Compact and charming one-seater for modern spaces.",
+  "Playful silhouette with high backrest and ergonomic arm support.",
+  "Perfect as an accent or reading chair.",
+  "Solid mango wood base with natural wood grain finish.",
+  "Dual-layer cushioning with a soft bounce.",
+  "Slight recline and contoured back for posture support.",
+  "Velvet-touch fabric in pastel shades."
+],
+
     images: [
       "images/product3-thumb1.png",
       "images/product3-thumb2.png",
@@ -286,7 +364,15 @@ const sampleProducts = [
     price: 25000,
     image: "images/Asgaard sofa 4.png",
     badge: "New",
-    description: "An epitome of Scandinavian design, the Asgaard sofa set combines a 3-seater and 2-seater with minimalist aesthetics and generous proportions. The hand-finished teak wood arms and tapered legs add a timeless touch, while the deep cushions ensure hours of comfort.Mid-century modern design with clean lines and wood detailing.Made from sustainably sourced teak wood with a hand-rubbed finish.Deep-set seats with high-density foam and fiberfill.Includes a spacious 3-seater and a matching 2-seater.Living rooms, large lounges, and formal seating areas.",
+    description: [
+  "Scandinavian design combining a 3-seater and 2-seater set.",
+  "Minimalist aesthetics with generous proportions.",
+  "Hand-finished teak wood arms and tapered legs.",
+  "Deep-set seats with high-density foam and fiberfill.",
+  "Mid-century modern design with clean lines and wood detailing.",
+  "Ideal for living rooms, large lounges, and formal seating areas."
+],
+
     images: [
       "images/product1-thumb1.png",
       "images/product1-thumb2.png",
@@ -305,7 +391,19 @@ const sampleProducts = [
     price: 50000,
     image: "images/image 3.png",
     badge: "20% OFF",
-    description: "Built from durable oak wood, this 3-seater bench-style sofa embraces both function and beauty. Featuring a straight back and slatted sides, it's perfect for rustic or farmhouse-inspired interiors. Comes with padded seat and back cushions for added comfort.High-quality solid oak with natural grain finish.Classic slatted back and arms with a rustic farmhouse look.Thick cushions with removable, washable covers.Wood is kiln-dried and treated to resist warping.Holds up to 250 kg.Porches, verandas, and family rooms.Natural Oak, Dark Walnut.FSC-certified wood and non-toxic stains used.",
+    description: [
+  "Durable 3-seater bench-style sofa built from solid oak.",
+  "Straight back and slatted sides for a rustic look.",
+  "Padded seat and back cushions add extra comfort.",
+  "Classic farmhouse design with natural grain finish.",
+  "Thick cushions with removable, washable covers.",
+  "Kiln-dried and treated wood resists warping.",
+  "Holds up to 250 kg capacity.",
+  "Great for porches, verandas, and family rooms.",
+  "Available in Natural Oak and Dark Walnut.",
+  "FSC-certified wood and non-toxic stains used."
+],
+
     images: [
       "images/products/oak-chair.jpg",
       "images/products/oak-chair-2.jpg",
@@ -322,7 +420,18 @@ const sampleProducts = [
     price: 15000,
     image: "images/Group 206 h.png",
     badge: "15% OFF",
-    description: "A true dining essential, this Teak Wood Dining Table combines rustic elegance with ample space. Its natural grains and smooth matte finish give it an earthy charm, while the robust legs ensure stability for family meals, dinner parties, and everyday use.Made from premium-grade teak wood with an oil finish.Generous proportions ideal for families or guests.Minimalist rectangular silhouette with rounded corners.Smooth grain-finished table top with beveled edges.Sturdy, wide-block legs ensure no wobble.Sealed surface resists spills and stains.Optional purchase to complete the set.Flat-packed with easy bolt-on legs.",
+    description: [
+  "Rustic elegance with ample space for family meals.",
+  "Premium-grade teak wood with a smooth matte oil finish.",
+  "Generous proportions ideal for large groups.",
+  "Minimalist rectangular shape with rounded corners.",
+  "Beveled edges and smooth grain-finished tabletop.",
+  "Wide-block legs provide stability and no wobble.",
+  "Sealed surface resists spills and stains.",
+  "Flat-packed with easy bolt-on legs.",
+  "Optional matching dining set available."
+],
+
     images: [
       "images/yellow thumbnail.png",
       "images/yellow thumbnail2.png",

@@ -699,7 +699,7 @@
       document.getElementById('product-price').textContent = `Rp ${parseInt(product.price).toLocaleString('id-ID')}`;
       document.getElementById('product-description').textContent = product.description ? product.description[0] : '';
       document.getElementById('product-long-description').textContent = product.description ? product.description.join(' ') : '';
-      document.getElementById('info-tab').textContent = product.additionalInfo ? product.additionalInfo[0] : '';
+
       // Main image
       const mainImage = document.getElementById('main-image');
       if (product.images && product.images.length) {
@@ -773,84 +773,59 @@
       populateProductDetails(product);
     });
 
-   let product = null;  // declare product globally
+    document.addEventListener('DOMContentLoaded', () => {
+      // existing product loading code here...
 
-document.addEventListener('DOMContentLoaded', () => {
-  const productNameFromUrl = getQueryParam('product');
-  if (!productNameFromUrl) {
-    alert('No product specified!');
-    return;
-  }
+      const tabs = document.querySelectorAll('.section-tabs div');
+      const content = document.querySelector('.section-content');
 
-  // Find product (case insensitive)
-  product = sampleProducts.find(p => p.name.toLowerCase() === productNameFromUrl.toLowerCase());
-  if (!product) {
-    alert('Product not found!');
-    return;
-  }
+      // Set first tab active style
+      tabs[0].classList.add('active-tab');
 
-  populateProductDetails(product);
-
-  // Setup tabs after product is loaded
-  const tabs = document.querySelectorAll('.section-tabs div');
-  const content = document.querySelector('.section-content');
-
-  // Set first tab active style
-  tabs[0].classList.add('active-tab');
-
-  // Add CSS for active tab
-  const style = document.createElement('style');
-  style.textContent = `
+      // Add CSS for active tab
+      const style = document.createElement('style');
+      style.textContent = `
     .section-tabs div.active-tab {
       color: #b88e2f;
       border-bottom: 2px solid #b88e2f;
       padding-bottom: 5px;
     }
   `;
-  document.head.appendChild(style);
+      document.head.appendChild(style);
 
-  function showTabContent(index) {
-    tabs.forEach((tab, i) => tab.classList.toggle('active-tab', i === index));
+      function showTabContent(index) {
+        tabs.forEach((tab, i) => tab.classList.toggle('active-tab', i === index));
 
-    if (index === 0) {
-      // Description tab
-      content.innerHTML = `<p>${product.description ? product.description.join(' ') : 'No description available.'}</p>`;
-    } else if (index === 1) {
-      // Additional Information tab
-      if (product.additionalInfo) {
-        let infoHtml = '<ul style="list-style:none; padding-left:0;">';
-
-        for (const key in product.additionalInfo) {
-          if (key !== 'swatches') {
-            infoHtml += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${product.additionalInfo[key]}</li>`;
+        if (index === 0) {
+          // Description tab
+          content.innerHTML = `<p>${product.description ? product.description.join(' ') : 'No description available.'}</p>`;
+        } else if (index === 1) {
+          // Additional Information tab
+          if (product.additionalInfo) {
+            let infoHtml = '<ul style="list-style:none; padding-left:0;">';
+            for (const key in product.additionalInfo) {
+              if (key !== 'swatches') {
+                infoHtml += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${product.additionalInfo[key]}</li>`;
+              }
+            }
+            infoHtml += '</ul>';
+            content.innerHTML = infoHtml;
+          } else {
+            content.innerHTML = '<p>No additional information available.</p>';
           }
+        } else if (index === 2) {
+          // Reviews tab
+          content.innerHTML = '<p>★★★★★<br>5 Customer Reviews</p>';
         }
-
-        if (Array.isArray(product.additionalInfo.swatches)) {
-          infoHtml += `<li><strong>Colors:</strong> ${product.additionalInfo.swatches
-            .map(color => `<span style="display:inline-block; width:20px; height:20px; background:${color}; border:1px solid #ccc; margin-right:5px; border-radius:4px;"></span>`)
-            .join('')}</li>`;
-        }
-
-        infoHtml += '</ul>';
-        content.innerHTML = infoHtml;
-      } else {
-        content.innerHTML = '<p>No additional information available.</p>';
       }
-    } else if (index === 2) {
-      // Reviews tab
-      content.innerHTML = '<p>★★★★★<br>5 Customer Reviews</p>';
-    }
-  }
 
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => showTabContent(index));
-  });
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => showTabContent(index));
+      });
 
-  // Show default tab content
-  showTabContent(0);
-});
-
+      // Show default tab content
+      showTabContent(0);
+    });
     document.addEventListener('DOMContentLoaded', () => {
       updateCartCount();
     });
