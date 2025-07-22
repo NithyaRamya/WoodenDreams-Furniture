@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Detail</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+  
   <style>
     * {
       margin: 0;
@@ -15,13 +17,13 @@
     }
 
     body {
-      background-color: #fff;
+      background-color: #f5e5bf;
       color: #000;
     }
 
     header {
       padding: 20px;
-      background-color: #f9f4ef;
+      
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -175,11 +177,13 @@
       justify-content: center;
       gap: 30px;
       margin: 40px 0 20px;
+      background-color: #f5e5bf;
     }
 
     .section-tabs div {
       cursor: pointer;
       font-weight: bold;
+          background-color: #f5e5bf;
     }
 
     .section-content {
@@ -187,6 +191,7 @@
       padding: 0 80px;
       font-size: 0.9em;
       color: #5d5d5d;
+          background-color: #f5e5bf;
     }
 
     .related-products {
@@ -230,11 +235,50 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header>
+    <div class="logo-section">
+      <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
+      <h1>Wooden Dreams</h1>
+    </div>
+    <nav class="navbar">
+      <a href="#" class="active">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="categories.html">Categories</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="#footer-social">Contact</a>
+    </nav>
+    <div class="header-icons">
+      <div>
+        <img src="images/material-symbols_search.png" alt="Search">
+        <p>Search</p>
+      </div>
 
-    <div><a style="text-decoration: none;color:black" href="home.html">Home</a> › <a
-        style="text-decoration: none;color:black" href="shop.html">Shop ></a><span
-        id="breadcrumb-product-name">Product</span></div>
+      <div class="cart-icon">
+        <a style="text-decoration:none;color:white" href="#">
+          <img src="images/Group 189.png" alt="Cart Icon">
+          <p>Cart <span class="cart-count">0</span></p>
+        </a>
+
+      </div>
+      <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
+        <div>
+          <img src="images/Heart.png" alt="Liked">
+          <p>Liked</p>
+        </div>
+      </a>
+      <button class="login-btn">Sign Up / Sign In</button>
+
+    </div>
+
+    </div>
+  </header>
+
+
+  <div style="background-color: #f9f4ef;padding:40px"><a style="text-decoration: none;color:black" href="home.html">Home</a> › <a
+      style="text-decoration: none;color:black" href="shop.html">Shop ></a><span
+      id="breadcrumb-product-name">Product</span></div>
   </header>
 
   <main>
@@ -269,7 +313,7 @@
     </div>
   </main>
 
-  <div class="section-tabs">
+  <div  class="section-tabs">
     <div>Description</div>
     <div>Additional Information</div>
     <div>Reviews [5]</div>
@@ -290,6 +334,8 @@
 
   <!-- Include products.js or copy its contents here -->
   <script>
+
+
     // Paste your entire sampleProducts array here or load products.js
     const sampleProducts = [
       {
@@ -307,9 +353,9 @@
           "Ideal for apartments, office receptions, and guest rooms."
         ],
         images: [
-          "images/products/modern-sofa.jpg",
-          "images/products/modern-sofa-2.jpg",
-          "images/products/modern-sofa-3.jpg"
+          "images/s1 (1).png",
+          "images/s1 (2).png",
+          "images/s1 (1).png"
         ], additionalInfo: {
           material: "Premium Teak Wood",
           dimensions: "120 x 70 x 75 cm",
@@ -334,9 +380,9 @@
           "Compact footprint, fits easily in any space."
         ],
         images: [
-          "images/Rectangle 286 q_thumbnail_1920x1080.png",
-          "images/products/modern-sofa-2.jpg",
-          "images/products/modern-sofa-3.jpg"
+          "images/Rectangle 286 q.png",
+          "images/t1.jpg",
+          "images/t1.jpg"
         ],
         additionalInfo: {
           material: "Solid Sheesham Wood",
@@ -365,9 +411,9 @@
           "Ideal for families or binge-watchers."
         ],
         images: [
-          "images/products/modern-sofa.jpg",
-          "images/products/modern-sofa-2.jpg",
-          "images/products/modern-sofa-3.jpg"
+          "images/pingky1 (1).png",
+          "images/pingky1 (2).png",
+          "images/pingky1 (1).png"
         ], additionalInfo: {
           material: "Engineered Wood Frame with Velvet Upholstery",
           dimensions: "200 x 90 x 80 cm",
@@ -395,9 +441,9 @@
           "Ready to use: just unbox and place."
         ],
         images: [
-          "images/products/modern-sofa.jpg",
-          "images/products/modern-sofa-2.jpg",
-          "images/products/modern-sofa-3.jpg"
+          "images/thumbnail1 (1).png",
+          "images/thumbnail1 (4).png",
+          "images/thumbnail1 (2).png"
         ], additionalInfo: {
           Material: "Acacia wood, waterproof fabric cushions",
 
@@ -420,9 +466,9 @@
         ],
 
         images: [
-          "images/Images j_thumbnail_1280x720.png",
-          "images/products/modern-sofa-2.jpg",
-          "images/products/modern-sofa-3.jpg"
+          "images/j1.jpg",
+          "images/j2.png",
+          "images/j3.png"
         ], additionalInfo: {
           material: "Recycled Pine Wood with Jute Upholstery",
           dimensions: "140 x 90 x 78 cm",
@@ -453,9 +499,9 @@
         ],
 
         images: [
-          "images/products/modern-sofa.jpg",
-          "images/products/modern-sofa-2.jpg",
-          "images/products/modern-sofa-3.jpg"
+          "images/thumbnail1 (1).png",
+          "images/thumbnail1 (3).png",
+          "images/thumbnail1 (5).png"
         ],
         additionalInfo: {
           material: "Leatherette",
@@ -482,9 +528,9 @@
         ],
 
         images: [
-          "images/products/modern-sofa.jpg",
-          "images/products/modern-sofa-2.jpg",
-          "images/products/modern-sofa-3.jpg"
+          "images/product3-thumb1.png",
+          "images/product3-thumb2.png",
+          "images/product3-thumb3.png"
         ], additionalInfo: {
           material: "Rattan & Metal",
           dimensions: "120 x 75 x 80 cm",
@@ -511,7 +557,7 @@
         ],
         images: [
           "images/sofa1.png",
-          "images/sofa2.png",
+          "images/Group 146.png",
           "images/Group 146.png"
         ],
 
@@ -599,9 +645,9 @@
         ],
 
         images: [
-          "images/products/oak-chair.jpg",
-          "images/products/oak-chair-2.jpg",
-          "images/products/oak-chair-3.jpg"
+          "images/product2-thumb1.png",
+          "images/product2-thumb2.png",
+          "images/product2-thumb3.png"
         ], additionalInfo: {
           Material: "Linen fabric, Solid wood base",
           ColorOptions: "Slate Grey, Olive Green",
@@ -699,16 +745,11 @@
       document.getElementById('product-price').textContent = `Rp ${parseInt(product.price).toLocaleString('id-ID')}`;
       document.getElementById('product-description').textContent = product.description ? product.description[0] : '';
       document.getElementById('product-long-description').textContent = product.description ? product.description.join(' ') : '';
-      
+      //document.getElementById('info-tab').textContent = product.additionalInfo ? product.additionalInfo[0] : '';
       // Main image
       const mainImage = document.getElementById('main-image');
-      if (product.images && product.images.length) {
-        mainImage.src = product.images[0];
-        mainImage.alt = product.name;
-      } else {
-        mainImage.src = product.image;
-        mainImage.alt = product.name;
-      }
+      mainImage.src = product.image || (product.images && product.images[0]);
+      mainImage.alt = product.name;
 
       // Thumbnails container
       const thumbnailsContainer = document.getElementById('thumbnail-container');
@@ -773,83 +814,83 @@
       populateProductDetails(product);
     });
 
-   let product = null;  // declare product globally
+    let product = null;  // declare product globally
 
-document.addEventListener('DOMContentLoaded', () => {
-  const productNameFromUrl = getQueryParam('product');
-  if (!productNameFromUrl) {
-    alert('No product specified!');
-    return;
-  }
+    document.addEventListener('DOMContentLoaded', () => {
+      const productNameFromUrl = getQueryParam('product');
+      if (!productNameFromUrl) {
+        alert('No product specified!');
+        return;
+      }
 
-  // Find product (case insensitive)
-  product = sampleProducts.find(p => p.name.toLowerCase() === productNameFromUrl.toLowerCase());
-  if (!product) {
-    alert('Product not found!');
-    return;
-  }
+      // Find product (case insensitive)
+      product = sampleProducts.find(p => p.name.toLowerCase() === productNameFromUrl.toLowerCase());
+      if (!product) {
+        alert('Product not found!');
+        return;
+      }
 
-  populateProductDetails(product);
+      populateProductDetails(product);
 
-  // Setup tabs after product is loaded
-  const tabs = document.querySelectorAll('.section-tabs div');
-  const content = document.querySelector('.section-content');
+      // Setup tabs after product is loaded
+      const tabs = document.querySelectorAll('.section-tabs div');
+      const content = document.querySelector('.section-content');
 
-  // Set first tab active style
-  tabs[0].classList.add('active-tab');
+      // Set first tab active style
+      tabs[0].classList.add('active-tab');
 
-  // Add CSS for active tab
-  const style = document.createElement('style');
-  style.textContent = `
+      // Add CSS for active tab
+      const style = document.createElement('style');
+      style.textContent = `
     .section-tabs div.active-tab {
       color: #b88e2f;
       border-bottom: 2px solid #b88e2f;
       padding-bottom: 5px;
     }
   `;
-  document.head.appendChild(style);
+      document.head.appendChild(style);
 
-  function showTabContent(index) {
-    tabs.forEach((tab, i) => tab.classList.toggle('active-tab', i === index));
+      function showTabContent(index) {
+        tabs.forEach((tab, i) => tab.classList.toggle('active-tab', i === index));
 
-    if (index === 0) {
-      // Description tab
-      content.innerHTML = `<p>${product.description ? product.description.join(' ') : 'No description available.'}</p>`;
-    } else if (index === 1) {
-      // Additional Information tab
-      if (product.additionalInfo) {
-        let infoHtml = '<ul style="list-style:none; padding-left:0;">';
+        if (index === 0) {
+          // Description tab
+          content.innerHTML = `<p>${product.description ? product.description.join(' ') : 'No description available.'}</p>`;
+        } else if (index === 1) {
+          // Additional Information tab
+          if (product.additionalInfo) {
+            let infoHtml = '<ul style="list-style:none; padding-left:0;">';
 
-        for (const key in product.additionalInfo) {
-          if (key !== 'swatches') {
-            infoHtml += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${product.additionalInfo[key]}</li>`;
+            for (const key in product.additionalInfo) {
+              if (key !== 'swatches') {
+                infoHtml += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${product.additionalInfo[key]}</li>`;
+              }
+            }
+
+            if (Array.isArray(product.additionalInfo.swatches)) {
+              infoHtml += `<li><strong>Colors:</strong> ${product.additionalInfo.swatches
+                .map(color => `<span style="display:inline-block; width:20px; height:20px; background:${color}; border:1px solid #ccc; margin-right:5px; border-radius:4px;"></span>`)
+                .join('')}</li>`;
+            }
+
+            infoHtml += '</ul>';
+            content.innerHTML = infoHtml;
+          } else {
+            content.innerHTML = '<p>No additional information available.</p>';
           }
+        } else if (index === 2) {
+          // Reviews tab
+          content.innerHTML = '<p>★★★★★<br>5 Customer Reviews</p>';
         }
-
-        if (Array.isArray(product.additionalInfo.swatches)) {
-          infoHtml += `<li><strong>Colors:</strong> ${product.additionalInfo.swatches
-            .map(color => `<span style="display:inline-block; width:20px; height:20px; background:${color}; border:1px solid #ccc; margin-right:5px; border-radius:4px;"></span>`)
-            .join('')}</li>`;
-        }
-
-        infoHtml += '</ul>';
-        content.innerHTML = infoHtml;
-      } else {
-        content.innerHTML = '<p>No additional information available.</p>';
       }
-    } else if (index === 2) {
-      // Reviews tab
-      content.innerHTML = '<p>★★★★★<br>5 Customer Reviews</p>';
-    }
-  }
 
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => showTabContent(index));
-  });
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => showTabContent(index));
+      });
 
-  // Show default tab content
-  showTabContent(0);
-});
+      // Show default tab content
+      showTabContent(0);
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
       updateCartCount();

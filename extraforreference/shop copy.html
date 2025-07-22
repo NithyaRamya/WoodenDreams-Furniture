@@ -7,7 +7,12 @@
   <title>Wooden Dreams</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
+<style>
+  .section-tabs div.active {
+  border-bottom: 2px solid #b88e2f;
+  color: #b88e2f;
+}
+
     .cart-actions {
       text-align: right;
       margin: 20px;
@@ -253,76 +258,86 @@
 
 <body>
   <!-- Header -->
-  <header>
-    <div class="logo-section">
-      <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
-      <h1>Wooden Dreams</h1>
-    </div>
-    <nav class="navbar">
-      <a href="home.html">Home</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="categories.html">Categories</a>
-      <a href="#" class="active">Shop</a>
-      <a href="blog.html">Blog</a>
-      <a href="footer-social">Contact</a>
-    </nav>
-    <div class="header-icons">
-      <div>
-        <img src="images/material-symbols_search.png" alt="Search">
-        <p>Search</p>
-      </div>
-      <!-- Header with cart -->
 
-      <div class="cart-icon">
-        <img src="images/Group 189.png" alt="Cart Icon">
-        <p>Cart <a href="#"><span class="cart-count">0</span></p></a></a>
-      </div>
+    
+   
+        <!-- Header -->
+        <header>
+            <div class="logo-section">
+                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
+                <h1>Wooden Dreams</h1>
+            </div>
+            <nav class="navbar">
+                <a href="home.html" >Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="categories.html">Categories</a>
+                <a href="shop.html" class="active">Shop</a>
+                <a href="blog.html">Blog</a>
+                <a href="#footer-social">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <div>
+                    <img src="images/material-symbols_search.png" alt="Search">
+                    <p>Search</p>
+                </div>
 
+                <div class="cart-icon">
+                    <img src="images/Group 189.png" alt="Cart Icon">
+                    <p>Cart <a href="cart.html"><span class="cart-count">0</span></p></a>
 
-     <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
+                </div>
+                <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
   <div>
     <img src="images/Heart.png" alt="Liked">
     <p>Liked</p>
   </div>
 </a>
-      <button class="login-btn">Sign Up / Sign In</button>
-    </div>
-  </header>
+                <button class="login-btn">Sign Up / Sign In</button>
 
-  <div class="mobile-nav">
-    <div class="mobile-nav-bar">
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <div class="mobile-header-icons">
-        <div>
-          <img src="images/material-symbols_search.png" alt="Search">
-          <p>Search</p>
-        </div>
-        <div>
-          <img src="images/Group 189.png" alt="Cart">
-          <p>Cart</p>
+            </div>
+            
+    </div>
+    </header>
+ <div class="page-content">
+    <div class="mobile-nav">
+        <div class="mobile-nav-bar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="mobile-header-icons">
+                <div>
+                    <img src="images/material-symbols_search.png" alt="Search">
+                    <p>Search</p>
+                </div>
+                 <div class="cart-icon">
+                   <a style="text-decoration:none;color:white" href="cart.html">
+                    <img src="images/Group 189.png" alt="Cart Icon">
+                    <p>Cart <span class="cart-count">0</span></p>
+                    </a>
+
+                </div>
+
+
+                <div>
+                    <img src="images/Group 190.png" alt="Liked">
+                    <p>Liked</p>
+                </div>
+                <button class="login-btn">Sign Up / Sign In</button>
+            </div>
         </div>
 
-        <div>
-          <img src="images/Group 190.png" alt="Liked">
-          <p>Liked</p>
+        <div id="mobile-menu" class="hidden">
+            <div class="mobile-logo-section">
+                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
+                <h1>Wooden Dreams</h1>
+            </div>
+            <a href="home.html" >Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="categories.html">Categories</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="blog.html">Blog</a>
+            <a href="#footer-social">Contact</a>
         </div>
-        <button class="login-btn">Sign Up / Sign In</button>
-      </div>
     </div>
 
-    <div id="mobile-menu" class="hidden">
-      <div class="mobile-logo-section">
-        <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
-        <h1>Wooden Dreams</h1>
-      </div>
-      <a href="home.html">Home</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="categories.html">Categories</a>
-      <a href="#" class="active">Shop</a>
-      <a href="blog.html">Blog</a>
-      <a href="footer-social">Contact</a>
-    </div>
-  </div>
 
   <!-- Shop Banner Section -->
   <section class="shop-banner">
@@ -357,7 +372,7 @@
       </select>
     </div>
     <div class="cart-actions">
-      <button id="clear-cart">Clear Cart</button>
+      <button id="clear-cart">🗑️ Clear Cart</button>
     </div>
   </section>
   <!-- Filter Modal -->
@@ -637,9 +652,8 @@
       <h2>${product.name}</h2>
            <p class="product-subtitle">${product.desc}</p>
            <p class="price"> Rp ${product.price}  <span class="old-price">Rp ${product.oldprice}</span> 
-           <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div>    
+          <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div> </div>    
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
-      
     `;
         productsContainer.appendChild(card);
       });
@@ -703,7 +717,7 @@
       <p class="product-subtitle">${product.subtitle}</p>
       <p class="price">Rp ${product.price.toLocaleString()} 
         <span class="old-price">Rp ${product.oldprice.toLocaleString()}</span>
-      </p> <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div>
+      </p><span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div> </div>
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
     `;
         newArrivalsContainer.appendChild(card);
@@ -778,30 +792,37 @@ function addToCart(productName) {
       cartModal.classList.add("hidden");
     });
 
-    function renderCartItems() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cartItemsContainer.innerHTML = "";
-      let total = 0;
+function renderCartItems() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartItemsContainer.innerHTML = "";
+  let total = 0;
 
-      if (cart.length === 0) {
-        cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-        cartTotalEl.textContent = "0";
-        return;
-      }
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+    cartTotalEl.textContent = "0";
+    return;
+  }
 
-      cart.forEach(item => {
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "cart-item";
-        itemDiv.innerHTML = `
+  cart.forEach(item => {
+    const cleanPrice = typeof item.price === "string" 
+      ? parseInt(item.price.replace(/[^\d]/g, ""), 10) 
+      : item.price;
+
+    const subtotal = cleanPrice * item.quantity;
+    total += subtotal;
+
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "cart-item";
+    itemDiv.innerHTML = `
       <p><strong>${item.name}</strong> × ${item.quantity}</p>
-      <p>Rp ${(item.price * item.quantity).toLocaleString()}</p>
+      <p>Rp ${subtotal.toLocaleString()}</p>
     `;
-        cartItemsContainer.appendChild(itemDiv);
-        total += item.price * item.quantity;
-      });
+    cartItemsContainer.appendChild(itemDiv);
+  });
 
-      cartTotalEl.textContent = total.toLocaleString();
-    }
+  cartTotalEl.textContent = total.toLocaleString();
+}
+
     document.getElementById("checkoutBtn").addEventListener("click", () => {
       window.location.href = "cart.html";
     });
@@ -829,10 +850,12 @@ function addToCart(productName) {
     });
     
   </script>
-<script>
+  <script>
   function addToWishlist(iconElement) {
   const card = iconElement.closest(".product-card");
   const name = card.querySelector("h2").textContent;
+  
+  
   const priceText = card.querySelector(".price").textContent.replace(/[^\d]/g, "");
   const oldPriceText = card.querySelector(".old-price").textContent.replace(/[^\d]/g, "");
   const img = card.querySelector("img").src;
@@ -857,22 +880,6 @@ function addToCart(productName) {
 }
 
 </script>
-
-  <!-- Compare Modal -->
-<div id="compareModal" class="compare-modal hidden">
-  <div class="compare-content">
-    <span class="close-btn" onclick="closeCompareModal()">×</span>
-    <h3>Product Comparison</h3>
-    <table id="compareTable">
-      <thead>
-        <tr id="compare-header-row"></tr>
-      </thead>
-      <tbody id="compare-body-rows">
-        <!-- Rows for features -->
-      </tbody>
-    </table>
-  </div>
-</div>
 
 </body>
 

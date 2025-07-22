@@ -260,7 +260,7 @@
   <!-- Header -->
 
     
-    <div class="page-content">
+   
         <!-- Header -->
         <header>
             <div class="logo-section">
@@ -298,7 +298,7 @@
             
     </div>
     </header>
-
+ <div class="page-content">
     <div class="mobile-nav">
         <div class="mobile-nav-bar">
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -372,7 +372,7 @@
       </select>
     </div>
     <div class="cart-actions">
-      <button id="clear-cart">Clear Cart</button>
+      <button id="clear-cart">🗑️ Clear Cart</button>
     </div>
   </section>
   <!-- Filter Modal -->
@@ -651,8 +651,14 @@
       <div class="gray">   
       <h2>${product.name}</h2>
            <p class="product-subtitle">${product.desc}</p>
-           <p class="price"> Rp ${product.price}  <span class="old-price">Rp ${product.oldprice}</span> 
-          <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div> </div>    
+           <!-- <p class="price"> Rp ${product.price}  <span class="old-price">Rp ${product.oldprice}</span> 
+               -->
+            <p class="price">
+  <span class="new">Rp ${product.price}</span>
+  <span class="old-price">Rp ${product.oldprice}</span>
+  <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span>
+</p>
+           </div>    
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
     `;
         productsContainer.appendChild(card);
@@ -715,9 +721,11 @@
       <div class = "gray">
       <h2>${product.name}</h2>
       <p class="product-subtitle">${product.subtitle}</p>
-      <p class="price">Rp ${product.price.toLocaleString()} 
-        <span class="old-price">Rp ${product.oldprice.toLocaleString()}</span>
-      </p><span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div> </div>
+          <p class="price">
+  <span class="new">Rp ${product.price}</span>
+  <span class="old-price">Rp ${product.oldprice}</span>
+  <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span>
+</p></div>
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
     `;
         newArrivalsContainer.appendChild(card);
@@ -792,30 +800,37 @@ function addToCart(productName) {
       cartModal.classList.add("hidden");
     });
 
-    function renderCartItems() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cartItemsContainer.innerHTML = "";
-      let total = 0;
+function renderCartItems() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartItemsContainer.innerHTML = "";
+  let total = 0;
 
-      if (cart.length === 0) {
-        cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-        cartTotalEl.textContent = "0";
-        return;
-      }
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+    cartTotalEl.textContent = "0";
+    return;
+  }
 
-      cart.forEach(item => {
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "cart-item";
-        itemDiv.innerHTML = `
+  cart.forEach(item => {
+    const cleanPrice = typeof item.price === "string" 
+      ? parseInt(item.price.replace(/[^\d]/g, ""), 10) 
+      : item.price;
+
+    const subtotal = cleanPrice * item.quantity;
+    total += subtotal;
+
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "cart-item";
+    itemDiv.innerHTML = `
       <p><strong>${item.name}</strong> × ${item.quantity}</p>
-      <p>Rp ${(item.price * item.quantity).toLocaleString()}</p>
+      <p>Rp ${subtotal.toLocaleString()}</p>
     `;
-        cartItemsContainer.appendChild(itemDiv);
-        total += item.price * item.quantity;
-      });
+    cartItemsContainer.appendChild(itemDiv);
+  });
 
-      cartTotalEl.textContent = total.toLocaleString();
-    }
+  cartTotalEl.textContent = total.toLocaleString();
+}
+
     document.getElementById("checkoutBtn").addEventListener("click", () => {
       window.location.href = "cart.html";
     });
@@ -847,8 +862,11 @@ function addToCart(productName) {
   function addToWishlist(iconElement) {
   const card = iconElement.closest(".product-card");
   const name = card.querySelector("h2").textContent;
-  const priceText = card.querySelector(".price").textContent.replace(/[^\d]/g, "");
-  const oldPriceText = card.querySelector(".old-price").textContent.replace(/[^\d]/g, "");
+  
+  
+  const priceText = card.querySelector(".price .new").textContent.replace(/[^\d]/g, "");
+const oldPriceText = card.querySelector(".price .old-price").textContent.replace(/[^\d]/g, "");
+
   const img = card.querySelector("img").src;
   const desc = card.querySelector(".product-subtitle").textContent;
 

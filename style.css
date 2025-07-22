@@ -33,7 +33,14 @@ header {
   padding: 15px 40px;
   background-color: #B88E2F;
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional, adds a subtle shadow */
+  transition: top 0.3s ease;
 }
+
+
 
 .logo-section {
   display: flex;
@@ -1233,7 +1240,9 @@ hr {
   pointer-events: none;
   user-select: none;
 }
-
+.page-content, body, html {
+  overflow: visible;
+}
 /* Hide modal by default */
 .modal-overlay {
   position: fixed;

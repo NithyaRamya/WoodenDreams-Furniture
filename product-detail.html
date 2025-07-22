@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Detail</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+  
   <style>
     * {
       margin: 0;
@@ -15,13 +17,13 @@
     }
 
     body {
-      background-color: #fff;
+      background-color: #f5e5bf;
       color: #000;
     }
 
     header {
       padding: 20px;
-      background-color: #f9f4ef;
+      
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -175,11 +177,13 @@
       justify-content: center;
       gap: 30px;
       margin: 40px 0 20px;
+      background-color: #f5e5bf;
     }
 
     .section-tabs div {
       cursor: pointer;
       font-weight: bold;
+          background-color: #f5e5bf;
     }
 
     .section-content {
@@ -187,6 +191,7 @@
       padding: 0 80px;
       font-size: 0.9em;
       color: #5d5d5d;
+          background-color: #f5e5bf;
     }
 
     .related-products {
@@ -230,11 +235,50 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header>
+    <div class="logo-section">
+      <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
+      <h1>Wooden Dreams</h1>
+    </div>
+    <nav class="navbar">
+      <a href="#" class="active">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="categories.html">Categories</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="#footer-social">Contact</a>
+    </nav>
+    <div class="header-icons">
+      <div>
+        <img src="images/material-symbols_search.png" alt="Search">
+        <p>Search</p>
+      </div>
 
-    <div><a style="text-decoration: none;color:black" href="home.html">Home</a> › <a
-        style="text-decoration: none;color:black" href="shop.html">Shop ></a><span
-        id="breadcrumb-product-name">Product</span></div>
+      <div class="cart-icon">
+        <a style="text-decoration:none;color:white" href="#">
+          <img src="images/Group 189.png" alt="Cart Icon">
+          <p>Cart <span class="cart-count">0</span></p>
+        </a>
+
+      </div>
+      <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
+        <div>
+          <img src="images/Heart.png" alt="Liked">
+          <p>Liked</p>
+        </div>
+      </a>
+      <button class="login-btn">Sign Up / Sign In</button>
+
+    </div>
+
+    </div>
+  </header>
+
+
+  <div style="background-color: #f9f4ef;padding:40px"><a style="text-decoration: none;color:black" href="home.html">Home</a> › <a
+      style="text-decoration: none;color:black" href="shop.html">Shop ></a><span
+      id="breadcrumb-product-name">Product</span></div>
   </header>
 
   <main>
@@ -269,7 +313,7 @@
     </div>
   </main>
 
-  <div class="section-tabs">
+  <div  class="section-tabs">
     <div>Description</div>
     <div>Additional Information</div>
     <div>Reviews [5]</div>
@@ -290,7 +334,7 @@
 
   <!-- Include products.js or copy its contents here -->
   <script>
-   
+
 
     // Paste your entire sampleProducts array here or load products.js
     const sampleProducts = [
@@ -397,7 +441,7 @@
           "Ready to use: just unbox and place."
         ],
         images: [
-            "images/thumbnail1 (1).png",
+          "images/thumbnail1 (1).png",
           "images/thumbnail1 (4).png",
           "images/thumbnail1 (2).png"
         ], additionalInfo: {
@@ -484,7 +528,7 @@
         ],
 
         images: [
-            "images/product3-thumb1.png",
+          "images/product3-thumb1.png",
           "images/product3-thumb2.png",
           "images/product3-thumb3.png"
         ], additionalInfo: {
@@ -659,29 +703,30 @@
       quantityEl.innerText = quantity;
     }
 
-    function addToCart() {
-      const name = document.getElementById('product-name-heading').innerText;
-      const price = document.getElementById('product-price').innerText;
-      const image = document.getElementById('main-image').getAttribute('src');
-      const quantity = parseInt(document.getElementById('quantity').innerText, 10);
+ function addToCart() {
+  const name = document.getElementById('product-name-heading').innerText;
+  const rawPrice = document.getElementById('product-price').innerText;
+  const image = document.getElementById('main-image').getAttribute('src');
+  const quantity = parseInt(document.getElementById('quantity').innerText, 10);
 
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  // Clean price by removing non-digits (e.g., "Rp 150000" → 150000)
+  const price = parseInt(rawPrice.replace(/[^\d]/g, ""), 10);
 
-      // Check if product already exists in cart
-      const existingProductIndex = cart.findIndex(p => p.name === name);
-      if (existingProductIndex !== -1) {
-        // Update quantity
-        cart[existingProductIndex].quantity += quantity;
-      } else {
-        // Add new product
-        cart.push({ name, price, image, quantity });
-      }
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      localStorage.setItem('cart', JSON.stringify(cart));
+  const existingProductIndex = cart.findIndex(p => p.name === name);
+  if (existingProductIndex !== -1) {
+    cart[existingProductIndex].quantity += quantity;
+  } else {
+    cart.push({ name, price, image, quantity });
+  }
 
-      alert('Product added to cart!');
-      updateCartCount();
-    }
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  alert('Product added to cart!');
+  updateCartCount();
+}
+
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const totalCount = cart.reduce((sum, item) => sum + Number(item.quantity), 0);
@@ -705,7 +750,7 @@
       // Main image
       const mainImage = document.getElementById('main-image');
       mainImage.src = product.image || (product.images && product.images[0]);
-mainImage.alt = product.name;
+      mainImage.alt = product.name;
 
       // Thumbnails container
       const thumbnailsContainer = document.getElementById('thumbnail-container');
@@ -770,83 +815,83 @@ mainImage.alt = product.name;
       populateProductDetails(product);
     });
 
-   let product = null;  // declare product globally
+    let product = null;  // declare product globally
 
-document.addEventListener('DOMContentLoaded', () => {
-  const productNameFromUrl = getQueryParam('product');
-  if (!productNameFromUrl) {
-    alert('No product specified!');
-    return;
-  }
+    document.addEventListener('DOMContentLoaded', () => {
+      const productNameFromUrl = getQueryParam('product');
+      if (!productNameFromUrl) {
+        alert('No product specified!');
+        return;
+      }
 
-  // Find product (case insensitive)
-  product = sampleProducts.find(p => p.name.toLowerCase() === productNameFromUrl.toLowerCase());
-  if (!product) {
-    alert('Product not found!');
-    return;
-  }
+      // Find product (case insensitive)
+      product = sampleProducts.find(p => p.name.toLowerCase() === productNameFromUrl.toLowerCase());
+      if (!product) {
+        alert('Product not found!');
+        return;
+      }
 
-  populateProductDetails(product);
+      populateProductDetails(product);
 
-  // Setup tabs after product is loaded
-  const tabs = document.querySelectorAll('.section-tabs div');
-  const content = document.querySelector('.section-content');
+      // Setup tabs after product is loaded
+      const tabs = document.querySelectorAll('.section-tabs div');
+      const content = document.querySelector('.section-content');
 
-  // Set first tab active style
-  tabs[0].classList.add('active-tab');
+      // Set first tab active style
+      tabs[0].classList.add('active-tab');
 
-  // Add CSS for active tab
-  const style = document.createElement('style');
-  style.textContent = `
+      // Add CSS for active tab
+      const style = document.createElement('style');
+      style.textContent = `
     .section-tabs div.active-tab {
       color: #b88e2f;
       border-bottom: 2px solid #b88e2f;
       padding-bottom: 5px;
     }
   `;
-  document.head.appendChild(style);
+      document.head.appendChild(style);
 
-  function showTabContent(index) {
-    tabs.forEach((tab, i) => tab.classList.toggle('active-tab', i === index));
+      function showTabContent(index) {
+        tabs.forEach((tab, i) => tab.classList.toggle('active-tab', i === index));
 
-    if (index === 0) {
-      // Description tab
-      content.innerHTML = `<p>${product.description ? product.description.join(' ') : 'No description available.'}</p>`;
-    } else if (index === 1) {
-      // Additional Information tab
-      if (product.additionalInfo) {
-        let infoHtml = '<ul style="list-style:none; padding-left:0;">';
+        if (index === 0) {
+          // Description tab
+          content.innerHTML = `<p>${product.description ? product.description.join(' ') : 'No description available.'}</p>`;
+        } else if (index === 1) {
+          // Additional Information tab
+          if (product.additionalInfo) {
+            let infoHtml = '<ul style="list-style:none; padding-left:0;">';
 
-        for (const key in product.additionalInfo) {
-          if (key !== 'swatches') {
-            infoHtml += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${product.additionalInfo[key]}</li>`;
+            for (const key in product.additionalInfo) {
+              if (key !== 'swatches') {
+                infoHtml += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${product.additionalInfo[key]}</li>`;
+              }
+            }
+
+            if (Array.isArray(product.additionalInfo.swatches)) {
+              infoHtml += `<li><strong>Colors:</strong> ${product.additionalInfo.swatches
+                .map(color => `<span style="display:inline-block; width:20px; height:20px; background:${color}; border:1px solid #ccc; margin-right:5px; border-radius:4px;"></span>`)
+                .join('')}</li>`;
+            }
+
+            infoHtml += '</ul>';
+            content.innerHTML = infoHtml;
+          } else {
+            content.innerHTML = '<p>No additional information available.</p>';
           }
+        } else if (index === 2) {
+          // Reviews tab
+          content.innerHTML = '<p>★★★★★<br>5 Customer Reviews</p>';
         }
-
-        if (Array.isArray(product.additionalInfo.swatches)) {
-          infoHtml += `<li><strong>Colors:</strong> ${product.additionalInfo.swatches
-            .map(color => `<span style="display:inline-block; width:20px; height:20px; background:${color}; border:1px solid #ccc; margin-right:5px; border-radius:4px;"></span>`)
-            .join('')}</li>`;
-        }
-
-        infoHtml += '</ul>';
-        content.innerHTML = infoHtml;
-      } else {
-        content.innerHTML = '<p>No additional information available.</p>';
       }
-    } else if (index === 2) {
-      // Reviews tab
-      content.innerHTML = '<p>★★★★★<br>5 Customer Reviews</p>';
-    }
-  }
 
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => showTabContent(index));
-  });
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => showTabContent(index));
+      });
 
-  // Show default tab content
-  showTabContent(0);
-});
+      // Show default tab content
+      showTabContent(0);
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
       updateCartCount();

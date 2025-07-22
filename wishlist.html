@@ -146,7 +146,7 @@
 </head>
 <body>
     
-    <div class="page-content">
+   
         <!-- Header -->
         <header>
             <div class="logo-section">
@@ -188,7 +188,7 @@
             </div>
     </div>
     </header>
-
+ <div class="page-content">
     <div class="mobile-nav">
         <div class="mobile-nav-bar">
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -300,11 +300,13 @@
     </footer>
 
   <script>
+    
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function renderWishlist() {
     const container = document.getElementById("wishlistGrid");
+    
     container.innerHTML = "";
 
     if (wishlist.length === 0) {
@@ -319,7 +321,8 @@
         <img src="${product.image}" alt="${product.name}">
         <h3>${product.name}</h3>
         <p>${product.desc}</p>
-        <p>Price: Rp ${parseInt(product.price).toLocaleString('id-ID')}</p>
+        <p>Price: Rp ${(product.price)}</p>
+        <!-- <p>Price: Rp ${parseInt(product.price).toLocaleString('id-ID')}</p> -->
         <p><s>Old Price: Rp ${parseInt(product.oldprice).toLocaleString('id-ID')}</s></p>
         <div class="wishlist-buttons">
           <button class="remove-btn" onclick="removeFromWishlist(${index})">Remove</button>
