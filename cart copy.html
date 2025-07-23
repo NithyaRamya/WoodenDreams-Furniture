@@ -589,6 +589,7 @@ margin-bottom: 10px;
 
 <script>
 function placeOrder() {
+  // Collect billing info
   const billingInfo = {
     name: document.getElementById("firstName").value + " " + document.getElementById("lastName").value,
     email: document.getElementById("email").value,
@@ -598,44 +599,26 @@ function placeOrder() {
 
   const paymentMethod = document.querySelector('input[name="payment"]:checked')?.id;
   const shippingMethod = document.getElementById("shipping-method")?.value || "standard";
-  const shippingCost = shippingMethod === "express" ? 250 : 100;
 
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-  // Calculate subtotal
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  // Check discount
-  const discountApplied = JSON.parse(localStorage.getItem("discountApplied")) || false;
-  let total = subtotal;
-
-  if (discountApplied) {
-    total *= 0.9;
-  }
-
-  total += shippingCost;
-
+  // Save full order summary
   const order = {
-    cart: cart,
+    cart: JSON.parse(localStorage.getItem("cart") || "[]"),
     billing: billingInfo,
     payment: paymentMethod,
     shipping: shippingMethod,
-    subtotal: subtotal,
-    shippingCost: shippingCost,
-    discountApplied: discountApplied,
-    total: Math.round(total),
     placedAt: new Date().toISOString()
   };
 
   localStorage.setItem("orderSummary", JSON.stringify(order));
 
-  // Clear cart + discount for next order
+  // ✅ Clear cart and discount data
   localStorage.removeItem("cart");
   localStorage.removeItem("discountApplied");
+  localStorage.removeItem("shippingMethod"); // optional
 
+  // ✅ Redirect to success page
   window.location.href = "success.html";
 }
-
 </script>
 
   <script src="script.js"></script>

@@ -178,16 +178,9 @@
     <h1 class="summary-title">Order Summary</h1>
 
     <div id="product-summary"></div>
-  <div class="total" id="order-total">Total: ₹ 0</div>
+    <div class="total" id="order-total"></div>
 
     <div class="details-box" id="billing-info"></div>
-    <div class="details-box">
-  <h3>Price Breakdown</h3>
-  <p><strong>Subtotal:</strong> <span id="order-subtotal"></span></p>
-  <p><strong>Shipping:</strong> <span id="shipping-cost"></span></p>
-  <p><strong>Discount:</strong> <span id="discount-status"></span></p>
-</div>
-
     <div class="details-box" id="shipping-info"></div>
      <div class="no-print">
   <button onclick="window.print()" class="place-order-btn">Print Summary</button>
@@ -201,59 +194,57 @@
 <div class="watermark"></div>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
-  const order = JSON.parse(localStorage.getItem("orderSummary") || "{}");
+    const order = JSON.parse(localStorage.getItem("orderSummary") || "{}");
+ const productSummary = document.getElementById("product-summary");
+   const orderTotal = document.getElementById("order-total");
+   const billingBox = document.getElementById("billing-info");
+const shippingBox = document.getElementById("shipping-info");
+   
 
-  const productSummary = document.getElementById("product-summary");
-  const billingBox = document.getElementById("billing-info");
-  const shippingBox = document.getElementById("shipping-info");
+    if (order.cart && order.cart.length) {
+      let total = 0;
+      order.cart.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "product-row";
+        row.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="info">
+            <div><strong>${item.name}</strong></div>
+            <div>Quantity: ${item.quantity}</div>
+            <div>Price: ₹${item.price}</div>
+          </div>
+        `;
+        productSummary.appendChild(row);
+        total += item.price * item.quantity;
+      });
 
-  document.getElementById("order-total").textContent = `Total: ₹ ${order.total.toLocaleString("en-IN")}`;
-  document.getElementById("order-subtotal").textContent = `₹ ${order.subtotal.toLocaleString("en-IN")}`;
-  document.getElementById("shipping-cost").textContent = `₹ ${order.shippingCost.toLocaleString("en-IN")}`;
-  document.getElementById("discount-status").textContent = order.discountApplied ? "10% Applied" : "None";
+      orderTotal.textContent = `Total: ₹${total}`;
+    }
 
-  if (order.cart && order.cart.length) {
-    order.cart.forEach(item => {
-      const row = document.createElement("div");
-      row.className = "product-row";
-      row.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
-        <div class="info">
-          <div><strong>${item.name}</strong></div>
-          <div>Quantity: ${item.quantity}</div>
-          <div>Price: ₹${item.price}</div>
-        </div>
+    if (order.billing) {
+      billingBox.innerHTML = `
+        <h3>Billing Details</h3>
+        <p><strong>Name:</strong> ${order.billing.name}</p>
+        <p><strong>Email:</strong> ${order.billing.email}</p>
+        <p><strong>Phone:</strong> ${order.billing.phone}</p>
+        <p><strong>Address:</strong> ${order.billing.address}</p>
       `;
-      productSummary.appendChild(row);
-    });
-  }
+    }
 
-  if (order.billing) {
-    billingBox.innerHTML = `
-      <h3>Billing Details</h3>
-      <p><strong>Name:</strong> ${order.billing.name}</p>
-      <p><strong>Email:</strong> ${order.billing.email}</p>
-      <p><strong>Phone:</strong> ${order.billing.phone}</p>
-      <p><strong>Address:</strong> ${order.billing.address}</p>
+    shippingBox.innerHTML = `
+      <h3>Shipping & Payment</h3>
+      <p><strong>Payment Method:</strong> ${order.payment === "cod" ? "Cash on Delivery" : "Direct Bank Transfer"}</p>
+      <p><strong>Shipping:</strong> ${order.shipping}</p>
+      <p><strong>Estimated Delivery:</strong> ${getEstimatedDelivery(order.shipping)}</p>
     `;
-  }
 
-  shippingBox.innerHTML = `
-    <h3>Shipping & Payment</h3>
-    <p><strong>Payment Method:</strong> ${order.payment === "cod" ? "Cash on Delivery" : "Direct Bank Transfer"}</p>
-    <p><strong>Shipping:</strong> ${order.shipping}</p>
-    <p><strong>Estimated Delivery:</strong> ${getEstimatedDelivery(order.shipping)}</p>
-  `;
+    function getEstimatedDelivery(method) {
+      const today = new Date();
+      if (method === "Express") today.setDate(today.getDate() + 2);
+      else today.setDate(today.getDate() + 5);
+      return today.toDateString();
+    }
 
-  function getEstimatedDelivery(method) {
-    const today = new Date();
-    if (method === "Express") today.setDate(today.getDate() + 2);
-    else today.setDate(today.getDate() + 5);
-    return today.toDateString();
-  }
-</script>
-
-<script>
   function downloadPDF() {
   const element = document.getElementById("summary");
   const originalBg = document.body.style.backgroundColor;
