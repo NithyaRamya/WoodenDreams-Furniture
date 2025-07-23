@@ -242,10 +242,10 @@
       <h1>Wooden Dreams</h1>
     </div>
     <nav class="navbar">
-      <a href="#" class="active">Home</a>
+      <a href="home.html">Home</a>
       <a href="aboutus.html">About Us</a>
       <a href="categories.html">Categories</a>
-      <a href="shop.html">Shop</a>
+      <a href="shop.html"  class="active">Shop</a>
       <a href="blog.html">Blog</a>
       <a href="#footer-social">Contact</a>
     </nav>
@@ -703,29 +703,30 @@
       quantityEl.innerText = quantity;
     }
 
-    function addToCart() {
-      const name = document.getElementById('product-name-heading').innerText;
-      const price = document.getElementById('product-price').innerText;
-      const image = document.getElementById('main-image').getAttribute('src');
-      const quantity = parseInt(document.getElementById('quantity').innerText, 10);
+ function addToCart() {
+  const name = document.getElementById('product-name-heading').innerText;
+  const rawPrice = document.getElementById('product-price').innerText;
+  const image = document.getElementById('main-image').getAttribute('src');
+  const quantity = parseInt(document.getElementById('quantity').innerText, 10);
 
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  // Clean price by removing non-digits (e.g., "Rp 150000" → 150000)
+  const price = parseInt(rawPrice.replace(/[^\d]/g, ""), 10);
 
-      // Check if product already exists in cart
-      const existingProductIndex = cart.findIndex(p => p.name === name);
-      if (existingProductIndex !== -1) {
-        // Update quantity
-        cart[existingProductIndex].quantity += quantity;
-      } else {
-        // Add new product
-        cart.push({ name, price, image, quantity });
-      }
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      localStorage.setItem('cart', JSON.stringify(cart));
+  const existingProductIndex = cart.findIndex(p => p.name === name);
+  if (existingProductIndex !== -1) {
+    cart[existingProductIndex].quantity += quantity;
+  } else {
+    cart.push({ name, price, image, quantity });
+  }
 
-      alert('Product added to cart!');
-      updateCartCount();
-    }
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  alert('Product added to cart!');
+  updateCartCount();
+}
+
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const totalCount = cart.reduce((sum, item) => sum + Number(item.quantity), 0);

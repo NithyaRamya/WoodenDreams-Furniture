@@ -4,92 +4,99 @@
   <meta charset="UTF-8">
   <title>Order Summary</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #8c6239;
-      margin: 0;
-      padding: 0;
-    }
- .summary-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px;
-  background: #B88E2F;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-}
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #8c6239;
+    margin: 0;
+    padding: 0;
+  }
 
+  .summary-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #B88E2F;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
 
-    .summary-title {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 30px;
-      color: #333;
-      text-align: center;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 10px;
-    }
+  .summary-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
 
-    .product-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      border-bottom: 1px solid #eee;
-      padding: 15px 0;
-    }
+  .product-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
 
-    .product-row img {
-      width: 90px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
+  .product-row img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
 
-    .info {
-      flex: 1;
-    }
+  .info {
+    flex: 1;
+  }
 
-    .info div {
-      margin-bottom: 6px;
-      font-size: 15px;
-      color: #444;
-    }
+  .info div {
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: #444;
+  }
 
-    .info div strong {
-      font-size: 17px;
-      color: #222;
-    }
+  .info div strong {
+    font-size: 17px;
+    color: #222;
+  }
 
-    .total {
-      font-weight: 700;
-      font-size: 22px;
-      text-align: right;
-      margin-top: 25px;
-      color: #222;
-    }
+  .total {
+    font-weight: 700;
+    font-size: 22px;
+    text-align: right;
+    margin-top: 25px;
+    color: #222;
+  }
 
-    .details-box {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 30px;
-      border-left: 4px solid #8c6239;
-    }
+  .details-box {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border-left: 4px solid #8c6239;
+    page-break-inside: avoid;
+  }
 
-    .details-box h3 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 20px;
-      color: #333;
-    }
+  .details-box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+  }
 
-    .details-box p {
-      margin: 6px 0;
-      color: #555;
-    }
-    .place-order-btn {
+  .details-box p {
+    margin: 6px 0;
+    color: #555;
+  }
+
+  .place-order-btn {
     margin-top: 20px;
     margin-left: 25%;
     width: 50%;
@@ -108,75 +115,174 @@
     color: #fff;
   }
 
-    @media (max-width: 600px) {
-      .product-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .product-row img {
-        margin-bottom: 10px;
-      }
-
-      .total {
-        text-align: left;
-      }
-    
-    }
-    @media print {
-  .no-print {
-    display: none !important;
+  .thank-you {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
   }
-}
-.print-logo {
-  display: none;
-  width: 120px;
-  float: right;
-  margin-top: -20px;
-}
 
-/* Show logo only in print/PDF */
-@media print {
+  .invoice-id {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
   .print-logo {
+    display: none;
+    width: 120px;
+    float: right;
+    margin-top: -20px;
+  }
+
+  .pdf-logo {
+    display: none;
+    width: 140px;
+    margin: 10px auto 20px;
+  }
+
+  .pdf-footer {
+    display: none;
+    font-size: 12px;
+    text-align: center;
+    color: #555;
+    margin-top: 40px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .product-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .product-row img {
+      margin-bottom: 10px;
+    }
+
+    .total {
+      text-align: left;
+    }
+  }
+
+  @media print {
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: white !important;
+      height: auto !important;
+      width: auto !important;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+
+    .summary-container {
+      background: white !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+      padding-top: 0 !important;
+      position: relative;
+    }
+
+    .summary-container::after {
+      content: "";
+      display: block;
+      height: 50px;
+    }
+
+    .summary-container:first-of-type::after {
+      height: 140px;
+    }
+
+    .summary-container + .summary-container::before {
+      content: "";
+      display: block;
+      height: 140px;
+    }
+
+    .print-logo {
+      display: block;
+    }
+
+    .pdf-footer,
+    .thank-you {
+      display: block;
+      color: #000;
+    }
+
+    .thank-you {
+      font-size: 20px;
+      margin-top: 40px;
+    }
+
+    * {
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+
+    .summary-container,
+    .product-row,
+    .details-box,
+    .summary-title,
+    .thank-you,
+    .invoice-id,
+    .info,
+    .details-box h3,
+    .details-box p {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+    }
+  }
+
+  .pdf-mode .summary-container {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .pdf-mode .summary-title,
+  .pdf-mode .details-box h3,
+  .pdf-mode .info div strong,
+  .pdf-mode .invoice-id {
+    color: #000 !important;
+  }
+
+  .pdf-mode .details-box {
+    background: #fff !important;
+    border-left: none !important;
+  }
+
+  .pdf-mode .product-row,
+  .pdf-mode .product-row img {
+    border-color: #ccc !important;
+  }
+
+  .pdf-mode .pdf-logo,
+  .pdf-mode .pdf-footer,
+  .pdf-mode .thank-you {
     display: block;
   }
-}
-@media print {
-  body {
-    margin: 0;
-    padding: 0;
-    background: white !important;
-  }
+</style>
 
-  html, body {
-    height: auto !important;
-    width: auto !important;
-  }
 
-  .summary-container {
-    margin: 0 !important;
-    box-shadow: none !important;
-  }
-}
-
-@media print {
-  .summary-container {
-    background: white !important;
-  }
-}
-@media print {
-  .summary-container {
-    margin: 0 !important;
-    padding-top: 0 !important;
-  }
-}
-  </style>
+  
 </head>
 <body>
   <div class="summary-container" id="summary">
     <img src="images/Group 206.png" alt="Brand Logo" class="print-logo" />
     <h1 class="summary-title">Order Summary</h1>
+    <div class="invoice-id" id="invoice-id"></div>
+    
 
+
+<!-- <img src="images/Group 206.png" alt="Brand Logo" class="pdf-logo" /> -->
     <div id="product-summary"></div>
   <div class="total" id="order-total">Total: ₹ 0</div>
 
@@ -189,16 +295,24 @@
 </div>
 
     <div class="details-box" id="shipping-info"></div>
+    <div class="pdf-footer">
+  Wooden Dreams • wooden-dreams.com • +91-9876543210
+</div>
+
      <div class="no-print">
   <button onclick="window.print()" class="place-order-btn">Print Summary</button>
   <button onclick="downloadPDF()" class="place-order-btn">Download PDF</button>
   <button onclick="goToHome()" class="place-order-btn">Back To Home</button>
 </div>
-<div class="thank-you" style="text-align: center; margin-top: 30px; font-size: 18px; font-weight: bold;">
+<!-- <div class="thank-you" style="text-align: center; margin-top: 30px; font-size: 18px; font-weight: bold;">
+  Thank you for your purchase! We appreciate your trust in Wooden Dreams.
+</div> -->
+<div class="thank-you">
   Thank you for your purchase! We appreciate your trust in Wooden Dreams.
 </div>
+
   </div>
-<div class="watermark"></div>
+
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
   const order = JSON.parse(localStorage.getItem("orderSummary") || "{}");
@@ -254,22 +368,28 @@
 </script>
 
 <script>
-  function downloadPDF() {
+function downloadPDF() {
   const element = document.getElementById("summary");
   const originalBg = document.body.style.backgroundColor;
 
-  // Hide buttons
+  document.body.classList.add("pdf-mode");
   document.querySelector(".no-print").style.display = "none";
 
-  // Force white background
-  document.body.style.backgroundColor = "white";
+  const now = new Date();
+  const dateStr = now.toISOString().split("T")[0];
+  const fileName = `order-summary-${dateStr}-${order.invoiceId || "INV"}.pdf`;
 
   html2pdf()
     .set({
       margin: 0,
-      filename: 'order-summary.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, scrollY: 0 },
+      filename: fileName,
+      image: { type: 'jpeg', quality: 1 },
+      html2canvas: {
+        scale: 3,
+        scrollY: 0,
+        useCORS: true,
+        allowTaint: true
+      },
       jsPDF: {
         unit: 'in',
         format: 'a4',
@@ -280,15 +400,26 @@
     .from(element)
     .save()
     .then(() => {
-      // Restore original styles
-      document.body.style.backgroundColor = originalBg;
+      document.body.classList.remove("pdf-mode");
       document.querySelector(".no-print").style.display = "block";
+      document.body.style.backgroundColor = originalBg;
     });
 }
 
 
   </script>
-  
+  <script>// In orderSummary JS:
+const invoiceEl = document.getElementById("invoice-id");
+
+const date = new Date(order.placedAt);
+const formattedDate = date.toLocaleDateString("en-IN", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric"
+});
+
+invoiceEl.textContent = `Invoice ID: ${order.invoiceId || "N/A"} | Date: ${formattedDate}`;
+</script>
 
 <script>
   document.addEventListener("DOMContentLoaded", updateCartCount);

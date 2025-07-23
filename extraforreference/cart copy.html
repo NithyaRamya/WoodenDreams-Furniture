@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cart Checkout</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <style>
   * {
@@ -21,7 +22,6 @@
     line-height: 1.6;
   }
 
-  /* Banner */
   .blog-banner {
     background: url("images/Screenshot\ 2025-04-18\ 121046\ 1.png") no-repeat center center / cover;
     height: 300px;
@@ -73,22 +73,6 @@
     color: #5c5a5a;
   }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #fceddb;
-    margin: 0;
-    padding: 0;
-    color: #444;
-  }
-
-  .container {
-    display: flex;
-    max-width: 1200px;
-    margin: 40px auto;
-    gap: 30px;
-    padding: 0 20px;
-  }
-
   .checkout-container {
     display: flex;
     flex-wrap: wrap;
@@ -131,35 +115,6 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
-
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="number"],
-  input[type="tel"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 10px 12px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    background-color: #fceedc;
-    color: #333;
-    font-size: 16px;
-    transition: border-color 0.3s, background-color 0.3s;
-  }
-
-  textarea {
-    resize: vertical;
-    color: #fceedc;
-  }
-
-  .order-summary {
-    background-color: #fceedc;
-    padding: 20px;
-    border-radius: 10px;
-
   }
 
   .order-summary table {
@@ -172,19 +127,13 @@
   .order-summary table td {
     text-align: left;
     padding: 8px 0;
-
   }
 
   .order-summary table th {
     color: #B88E2F;
   }
 
-  .order-summary .payment-method {
-    margin-top: 20px;
-  }
-
   .order-summary .place-order-btn {
-
     margin-top: 20px;
     margin-left: 25%;
     width: 50%;
@@ -195,10 +144,7 @@
     border: 1px solid black;
     border-radius: 8px;
     cursor: pointer;
-    padding: 10px 15px;
     background-color: #B88E2F;
-
-
   }
 
   .order-summary .place-order-btn:hover {
@@ -206,94 +152,149 @@
     color: #fff;
   }
 
-  .payment-description {
-    font-size: 15px;
-    margin: 10px 0 20px;
-    color: #444;
+  .order-summary #apply-discount {
+    margin-top: 20px;
+    margin-left: 25%;
+    width: 50%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #B88E2F;
   }
 
-  .form-row {
-    display: flex;
-    gap: 50px;
-    /* space between fields */
-    flex-wrap: wrap;
+  .order-summary #apply-discount:hover {
+    background: #bb8020;
+    color: #fff;
   }
 
-  .form-row .form-group {
-    flex: 1;
-    /* both fields take equal width */
-    min-width: 200px;
-  }
+ .payment-method {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: #f9f9f9;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.payment-option input[type="radio"] {
+  margin-top: 4px;
+}
+
+.payment-texts label {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+/*important*/
+.payment-option .payment-texts {
+  width: 100%;
+}
+.payment-description {
+  font-size: 14px;
+  color: #666;
+}
+
+#shipping-method {
+margin-bottom: 10px;
+
+}
 </style>
-</head>
 
 <body>
-  <div class="page-content">
-    <!-- Header -->
-    <header>
-      <div class="logo-section">
-        <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
-        <h1>Wooden Dreams</h1>
-      </div>
-      <nav class="navbar">
-        <a href="home.html">Home</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="categories.html">Categories</a>
-        <a href="shop.html">Shop</a>
-        <a href="blog.html" >Blog</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-icons">
-        <div>
-          <img src="images/material-symbols_search.png" alt="Search">
-          <p>Search</p>
-        </div>
-        <div class="cart-icon">
-          <img src="images/Group 189.png" alt="Cart Icon">
-          <p>Cart <a href="cart.html"><span class="cart-count">0</span></p></a>
+  <!-- Header -->
 
-        </div>
-        <div>
-          <img src="images/Heart.png" alt="Liked">
-          <p>Liked</p>
-        </div>
-        <button class="login-btn">Sign Up / Sign In</button>
-      </div>
-    </header>
+    
+    
+        <!-- Header -->
+        <header>
+            <div class="logo-section">
+                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
+                <h1>Wooden Dreams</h1>
+            </div>
+            <nav class="navbar">
+                <a href="home.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="categories.html">Categories</a>
+                <a href="shop.html">Shop</a>
+                <a href="blog.html">Blog</a>
+                <a href="#footer-social">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <div>
+                    <img src="images/material-symbols_search.png" alt="Search">
+                    <p>Search</p>
+                </div>
 
-    <div class="mobile-nav">
-      <div class="mobile-nav-bar">
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <div class="mobile-header-icons">
-          <div>
-            <img src="images/material-symbols_search.png" alt="Search">
-            <p>Search</p>
-          </div>
-          <div class="cart-icon">
-            <img src="images/Group 189.png" alt="Cart Icon">
-            <p>Cart <span class="cart-count">0</span></p>
-          </div>
-          <div>
-            <img src="images/Group 190.png" alt="Liked">
-            <p>Liked</p>
-          </div>
-          <button class="login-btn">Sign Up / Sign In</button>
-        </div>
-      </div>
+                 <div class="cart-icon">
+                   <a style="text-decoration:none;color:white" href="cart.html">
+                    <img src="images/Group 189.png" alt="Cart Icon">
+                    <p>Cart <span class="cart-count">0</span></p>
+                    </a>
 
-      <div id="mobile-menu" class="hidden">
-        <div class="mobile-logo-section">
-          <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
-          <h1>Wooden Dreams</h1>
-        </div>
-        <a href="home.html">Home</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="categories.html">Categories</a>
-        <a href="shop.html">Shop</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
-      </div>
+                </div>
+                <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
+  <div>
+    <img src="images/Heart.png" alt="Liked">
+    <p>Liked</p>
+  </div>
+</a>
+                <button class="login-btn">Sign Up / Sign In</button>
+
+            </div>
+            
     </div>
+    </header>
+<div class="page-content">
+    <div class="mobile-nav">
+        <div class="mobile-nav-bar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="mobile-header-icons">
+                <div>
+                    <img src="images/material-symbols_search.png" alt="Search">
+                    <p>Search</p>
+                </div>
+                <div class="cart-icon">
+                    <img src="images/Group 189.png" alt="Cart Icon">
+                    <p>Cart <span class="cart-count">0</span></p>
+
+                </div>
+
+
+                <div>
+                    <img src="images/Group 190.png" alt="Liked">
+                    <p>Liked</p>
+                </div>
+                <button class="login-btn">Sign Up / Sign In</button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden">
+            <div class="mobile-logo-section">
+                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
+                <h1>Wooden Dreams</h1>
+            </div>
+            <a href="home.html">Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="categories.html">Categories</a>
+            <a href="shop.html">Shop</a>
+            <a href="blog.html" >Blog</a>
+            <a href="#footer-social">Contact</a>
+        </div>
+    </div>
+
+
 
     <!-- Banner Section -->
     <section class="blog-banner">
@@ -302,6 +303,7 @@
         <p><a href="home.html">Home</a> &gt; <span><a href="cart.html">checkout</a></span></p>
       </div>
     </section>
+
     <div class="checkout-container">
       <!-- Billing Form -->
       <div class="billing">
@@ -362,8 +364,7 @@
         </form>
       </div>
 
-      <!-- Order Summary -->
-      <div class="order-summary">
+      <div class="order-summary" id="order-summary">
         <h2>Your Order</h2>
         <table>
           <thead>
@@ -372,91 +373,284 @@
               <th>Subtotal</th>
             </tr>
           </thead>
-          <tbody id="order-products">
-            <!-- Dynamically filled from localStorage -->
-          </tbody>
+          <tbody id="order-products"></tbody>
           <tfoot>
             <tr>
               <td><strong>Total</strong></td>
               <td><strong id="order-total">Rp 0</strong></td>
+              <!-- <p><strong>Total:</strong> <span id="order-total"></span></p> -->
             </tr>
           </tfoot>
         </table>
-        <hr style="border-top:burlywood;border: 1px solid transparent;margin:0.5px">
+
+        <label for="discount-code">Discount Code:</label>
+       <input type="text" id="discount-code" placeholder="Enter discount code" />
+<button onclick="applyDiscount()" id="apply-discount">Apply</button>
+
+        <label for="shipping-method">Shipping Method:</label>
+        <select id="shipping-method" onchange="updateShippingCost()">
+          <option value="standard">Standard (₹100)</option>
+          <option value="express">Express (₹250)</option>
+        </select>
+
         <div class="payment-method">
-          <input type="radio" id="cod" name="payment" checked>
-          <label for="cod">Cash on Delivery</label>
-          <div class="payment-description">Pay with cash upon delivery.</div>
+  <div class="payment-option">
+    <input type="radio" id="cod" name="payment" checked>
+    <div class="payment-texts">
+      <label for="cod">Cash on Delivery</label>
+      <div class="payment-description">Pay with cash upon delivery.</div>
+    </div>
+  </div>
 
-          <input type="radio" id="bank" name="payment">
-          <label for="bank">Direct Bank Transfer</label>
-          <div class="payment-description">Transfer the payment directly to our bank account. Use your Order ID as the
-            payment reference.</div>
-        </div>
+  <div class="payment-option">
+    <input type="radio" id="bank" name="payment">
+    <div class="payment-texts">
+      <label for="bank">Direct Bank Transfer</label>
+      <div class="payment-description">Transfer the payment directly to our bank account.</div>
+    </div>
+  </div>
+</div>
 
-        <button class="place-order-btn">Place Order</button>
+
+        <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+        
       </div>
     </div>
     <!-- Features Section -->
-    <section class="features-section">
-      <div class="features-container">
-        <div class="feature-item">
-          <img src="images/trophy 1.png" alt="High Quality Icon">
-          <div class="feature-text">
-            <h3>High Quality</h3>
-            <p>crafted from top materials</p>
-          </div>
+  <section class="features-section">
+    <div class="features-container">
+      <div class="feature-item">
+        <img src="images/trophy 1.png" alt="High Quality Icon">
+        <div class="feature-text">
+          <h3>High Quality</h3>
+          <p>crafted from top materials</p>
         </div>
+      </div>
 
-        <div class="feature-item">
-          <img src="images/guarantee.png" alt="Warranty Protection Icon">
-          <div class="feature-text">
-            <h3>Warranty Protection</h3>
-            <p>Over 2 years</p>
-          </div>
+      <div class="feature-item">
+        <img src="images/guarantee.png" alt="Warranty Protection Icon">
+        <div class="feature-text">
+          <h3>Warranty Protection</h3>
+          <p>Over 2 years</p>
         </div>
+      </div>
 
-        <div class="feature-item">
-          <img src="images/Vectorm.png" alt="Free Shipping Icon">
-          <div class="feature-text">
-            <h3>Free ShippiVectorm.png
-              <p>Order over 150 $</p>
-          </div>
+      <div class="feature-item">
+        <img src="images/Vectorm.png" alt="Free Shipping Icon">
+        <div class="feature-text">
+          <h3>Free ShippiVectorm.png
+            <p>Order over 150 $</p>
         </div>
+      </div>
 
-        <div class="feature-item">
-          <img src="images/Vector  k.png" alt="24/7 Support Icon">
-          <div class="feature-text">
-            <h3>24 / 7 Support</h3>
-            <p>Dedicated support</p>
+      <div class="feature-item">
+        <img src="images/Vector  k.png" alt="24/7 Support Icon">
+        <div class="feature-text">
+          <h3>24 / 7 Support</h3>
+          <p>Dedicated support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Footer Section-->
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <img src="images/Group 206.png" alt="Logo">
+          <h3>Wooden Dreams</h3>
+        </div>
+        <p class="footer-desc">
+          "At Wooden Dreams, we craft furniture that brings warmth and comfort to your home. Our wooden creations are
+          designed to inspire sweet dreams and peaceful nights. Every piece is carefully crafted to provide a haven of
+          relaxation and tranquility. Sleep tight, dream big with Wooden Dreams."
+        </p>
+        <p class="footer-contact"><img src="images/raphael_loaction2.png" alt="Location Icon"> Head Office 13/5, Post
+          office oppsite, Chennai.876543</p>
+        <p class="footer-contact"><img src="images/mdi_internet.png" alt="Website Icon"> www.woodendreams.in</p>
+        <p class="footer-contact"><img src="images/material-symbols_mail-outline.png" alt="Mail Icon">
+          woodendreams@gamil.com</p>
+      </div>
+      <div class="footer-links">
+        <div class="links-section">
+          <h4>LINKS</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="shop.html" class="active">Shop</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#footer-social">Contact</a></li>
+          </ul>
+        </div>
+        <div class="help-section">
+          <h4>HELP</h4>
+          <ul>
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Privacy Policies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-subscribe" id="footer-social">
+        <h4>Subscribe</h4>
+        <form>
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">SIGN UP</button>
+        </form>
+        <div class="footer-social">
+          <p>Follow Us</p>
+          <div>
+            <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="images/Google.png" alt="Google"></a>
+            <a href="#"><img src="images/SVG.png" alt="Facebook"></a>
           </div>
         </div>
       </div>
-    </section>
-    <script>
-      const orderProductsContainer = document.getElementById("order-products");
-      const orderTotal = document.getElementById("order-total");
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    </div>
+    <hr>
+    <p class="footer-bottom">2025 Wooden Dreams. All rights reserved</p>
+  </footer>
+  </section>
+ <script>
+  const orderProductsContainer = document.getElementById("order-products");
+  const orderTotal = document.getElementById("order-total");
+  const discountInput = document.getElementById("discount-code");
+  const applyButton = document.getElementById("apply-discount");
+  const shippingSelect = document.getElementById("shipping-method");
 
-      let total = 0;
-      cart.forEach(item => {
-        const row = document.createElement("tr");
-        row.innerHTML = `<td>${item.name} × ${item.quantity}</td><td>Rp ${(item.price * item.quantity).toLocaleString()}</td>`;
-        orderProductsContainer.appendChild(row);
-        total += item.price * item.quantity;
-      });
-      orderTotal.textContent = `Rp ${total.toLocaleString()}`;
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let subtotal = 0;
+
+ let discountApplied = localStorage.getItem("discountApplied") === "true";
+
+  const savedShippingMethod = localStorage.getItem("shippingMethod") || "standard";
+
+  // Set dropdown to saved value
+  shippingSelect.value = savedShippingMethod;
+
+  // Build cart and subtotal
+  cart.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${item.name} × ${item.quantity}</td><td>₹ ${(item.price * item.quantity).toLocaleString()}</td>`;
+    orderProductsContainer.appendChild(row);
+    subtotal += item.price * item.quantity;
+  });
+
+  function calculateTotal() {
+    let total = subtotal;
+
+    // Always get the latest selected method
+    const shippingMethod = shippingSelect.value;
+    const shippingCost = shippingMethod === "express" ? 250 : 100;
+
+    // Save to localStorage
+    localStorage.setItem("shippingMethod", shippingMethod);
+
+    // Apply discount if previously applied
+    if (discountApplied) {
+      total *= 0.9;
+      discountInput.disabled = true;
+      applyButton.disabled = true;
+      discountInput.value = "SAVE10"; // show that it's applied
+    }
+
+    total += shippingCost;
+    orderTotal.textContent = `₹ ${Math.round(total).toLocaleString("en-IN")}`;
+  }
+
+  function applyDiscount() {
+  const code = discountInput.value.trim().toUpperCase();
+  if (code === "SAVE10" && !discountApplied) {
+    discountApplied = true; // ✅ update the in-memory value
+    localStorage.setItem("discountApplied", "true");
+    alert("Discount applied!");
+    calculateTotal();
+  } else if (discountApplied) {
+    alert("Discount already applied.");
+  } else {
+    alert("Invalid discount code.");
+  }
+}
+
+  function updateShippingCost() {
+    calculateTotal();
+  }
+
+  // Expose for HTML
+  window.applyDiscount = applyDiscount;
+  window.updateShippingCost = updateShippingCost;
+
+  // Initial calculation
+  calculateTotal();
+</script>
 
 
-    </script>
+<script>
+function generateInvoiceID() {
+  const timestamp = Date.now().toString(36);
+  const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+  return `INV-${timestamp}-${random}`;
+}
 
-    <script>
-      const placeOrderButton = document.querySelector(".place-order-btn");
-      placeOrderButton.addEventListener("click", function (e) {
-        e.preventDefault(); // prevent default form submission if needed
-        window.location.href = "success.html";
-      });
-    </script>
+function placeOrder() {
+  const billingInfo = {
+    name: document.getElementById("firstName").value + " " + document.getElementById("lastName").value,
+    email: document.getElementById("email").value,
+    address: document.getElementById("address").value,
+    phone: document.getElementById("phone").value
+  };
+
+  const paymentMethod = document.querySelector('input[name="payment"]:checked')?.id;
+  const shippingMethod = document.getElementById("shipping-method")?.value || "standard";
+  const shippingCost = shippingMethod === "express" ? 250 : 100;
+
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  // Calculate subtotal
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  // Apply discount if available
+  const discountApplied = localStorage.getItem("discountApplied") === "true";
+  let total = subtotal;
+  if (discountApplied) {
+    total *= 0.9;
+  }
+
+  total += shippingCost;
+
+  const invoiceId = generateInvoiceID();
+  const placedAt = new Date().toISOString();
+
+  const order = {
+    cart: cart,
+    billing: billingInfo,
+    payment: paymentMethod,
+    shipping: shippingMethod,
+    subtotal: subtotal,
+    shippingCost: shippingCost,
+    discountApplied: discountApplied,
+    total: Math.round(total),
+    placedAt: placedAt,
+    invoiceId: invoiceId
+  };
+
+  localStorage.setItem("orderSummary", JSON.stringify(order));
+
+  // Clear for next session
+  localStorage.removeItem("cart");
+  localStorage.removeItem("discountApplied");
+
+  window.location.href = "success.html";
+}
+</script>
+
+
+  <script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
 </body>
 
 </html>

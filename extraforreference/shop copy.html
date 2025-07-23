@@ -651,8 +651,14 @@
       <div class="gray">   
       <h2>${product.name}</h2>
            <p class="product-subtitle">${product.desc}</p>
-           <p class="price"> Rp ${product.price}  <span class="old-price">Rp ${product.oldprice}</span> 
-          <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div> </div>    
+           <!-- <p class="price"> Rp ${product.price}  <span class="old-price">Rp ${product.oldprice}</span> 
+               -->
+            <p class="price">
+  <span class="new">Rp ${product.price}</span>
+  <span class="old-price">Rp ${product.oldprice}</span>
+  <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span>
+</p>
+           </div>    
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
     `;
         productsContainer.appendChild(card);
@@ -715,9 +721,11 @@
       <div class = "gray">
       <h2>${product.name}</h2>
       <p class="product-subtitle">${product.subtitle}</p>
-      <p class="price">Rp ${product.price.toLocaleString()} 
-        <span class="old-price">Rp ${product.oldprice.toLocaleString()}</span>
-      </p><span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span></div> </div>
+          <p class="price">
+  <span class="new">Rp ${product.price}</span>
+  <span class="old-price">Rp ${product.oldprice}</span>
+  <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span>
+</p></div>
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
     `;
         newArrivalsContainer.appendChild(card);
@@ -856,8 +864,9 @@ function renderCartItems() {
   const name = card.querySelector("h2").textContent;
   
   
-  const priceText = card.querySelector(".price").textContent.replace(/[^\d]/g, "");
-  const oldPriceText = card.querySelector(".old-price").textContent.replace(/[^\d]/g, "");
+  const priceText = card.querySelector(".price .new").textContent.replace(/[^\d]/g, "");
+const oldPriceText = card.querySelector(".price .old-price").textContent.replace(/[^\d]/g, "");
+
   const img = card.querySelector("img").src;
   const desc = card.querySelector(".product-subtitle").textContent;
 

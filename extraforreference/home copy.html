@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="page-content">
+    
         <!-- Header -->
         <header>
             <div class="logo-section">
@@ -35,13 +35,13 @@
                     <p>Search</p>
                 </div>
 
-                 <div class="cart-icon">
-                   <a style="text-decoration:none;color:white" href="cart.html"  class="nav-link login-required">
-                    <img src="images/Group 189.png" alt="Cart Icon">
-                    <p>Cart <span class="cart-count">0</span></p>
-                    </a>
-
+                <div class="cart-icon">
+                    <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
+                        <img src="images/Group 189.png" alt="Cart Icon">
+                        <p>Cart <span class="cart-count">0</span></p>
+                    </a>                
                 </div>
+               
                 <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
                     <div>
                         <img src="images/Heart.png" alt="Liked">
@@ -49,14 +49,15 @@
                     </div>
                 </a>
                 <button class="login-btn">Sign Up / Sign In</button>
-
+ <div class="cart-actions">
+                <!-- <button id="clear-cart">Clear Cart</button> -->
+                <button id="clear-cart">🗑️</button>
             </div>
-            <div class="cart-actions">
-                <button id="clear-cart">Clear Cart</button>
             </div>
+            
     </div>
     </header>
-
+<div class="page-content"></div>
     <div class="mobile-nav">
         <div class="mobile-nav-bar">
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -449,7 +450,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         function toggleMenu() {
             document.getElementById("mobile-menu").classList.toggle("hidden");
@@ -481,9 +482,17 @@
                 }
             });
 
-     loginForm.addEventListener("submit", function (e) {
+            loginForm.addEventListener("submit", function (e) {
                 e.preventDefault();
-                window.location.href = "index.html";
+                // Set login status
+                localStorage.setItem("isLoggedIn", "true");
+
+                modal.classList.remove("active");
+                pageContent.classList.remove("blur");
+
+                alert("🛒 Login successful!");
+
+                // Optional: redirect to previously intended page
             });
         });
 
@@ -531,7 +540,7 @@
                 card.className = "product-card";
                 card.innerHTML = `
         <div class="badge-container">
-  ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
+  ${product.badge ? <span class="badge">${product.badge}</span> : ""}
 </div>
 <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
       <img src="${product.image}" alt="${product.name}" />   
@@ -595,7 +604,7 @@
                 card.className = "product-card";
                 card.innerHTML = `
       <div class="badge-container">
-        ${product.badge ? `<span class="newbadge">${product.badge}</span>` : ""}
+        ${product.badge ? <span class="newbadge">${product.badge}</span> : ""}
       </div>
       <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
       <img src="${product.image}" alt="${product.name}" />
@@ -646,53 +655,67 @@
             }
         }
 
-        const clearCartBtn = document.getElementById("clear-cart");
 
+
+    </script>
+    <script>
         function clearCart() {
-            cart.length = 0;
-            saveCart();
+            localStorage.removeItem("cart"); // Clear from localStorage
+            const cartCountElements = document.querySelectorAll(".cart-count");
+            cartCountElements.forEach(el => el.textContent = "0"); // Update UI
+            alert("🛒 Cart cleared!");
         }
 
-        if (clearCartBtn) {
-            clearCartBtn.addEventListener("click", clearCart);
-        }
-
-        document.querySelectorAll("input[name='material'], input[name='country'], input[name='seating'], input[name='price']").forEach(input => {
-            input.addEventListener("change", applyFilters);
+        document.addEventListener("DOMContentLoaded", function () {
+            const clearCartBtn = document.getElementById("clear-cart");
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener("click", clearCart);
+            }
         });
-
-        // Initial render
         document.addEventListener("DOMContentLoaded", () => {
             renderProducts();
             renderNewArrivals();
             updateCartBadge();
         });
-
     </script>
-   
-    <script>
-         document.querySelectorAll(".login-required").forEach(link => {
-  link.addEventListener("click", function (e) {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    if (!isLoggedIn) {
-      e.preventDefault();
-      document.querySelector(".modal-overlay").classList.add("active");
-      document.querySelector(".page-content").classList.add("blur");
-      alert("Please login to continue shopping.");
-    }
-  });
-});
 
+
+    <script>
         document.querySelector('.buy-now').addEventListener('click', function () {
             window.location.href = 'shop.html';
         });
     </script>
-    
-<script>
-  document.addEventListener("DOMContentLoaded", updateCartCount);
-</script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", updateCartCount);
+    </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".login-required").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+                    if (!isLoggedIn) {
+                        e.preventDefault(); // stop <a> from redirecting
+                        document.querySelector(".modal-overlay").classList.add("active");
+                        document.querySelector(".page-content").classList.add("blur");
+                        alert("Please login to continue shopping");
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartCountElements = document.querySelectorAll(".cart-count");
+
+            cartCountElements.forEach(el => {
+                el.textContent = cart.length;
+            });
+        });
+    </script>
 
 </body>
 
