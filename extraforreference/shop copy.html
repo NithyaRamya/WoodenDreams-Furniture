@@ -252,6 +252,19 @@
 .wishlist-icon.added {
   color: red;
 }
+.view-compare-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #B88E2F;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.view-compare-btn:hover {
+  color: #fff;
+}
 
   </style>
 </head>
@@ -374,6 +387,7 @@
     <div class="cart-actions">
       <button id="clear-cart">🗑️ Clear Cart</button>
     </div>
+    <a href="product-comparison.html" class="view-compare-btn">View Comparison</a>
   </section>
   <!-- Filter Modal -->
   <div id="filter-modal" class="filter-modal">
@@ -660,6 +674,7 @@
 </p>
            </div>    
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
+      
     `;
         productsContainer.appendChild(card);
       });
@@ -889,7 +904,24 @@ const oldPriceText = card.querySelector(".price .old-price").textContent.replace
 }
 
 </script>
+<script>
+  function addToCompare(button) {
+    const product = JSON.parse(button.getAttribute("data-product"));
+    let compareList = JSON.parse(localStorage.getItem("compareList")) || [];
 
+    // Avoid duplicates
+    const alreadyExists = compareList.some(p => p.id === product.id);
+    if (alreadyExists) {
+      alert("Product already added to comparison!");
+      return;
+    }
+
+    // Add to localStorage
+    compareList.push(product);
+    localStorage.setItem("compareList", JSON.stringify(compareList));
+    alert("Product added to comparison!");
+  }
+</script>
 </body>
 
 </html>

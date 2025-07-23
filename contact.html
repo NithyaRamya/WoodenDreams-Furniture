@@ -404,9 +404,19 @@
       <p class="footer-bottom">2025 Wooden Dreams. All rights reserved</p>
     </footer>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", updateCartCount);
-    </script>
+        <script>
+  function updateCartCount() {
+    const cartCount = JSON.parse(localStorage.getItem("cart"))?.length || 0;
+    const badge = document.querySelector(".cart-count");
+
+    if (badge) {
+      badge.textContent = cartCount;
+    }
+  }
+
+  // Run it on every page load
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
 </body>
 
 </html>

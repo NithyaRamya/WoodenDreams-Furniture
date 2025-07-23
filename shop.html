@@ -118,6 +118,31 @@
       transform: translateY(0);
     }
 
+    .add-to-compare {
+      background-color: #B88E2F;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 12px;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .add-to-compare:hover {
+      background-color: #a1791d;
+      transform: translateY(-2px);
+    }
+
+    .add-to-compare:active {
+      background-color: #8a6717;
+      transform: translateY(0);
+    }
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -252,6 +277,60 @@
 .wishlist-icon.added {
   color: red;
 }
+.view-compare-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #B88E2F;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.view-compare-btn:hover {
+  color: #fff;
+}
+.add-to-compare.added {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+.button-group {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.button-group button {
+   flex: 1;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.add-to-cart {
+  background-color: #B88E2F;
+  color: white;
+}
+
+.add-to-cart:hover {
+  background-color: #916d23;
+}
+
+.add-to-compare {
+  background-color: #ccc;
+  color: #333;
+}
+
+.add-to-compare.added {
+  background-color: #5cb85c;
+  color: white;
+}
+
 
   </style>
 </head>
@@ -374,6 +453,7 @@
     <div class="cart-actions">
       <button id="clear-cart">🗑️ Clear Cart</button>
     </div>
+    <a href="product-comparison.html" class="view-compare-btn">View Comparison</a>
   </section>
   <!-- Filter Modal -->
   <div id="filter-modal" class="filter-modal">
@@ -636,41 +716,64 @@
       updateCartBadge();
     }
 
-    function renderProducts() {
-      if (!productsContainer) return;
-      productsContainer.innerHTML = "";
-      filteredProducts.slice(0, itemsToShow).forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
-        <div class="badge-container">
-  ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
-</div>
-<a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
+ function renderProducts() {
+  if (!productsContainer) return;
+  productsContainer.innerHTML = "";
+
+  filteredProducts.slice(0, itemsToShow).forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <div class="badge-container">
+        ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
+      </div>
+      <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
       <img src="${product.image}" alt="${product.name}" />   
       <div class="gray">   
-      <h2>${product.name}</h2>
-           <p class="product-subtitle">${product.desc}</p>
-           <!-- <p class="price"> Rp ${product.price}  <span class="old-price">Rp ${product.oldprice}</span> 
-               -->
-            <p class="price">
-  <span class="new">Rp ${product.price}</span>
-  <span class="old-price">Rp ${product.oldprice}</span>
-  <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span>
-</p>
-           </div>    
+        <h2>${product.name}</h2>
+        <p class="product-subtitle">${product.desc}</p>
+        <p class="price">
+          <span class="new">Rp ${product.price}</span>
+          <span class="old-price">Rp ${product.oldprice}</span>
+          <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span>
+        </p>
+      </div>    
+      <div class="button-group">
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
+      <button class="add-to-compare ${isAlreadyCompared(product) ? 'added' : ''}">
+        ${isAlreadyCompared(product) ? 'Added ✓' : 'Add to Compare'}
+      </button>
+    </div>
     `;
-        productsContainer.appendChild(card);
-      });
 
-      document.querySelectorAll(".add-to-cart").forEach(btn => {
-        btn.addEventListener("click", () => addToCart(btn.dataset.name));
-      });
+    // ✅ Define the compare button first
+    const compareBtn = card.querySelector(".add-to-compare");
 
-      updateResultCount();
-      localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
-    }
+    // ✅ Then add event listener
+    compareBtn.addEventListener("click", () => {
+      addToCompare(product);
+      compareBtn.textContent = "Added ✓";
+      compareBtn.classList.add("added");
+      compareBtn.disabled = true;
+    });
+
+    productsContainer.appendChild(card);
+  });
+
+  // Add to Cart event listeners
+  document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", () => addToCart(btn.dataset.name));
+  });
+
+  updateResultCount();
+  localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
+}
+
+
+function isAlreadyCompared(product) {
+  const compared = JSON.parse(localStorage.getItem("compareList")) || [];
+  return compared.some(p => p.name === product.name);
+}
 
     if (showInput) {
       showInput.addEventListener("input", () => {
@@ -726,8 +829,24 @@
   <span class="old-price">Rp ${product.oldprice}</span>
   <span class="wishlist-icon" onclick="addToWishlist(this)">❤️</span>
 </p></div>
+      
+       <div class="button-group">
       <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
+      <button class="add-to-compare ${isAlreadyCompared(product) ? 'added' : ''}">
+        ${isAlreadyCompared(product) ? 'Added ✓' : 'Add to Compare'}
+      </button>
+    </div>
     `;
+
+      const compareBtn = card.querySelector(".add-to-compare");
+
+    // ✅ Then add event listener
+    compareBtn.addEventListener("click", () => {
+      addToCompare(product);
+      compareBtn.textContent = "Added ✓";
+      compareBtn.classList.add("added");
+      compareBtn.disabled = true;
+    });
         newArrivalsContainer.appendChild(card);
       });
 
@@ -889,6 +1008,32 @@ const oldPriceText = card.querySelector(".price .old-price").textContent.replace
 }
 
 </script>
+<script>
+  function addToCompare(product) {
+  const compareList = JSON.parse(localStorage.getItem("compareList")) || [];
+
+  if (!compareList.some(p => p.name === product.name)) {
+    compareList.push({
+      name: product.name,
+      price: product.price,
+      oldprice: product.oldprice,
+      material: product.material,
+      image: product.image,
+      size: product.size || "Standard", // default if missing
+      color: product.color || "Varies",
+      description: product.desc || product.subtitle || "No description"
+    });
+
+    localStorage.setItem("compareList", JSON.stringify(compareList));
+  }
+}
+
+
+</script>
+function isAlreadyCompared(product) {
+  const compareList = JSON.parse(localStorage.getItem("compareList")) || [];
+  return compareList.some(p => p.id === product.id || p.name === product.name);
+}
 
 </body>
 

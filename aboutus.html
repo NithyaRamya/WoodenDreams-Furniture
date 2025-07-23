@@ -202,8 +202,19 @@
 
 
     <script>
-      document.addEventListener("DOMContentLoaded", updateCartCount);
-    </script>
+  function updateCartCount() {
+    const cartCount = JSON.parse(localStorage.getItem("cart"))?.length || 0;
+    const badge = document.querySelector(".cart-count");
+
+    if (badge) {
+      badge.textContent = cartCount;
+    }
+  }
+
+  // Run it on every page load
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
 </body>
 
 </html>
