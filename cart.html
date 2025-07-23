@@ -588,6 +588,12 @@ margin-bottom: 10px;
 
 
 <script>
+function generateInvoiceID() {
+  const timestamp = Date.now().toString(36);
+  const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+  return `INV-${timestamp}-${random}`;
+}
+
 function placeOrder() {
   const billingInfo = {
     name: document.getElementById("firstName").value + " " + document.getElementById("lastName").value,
@@ -605,15 +611,17 @@ function placeOrder() {
   // Calculate subtotal
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  // Check discount
-  const discountApplied = JSON.parse(localStorage.getItem("discountApplied")) || false;
+  // Apply discount if available
+  const discountApplied = localStorage.getItem("discountApplied") === "true";
   let total = subtotal;
-
   if (discountApplied) {
     total *= 0.9;
   }
 
   total += shippingCost;
+
+  const invoiceId = generateInvoiceID();
+  const placedAt = new Date().toISOString();
 
   const order = {
     cart: cart,
@@ -624,19 +632,20 @@ function placeOrder() {
     shippingCost: shippingCost,
     discountApplied: discountApplied,
     total: Math.round(total),
-    placedAt: new Date().toISOString()
+    placedAt: placedAt,
+    invoiceId: invoiceId
   };
 
   localStorage.setItem("orderSummary", JSON.stringify(order));
 
-  // Clear cart + discount for next order
+  // Clear for next session
   localStorage.removeItem("cart");
   localStorage.removeItem("discountApplied");
 
   window.location.href = "success.html";
 }
-
 </script>
+
 
   <script src="script.js"></script>
 <script>
