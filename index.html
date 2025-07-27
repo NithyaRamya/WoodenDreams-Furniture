@@ -2,636 +2,647 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wooden Dreams</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wooden Dreams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
- <header>
-  <div class="logo-section">
-    <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
-    <h1>Wooden Dreams</h1>
-  </div>
-  <nav class="navbar">
-    <a href="index.html" class="active">Home</a>
-    <a href="aboutus.html" >About Us</a>
-    <a href="categories.html">Categories</a>
-    <a href="shop.html" class="login-required">Shop</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <div class="header-icons">
-  <div id="search-icon">
-    <img src="images/material-symbols_search.png" alt="Search">
-    <p>Search</p>
-  </div>
-
-    <div class="cart-icon">
-      <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
-        <img src="images/Group 189.png" alt="Cart Icon">
-        <p>Cart <span class="cart-count">0</span></p>
-      </a>
+  <header>
+    <div class="logo-section">
+      <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
+      <h1>Wooden Dreams</h1>
     </div>
-    <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
-      <div>
-        <img src="images/Heart.png" alt="Liked">
-        <p>Liked</p>
+    <nav class="navbar">
+      <a href="index.html" class="active">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="categories.html">Categories</a>
+      <a href="shop.html" class="login-required">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-icons">
+      <div id="search-icon">
+        <img src="images/material-symbols_search.png" alt="Search">
+        <p>Search</p>
       </div>
-    </a>
-    <button class="login-btn">Sign Up / Sign In</button>
-    <button id="logout-btn" class="logout-btn hidden">Logout</button>
-    <!-- <div class="cart-actions">
+
+      <div class="cart-icon">
+        <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
+          <img src="images/Group 189.png" alt="Cart Icon">
+          <p>Cart <span class="cart-count">0</span></p>
+        </a>
+      </div>
+      <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
+        <div>
+          <img src="images/Heart.png" alt="Liked">
+          <p>Liked</p>
+        </div>
+      </a>
+      <button class="login-btn">Sign Up / Sign In</button>
+      <button id="logout-btn" class="logout-btn hidden">Logout</button>
+      <!-- <div class="cart-actions">
       <button id="clear-cart">🗑️</button>
     </div> -->
+    </div>
+  </header>
+  <div class="page-content"></div>
+  <div class="mobile-nav">
+    <div class="mobile-nav-bar">
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="mobile-header-icons">
+        <div>
+          <img src="images/material-symbols_search.png" alt="Search">
+          <p>Search</p>
+        </div>
+        <div class="cart-icon">
+          <img src="images/Group 189.png" alt="Cart Icon">
+          <p>Cart <span class="cart-count">0</span></p>
+
+        </div>
+
+
+        <div>
+          <img src="images/Group 190.png" alt="Liked">
+          <p>Liked</p>
+        </div>
+        <button class="login-btn">Sign Up / Sign In</button>
+        <button id="logout-btn-mobile" class="logout-btn hidden">Logout</button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden">
+      <div class="mobile-logo-section">
+        <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
+        <h1>Wooden Dreams</h1>
+      </div>
+      <a href="#" class="active">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="categories.html">Categories</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="#footer-social">Contact</a>
+    </div>
   </div>
-</header>
-<div class="page-content"></div>
-    <div class="mobile-nav">
-        <div class="mobile-nav-bar">
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-            <div class="mobile-header-icons">
-                <div>
-                    <img src="images/material-symbols_search.png" alt="Search">
-                    <p>Search</p>
-                </div>
-                <div class="cart-icon">
-                    <img src="images/Group 189.png" alt="Cart Icon">
-                    <p>Cart <span class="cart-count">0</span></p>
 
-                </div>
+  <div class="enhanced-search hidden">
 
-
-                <div>
-                    <img src="images/Group 190.png" alt="Liked">
-                    <p>Liked</p>
-                </div>
-                <button class="login-btn">Sign Up / Sign In</button>
-                <button id="logout-btn-mobile" class="logout-btn hidden">Logout</button>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden">
-            <div class="mobile-logo-section">
-                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
-                <h1>Wooden Dreams</h1>
-            </div>
-            <a href="#" class="active">Home</a>
-            <a href="aboutus.html">About Us</a>
-            <a href="categories.html">Categories</a>
-            <a href="shop.html">Shop</a>
-            <a href="blog.html">Blog</a>
-            <a href="#footer-social">Contact</a>
-        </div>
+    <div class="search-select">
+      <select id="category-select">
+        <option value="">All Categories</option>
+        <option value="sofa">Sofa</option>
+        <option value="chair">Chair</option>
+        <option value="table">Table</option>
+      </select>
     </div>
-
-<div class="enhanced-search hidden">
-
-  <div class="search-select">
-    <select id="category-select">
-      <option value="">All Categories</option>
-      <option value="sofa">Sofa</option>
-      <option value="chair">Chair</option>
-      <option value="table">Table</option>
-    </select>
+    <div class="search-subcategory hidden" id="sofa-options">
+      <select id="sofa-seaters">
+        <option value="">Select Seater</option>
+        <option value="1">1 Seater</option>
+        <option value="2">2 Seater</option>
+        <option value="3">3 Seater</option>
+      </select>
+    </div>
+    <input type="text" id="search-query" placeholder="Search Products..." />
+    <button id="search-btn">
+      <img src="images/material-symbols_search.png" alt="Search" />
+    </button>
   </div>
-  <div class="search-subcategory hidden" id="sofa-options">
-    <select id="sofa-seaters">
-      <option value="">Select Seater</option>
-      <option value="1">1 Seater</option>
-      <option value="2">2 Seater</option>
-      <option value="3">3 Seater</option>
-    </select>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-box">
+      <p class="arrival">New Arrival</p>
+      <h2>Discover Our <br>New Collection</h2>
+      <p class="subtext">Experience the art of wooden craftsmanship in our latest collection</p>
+      <button type="button" class="buy-now login-required" data-href="shop.html">BUY NOW</button>
+    </div>
+  </section>
+
+
+  <!-- Categories Section -->
+  <section class="categories" id="categories">
+    <h2 class="categories-title">Popular Categories</h2>
+    <p class="categories-subtitle">Organize your space, elevate your style</p>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="images/Rectangle 275 k.png" alt="Recliner">
+        <p>Recliner</p>
+      </div>
+      <div class="category-card">
+        <img src="images/Rectangle 275.png" alt="Dining Set">
+        <p>Dining Set</p>
+      </div>
+      <div class="category-card">
+        <img src="images/Rectangle 276.png" alt="Decor">
+        <p>Decor</p>
+      </div>
+      <div class="category-card">
+        <img src="images/Rectangle 277 p.png" alt="Study Tables">
+        <p>Study Tables</p>
+      </div>
+      <div class="category-card">
+        <img src="images/Rectangle 279.png" alt="Mattress">
+        <p>Mattress</p>
+      </div>
+      <div class="category-card">
+        <img src="images/Rectangle 278.png" alt="Beds">
+        <p>Beds</p>
+      </div>
+      <div class="category-card">
+        <img src="images/Rectangle 280.png" alt="Wardrobes">
+        <p>Wardrobes</p>
+      </div>
+      <div class="category-card">
+        <img src="images/Rectangle 281.png" alt="Sofa">
+        <p>Sofa</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best sellers -->
+  <section class="best-sellers">
+    <h2 class="best-sellers-title">Best Sellars</h2>
+    <p class="subtitle">Our Most Loved Pieces</p>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="images/image 1.png" alt="Syltherine">
+          <span class="nbadge">-30%</span>
+        </div>
+        <h4>Syltherine</h4>
+        <p class="product-subtitle">Stylish cafe chair</p>
+        <p class="price">
+          Rp 2.500.000
+          <span class="old-price">Rp 3.500.000</span>
+        </p>
+      </div>
+
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="images/image 3.png" alt="Lolito">
+          <span class="nbadge">-50%</span>
+        </div>
+        <h4>Lolito</h4>
+        <p class="product-subtitle">Luxury big sofa</p>
+        <p class="price">
+          Rp 7.000.000
+          <span class="old-price">Rp 14.000.000</span>
+        </p>
+      </div>
+
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="images/image 7.png" alt="Pingky">
+          <span class="nbadge">-50%</span>
+
+          <h4>Pingky</h4>
+          <p class="product-subtitle">Cute bed set</p>
+          <p class="price">
+            Rp 7.000.000
+            <span class="old-price">Rp 14.000.000</span>
+          </p>
+
+        </div>
+      </div>
+
+
+
+      <!-- Add second row if needed -->
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="images/Rectangle 286.png" alt="Patio">
+          <span class="nbadge">-45%</span>
+        </div>
+        <h4>Solar</h4>
+        <p class="product-subtitle">Stylish cafe chair</p>
+        <p class="price">
+          Rp 2.500.000
+          <span class="old-price">Rp 3.500.000</span>
+        </p>
+      </div>
+
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="images/Images q.png" alt="Lolito">
+          <span class="nbadge">-45%</span>
+        </div>
+        <h4>Grifo</h4>
+        <p class="product-subtitle">Grifo</p>
+        <p class="price">
+          Rp 7.000.000
+          <span class="old-price">Rp 14.000.000</span>
+        </p>
+      </div>
+
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="images/image 2.png" alt="Leviosa">
+          <span class="nbadge">-45%</span>
+        </div>
+        <h4>Leviosa</h4>
+        <p class="product-subtitle">Cute bed set</p>
+        <p class="price">
+          Rp 7.000.000
+          <span class="old-price">Rp 14.000.000</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals Section -->
+  <section class="new-arrivals">
+    <div class="new-arrivals-header">
+      <h2>New Arrivals</h2>
+      <a href="categories.html">EXPLORE ALL</a>
+    </div>
+    <p class="new-arrivals-subtitle">Discover What's New</p>
+  </section>
+
+
+  <div class="new-arrivals-grid">
+    <!-- ROW 1 -->
+    <div class="arrival-card">
+      <div class="image-box">
+        <img src="images/Images i.png" alt="Respira">
+        <span class="nbadge">New</span>
+      </div>
+      <div class="arrival-info">
+        <h4>Respira</h4>
+        <p class="desc">Outdoor bar table and stool</p>
+        <p class="price">Rp 500.000</p>
+      </div>
+    </div>
+
+    <div class="arrival-card">
+      <div class="image-box">
+        <img src="images/image 6 8.png" alt="Muggo">
+        <span class="nbadge">New</span>
+      </div>
+      <div class="arrival-info">
+        <h4>Muggo</h4>
+        <p class="desc">Small mug</p>
+        <p class="price">Rp 150.000</p>
+      </div>
+    </div>
+
+    <div class="arrival-card">
+      <div class="image-box">
+        <img src="images/Images j.png" alt="Potty">
+        <span class="nbadge">New</span>
+      </div>
+      <div class="arrival-info">
+        <h4>Potty</h4>
+        <p class="desc">Minimalist flower pot</p>
+        <p class="price">Rp 500.000</p>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="arrival-card">
+      <div class="image-box">
+        <img src="images/th 1 j.png" alt="Sofa Bliss">
+        <span class="nbadge">New</span>
+      </div>
+      <div class="arrival-info">
+        <h4>Assgard Sofa</h4>
+        <p class="desc">Modern sofa</p>
+        <p class="price">Rp 25,000.00</p>
+      </div>
+    </div>
+
+    <div class="arrival-card">
+      <div class="image-box">
+        <img src="images/Rectangle 286 j.png" alt="Wood Lamp">
+        <span class="nbadge">New</span>
+      </div>
+      <div class="arrival-info">
+        <h4>Scooby</h4>
+        <p class="desc">Cute Bed Set</p>
+        <p class="price">Rp 7.000.000</p>
+      </div>
+    </div>
+
+    <div class="arrival-card">
+      <div class="image-box">
+        <img src="images/Rectangle 286 0.png" alt="Rustic Shelf">
+        <span class="nbadge">New</span>
+      </div>
+      <div class="arrival-info">
+        <h4>Dexter</h4>
+        <p class="desc">Cute bed set</p>
+        <p class="price">Rp 7.000.000</p>
+      </div>
+    </div>
   </div>
-  <input type="text" id="search-query" placeholder="Search Products..." />
-  <button id="search-btn">
-    <img src="images/material-symbols_search.png" alt="Search" />
-  </button>
-</div>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-box">
-            <p class="arrival">New Arrival</p>
-            <h2>Discover Our <br>New Collection</h2>
-            <p class="subtext">Experience the art of wooden craftsmanship in our latest collection</p>
-            <button class="buy-now">BUY NOW</button>
-        </div>
-    </section>
 
 
-    <!-- Categories Section -->
-    <section class="categories" id="categories">
-        <h2 class="categories-title">Popular Categories</h2>
-        <p class="categories-subtitle">Organize your space, elevate your style</p>
-        <div class="category-grid">
-            <div class="category-card">
-                <img src="images/Rectangle 275 k.png" alt="Recliner">
-                <p>Recliner</p>
-            </div>
-            <div class="category-card">
-                <img src="images/Rectangle 275.png" alt="Dining Set">
-                <p>Dining Set</p>
-            </div>
-            <div class="category-card">
-                <img src="images/Rectangle 276.png" alt="Decor">
-                <p>Decor</p>
-            </div>
-            <div class="category-card">
-                <img src="images/Rectangle 277 p.png" alt="Study Tables">
-                <p>Study Tables</p>
-            </div>
-            <div class="category-card">
-                <img src="images/Rectangle 279.png" alt="Mattress">
-                <p>Mattress</p>
-            </div>
-            <div class="category-card">
-                <img src="images/Rectangle 278.png" alt="Beds">
-                <p>Beds</p>
-            </div>
-            <div class="category-card">
-                <img src="images/Rectangle 280.png" alt="Wardrobes">
-                <p>Wardrobes</p>
-            </div>
-            <div class="category-card">
-                <img src="images/Rectangle 281.png" alt="Sofa">
-                <p>Sofa</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Best sellers -->
-    <section class="best-sellers">
-        <h2 class="best-sellers-title">Best Sellars</h2>
-        <p class="subtitle">Our Most Loved Pieces</p>
-
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="image-wrapper">
-                    <img src="images/image 1.png" alt="Syltherine">
-                    <span class="nbadge">-30%</span>
-                </div>
-                <h4>Syltherine</h4>
-                <p class="product-subtitle">Stylish cafe chair</p>
-                <p class="price">
-                    Rp 2.500.000
-                    <span class="old-price">Rp 3.500.000</span>
-                </p>
-            </div>
-
-            <div class="product-card">
-                <div class="image-wrapper">
-                    <img src="images/image 3.png" alt="Lolito">
-                    <span class="nbadge">-50%</span>
-                </div>
-                <h4>Lolito</h4>
-                <p class="product-subtitle">Luxury big sofa</p>
-                <p class="price">
-                    Rp 7.000.000
-                    <span class="old-price">Rp 14.000.000</span>
-                </p>
-            </div>
-
-            <div class="product-card">
-                <div class="image-wrapper">
-                    <img src="images/image 7.png" alt="Pingky">
-                    <span class="nbadge">-50%</span>
-
-                    <h4>Pingky</h4>
-                    <p class="product-subtitle">Cute bed set</p>
-                    <p class="price">
-                        Rp 7.000.000
-                        <span class="old-price">Rp 14.000.000</span>
-                    </p>
-
-                </div>
-            </div>
-
-
-
-            <!-- Add second row if needed -->
-            <div class="product-card">
-                <div class="image-wrapper">
-                    <img src="images/Rectangle 286.png" alt="Patio">
-                    <span class="nbadge">-45%</span>
-                </div>
-                <h4>Solar</h4>
-                <p class="product-subtitle">Stylish cafe chair</p>
-                <p class="price">
-                    Rp 2.500.000
-                    <span class="old-price">Rp 3.500.000</span>
-                </p>
-            </div>
-
-            <div class="product-card">
-                <div class="image-wrapper">
-                    <img src="images/Images q.png" alt="Lolito">
-                    <span class="nbadge">-45%</span>
-                </div>
-                <h4>Grifo</h4>
-                <p class="product-subtitle">Grifo</p>
-                <p class="price">
-                    Rp 7.000.000
-                    <span class="old-price">Rp 14.000.000</span>
-                </p>
-            </div>
-
-            <div class="product-card">
-                <div class="image-wrapper">
-                    <img src="images/image 2.png" alt="Leviosa">
-                    <span class="nbadge">-45%</span>
-                </div>
-                <h4>Leviosa</h4>
-                <p class="product-subtitle">Cute bed set</p>
-                <p class="price">
-                    Rp 7.000.000
-                    <span class="old-price">Rp 14.000.000</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- New Arrivals Section -->
-    <section class="new-arrivals">
-        <div class="new-arrivals-header">
-            <h2>New Arrivals</h2>
-            <a href="categories.html">EXPLORE ALL</a>
-        </div>
-        <p class="new-arrivals-subtitle">Discover What's New</p>
-    </section>
-
-
-    <div class="new-arrivals-grid">
-        <!-- ROW 1 -->
-        <div class="arrival-card">
-            <div class="image-box">
-                <img src="images/Images i.png" alt="Respira">
-                <span class="nbadge">New</span>
-            </div>
-            <div class="arrival-info">
-                <h4>Respira</h4>
-                <p class="desc">Outdoor bar table and stool</p>
-                <p class="price">Rp 500.000</p>
-            </div>
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>What Customers Say About Wooden Dreams</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <img src="images/Rectangle 38 j.png" alt="Office Desk">
+        <p>"I'm absolutely thrilled with my new office desk! The quality is top-notch, and it looks
+          fantastic in my
+          home
+          office."</p>
+        <div class="stars">
+          ★ ★ ★ ★ ★
+          <p class="views">13.5k View</p>
         </div>
 
-        <div class="arrival-card">
-            <div class="image-box">
-                <img src="images/image 6 8.png" alt="Muggo">
-                <span class="nbadge">New</span>
-            </div>
-            <div class="arrival-info">
-                <h4>Muggo</h4>
-                <p class="desc">Small mug</p>
-                <p class="price">Rp 150.000</p>
-            </div>
+        <p class="customer-name">Megna<br>India</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/Rectangle 43 k.png" alt="Bedroom">
+        <p>"Sleeping on this bed is like resting on a cloud. The mattress is heavenly, and the luxurious
+          materials
+          make
+          me feel pampered every night."</p>
+        <div class="stars">
+          ★ ★ ★ ★ ★
+          <p class="views">20.5k View</p>
         </div>
 
-        <div class="arrival-card">
-            <div class="image-box">
-                <img src="images/Images j.png" alt="Potty">
-                <span class="nbadge">New</span>
-            </div>
-            <div class="arrival-info">
-                <h4>Potty</h4>
-                <p class="desc">Minimalist flower pot</p>
-                <p class="price">Rp 500.000</p>
-            </div>
-        </div>
-
-        <!-- ROW 2 -->
-        <div class="arrival-card">
-            <div class="image-box">
-                <img src="images/th 1 j.png" alt="Sofa Bliss">
-                <span class="nbadge">New</span>
-            </div>
-            <div class="arrival-info">
-                <h4>Assgard Sofa</h4>
-                <p class="desc">Modern sofa</p>
-                <p class="price">Rp 25,000.00</p>
-            </div>
-        </div>
-
-        <div class="arrival-card">
-            <div class="image-box">
-                <img src="images/Rectangle 286 j.png" alt="Wood Lamp">
-                <span class="nbadge">New</span>
-            </div>
-            <div class="arrival-info">
-                <h4>Scooby</h4>
-                <p class="desc">Cute Bed Set</p>
-                <p class="price">Rp 7.000.000</p>
-            </div>
-        </div>
-
-        <div class="arrival-card">
-            <div class="image-box">
-                <img src="images/Rectangle 286 0.png" alt="Rustic Shelf">
-                <span class="nbadge">New</span>
-            </div>
-            <div class="arrival-info">
-                <h4>Dexter</h4>
-                <p class="desc">Cute bed set</p>
-                <p class="price">Rp 7.000.000</p>
-            </div>
-        </div>
+        <p class="customer-name">Shasha<br>USA</p>
+      </div>
     </div>
+    <a href="#" class="see-all">SEE ALL</a>
+  </section>
 
+  <!-- Footer Section-->
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <h2>What Customers Say About Wooden Dreams</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <img src="images/Rectangle 38 j.png" alt="Office Desk">
-                <p>"I'm absolutely thrilled with my new office desk! The quality is top-notch, and it looks
-                    fantastic in my
-                    home
-                    office."</p>
-                <div class="stars">
-                    ★ ★ ★ ★ ★
-                    <p class="views">13.5k View</p>
-                </div>
-
-                <p class="customer-name">Megna<br>India</p>
-            </div>
-            <div class="testimonial-card">
-                <img src="images/Rectangle 43 k.png" alt="Bedroom">
-                <p>"Sleeping on this bed is like resting on a cloud. The mattress is heavenly, and the luxurious
-                    materials
-                    make
-                    me feel pampered every night."</p>
-                <div class="stars">
-                    ★ ★ ★ ★ ★
-                    <p class="views">20.5k View</p>
-                </div>
-
-                <p class="customer-name">Shasha<br>USA</p>
-            </div>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <img src="images/Group 206.png" alt="Logo">
+          <h3>Wooden Dreams</h3>
         </div>
-        <a href="#" class="see-all">SEE ALL</a>
-    </section>
-
-    <!-- Footer Section-->
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="images/Group 206.png" alt="Logo">
-                    <h3>Wooden Dreams</h3>
-                </div>
-                <p class="footer-desc">
-                    "At Wooden Dreams, we craft furniture that brings warmth and comfort to your home. Our wooden
-                    creations are
-                    designed to inspire sweet dreams and peaceful nights. Every piece is carefully crafted to
-                    provide a haven of
-                    relaxation and tranquility. Sleep tight, dream big with Wooden Dreams."
-                </p>
-                <p class="footer-contact"><img src="images/raphael_loaction2.png" alt="Location Icon"> Head Office
-                    13/5, Post
-                    office oppsite, Chennai.876543</p>
-                <p class="footer-contact"><img src="images/mdi_internet.png" alt="Website Icon"> www.woodendreams.in
-                </p>
-                <p class="footer-contact"><img src="images/material-symbols_mail-outline.png" alt="Mail Icon">
-                    woodendreams@gamil.com</p>
-            </div>
-            <div class="footer-links">
-                <div class="links-section">
-                    <h4>LINKS</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="aboutus.html">About</a></li>
-                        <li><a href="categories.html">Categories</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#footer-social">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="help-section">
-                    <h4>HELP</h4>
-                    <ul>
-                        <li><a href="shop.html">Payment Options</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Privacy Policies</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-subscribe" id="footer-social">
-                <h4>Subscribe</h4>
-                <form>
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">SIGN UP</button>
-                </form>
-                <div class="footer-social">
-                    <p>Follow Us</p>
-                    <div>
-                        <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="images/Google.png" alt="Google"></a>
-                        <a href="#"><img src="images/SVG.png" alt="Facebook"></a>
-                    </div>
-                </div>
-            </div>
+        <p class="footer-desc">
+          "At Wooden Dreams, we craft furniture that brings warmth and comfort to your home. Our wooden
+          creations are
+          designed to inspire sweet dreams and peaceful nights. Every piece is carefully crafted to
+          provide a haven of
+          relaxation and tranquility. Sleep tight, dream big with Wooden Dreams."
+        </p>
+        <p class="footer-contact"><img src="images/raphael_loaction2.png" alt="Location Icon"> Head Office
+          13/5, Post
+          office oppsite, Chennai.876543</p>
+        <p class="footer-contact"><img src="images/mdi_internet.png" alt="Website Icon"> www.woodendreams.in
+        </p>
+        <p class="footer-contact"><img src="images/material-symbols_mail-outline.png" alt="Mail Icon">
+          woodendreams@gamil.com</p>
+      </div>
+      <div class="footer-links">
+        <div class="links-section">
+          <h4>LINKS</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#footer-social">Contact</a></li>
+          </ul>
         </div>
-        <hr>
-        <p class="footer-bottom">2025 Wooden Dreams. All rights reserved</p>
-    </footer>
-
+        <div class="help-section">
+          <h4>HELP</h4>
+          <ul>
+            <li><a href="shop.html">Payment Options</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Privacy Policies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-subscribe" id="footer-social">
+        <h4>Subscribe</h4>
+        <form>
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">SIGN UP</button>
+        </form>
+        <div class="footer-social">
+          <p>Follow Us</p>
+          <div>
+            <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="images/Google.png" alt="Google"></a>
+            <a href="#"><img src="images/SVG.png" alt="Facebook"></a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="modal-overlay">
-        <div class="modal-box">
-            <button class="close-btn"><img src="images/material-symbols_cancel.png"></button>
-            <div class="modal-content">
-                <div class="left-panel">
-                    <img src="images/Group_206-removebg-preview.png" alt="Logo" class="logo" />
-                    <h1 class="brand-name">Wooden Dreams</h1>
-                    <p class="welcome-text">Welcome’s You !</p>
-                    <img src="images/Cloud sofa three seater + ottoman_2 2.png" alt="Sofa" class="sofa-img" />
-                </div>
-                <div class="right-panel">
-                    <h2 class="login-heading">Log In</h2>
-                    <form id="login-form">
-                        <input type="email" placeholder="Enter your Email Address" autocomplete="off" required />
-                        <input type="password" placeholder="Enter Password" autocomplete="new-password" required />
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember" />
-                            <label for="remember">Remember Me</label>
-                            <button type="submit" class="sign-in-btn">Sign In</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="enhanced-search.js"></script>
-<script>
-  // 1. General UI + Modal Logic + Login Handling + Redirect Support
-  function toggleMenu() {
-    document.getElementById("mobile-menu").classList.toggle("hidden");
-  }
+    <hr>
+    <p class="footer-bottom">2025 Wooden Dreams. All rights reserved</p>
+  </footer>
 
-function setupLoginRequiredLinks() {
-  document.querySelectorAll(".login-required").forEach(link => {
-    link.onclick = function (e) {
+  </div>
+  <div class="modal-overlay">
+    <div class="modal-box">
+      <button class="close-btn"><img src="images/material-symbols_cancel.png"></button>
+      <div class="modal-content">
+        <div class="left-panel">
+          <img src="images/Group_206-removebg-preview.png" alt="Logo" class="logo" />
+          <h1 class="brand-name">Wooden Dreams</h1>
+          <p class="welcome-text">Welcome’s You !</p>
+          <img src="images/Cloud sofa three seater + ottoman_2 2.png" alt="Sofa" class="sofa-img" />
+        </div>
+        <div class="right-panel">
+          <h2 class="login-heading">Log In</h2>
+          <form id="login-form">
+            <input type="email" placeholder="Enter your Email Address" autocomplete="off" required />
+            <input type="password" placeholder="Enter Password" autocomplete="new-password" required />
+            <div class="remember-me">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Remember Me</label>
+              <button type="submit" class="sign-in-btn">Sign In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="enhanced-search.js"></script>
+  <script>
+    // 1. General UI + Modal Logic + Login Handling + Redirect Support
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    }
+    function setupLoginRequiredLinks() {
+      document.querySelectorAll(".login-required").forEach(el => {
+        el.addEventListener("click", function (e) {
+          const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
+          const redirectTarget = el.getAttribute("href") || el.getAttribute("data-href") || "#";
+
+          if (!isLoggedIn) {
+            e.preventDefault();
+            e.stopPropagation(); // ✅ stop other handlers
+            localStorage.setItem("redirectAfterLogin", redirectTarget);
+
+            alert("🚫 Please login to access the Shop and Cart.");
+
+            // ✅ Show modal only AFTER alert is dismissed
+            setTimeout(() => {
+              const modal = document.querySelector(".modal-overlay");
+              const pageContent = document.querySelector(".page-content");
+              modal?.classList.add("active");
+              pageContent?.classList.add("blur");
+            }, 0);
+          } else if (el.tagName === "BUTTON" && el.getAttribute("data-href")) {
+            e.preventDefault();
+            window.location.href = el.getAttribute("data-href");
+          }
+        });
+      });
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const modal = document.querySelector(".modal-overlay");
+      const pageContent = document.querySelector(".page-content");
+      const loginButtons = document.querySelectorAll(".login-btn");
+      const closeBtn = document.querySelector(".close-btn");
+      const loginForm = document.getElementById("login-form");
+      const logoutBtn = document.getElementById("logout-btn");
+      const logoutBtnMobile = document.getElementById("logout-btn-mobile");
+
       //const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-        const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
-      if (!isLoggedIn) {
-        e.preventDefault();
-        localStorage.setItem("redirectAfterLogin", link.getAttribute("href"));
-        document.querySelector(".modal-overlay").classList.add("active");
-        document.querySelector(".page-content").classList.add("blur");
-        alert("🚫 Please login to access the Shop and Cart.");
-      }
-    };
-  });
-}
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.querySelector(".modal-overlay");
-    const pageContent = document.querySelector(".page-content");
-    const loginButtons = document.querySelectorAll(".login-btn");
-    const closeBtn = document.querySelector(".close-btn");
-    const loginForm = document.getElementById("login-form");
-    const logoutBtn = document.getElementById("logout-btn");
-    const logoutBtnMobile = document.getElementById("logout-btn-mobile");
-
-    //const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
       const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
 
-    if (isLoggedIn) {
-      logoutBtn?.classList.remove("hidden");
-      logoutBtnMobile?.classList.remove("hidden");
-      loginButtons.forEach(btn => btn.classList.add("hidden"));
-    } else {
-      logoutBtn?.classList.add("hidden");
-      logoutBtnMobile?.classList.add("hidden");
-      loginButtons.forEach(btn => btn.classList.remove("hidden"));
-    }
+      if (isLoggedIn) {
+        logoutBtn?.classList.remove("hidden");
+        logoutBtnMobile?.classList.remove("hidden");
+        loginButtons.forEach(btn => btn.classList.add("hidden"));
+      } else {
+        logoutBtn?.classList.add("hidden");
+        logoutBtnMobile?.classList.add("hidden");
+        loginButtons.forEach(btn => btn.classList.remove("hidden"));
+      }
 
-    document.querySelectorAll(".cart-count").forEach(el => {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      el.textContent = cart.length;
-    });
-
-    loginButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        modal.classList.add("active");
-        pageContent.classList.add("blur");
+      document.querySelectorAll(".cart-count").forEach(el => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        el.textContent = cart.length;
       });
-    });
 
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("active");
-      pageContent.classList.remove("blur");
-    });
+      loginButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          modal.classList.add("active");
+          pageContent.classList.add("blur");
+        });
+      });
 
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
+      closeBtn.addEventListener("click", () => {
         modal.classList.remove("active");
         pageContent.classList.remove("blur");
-      }
-    });
+      });
 
-    loginForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-     // localStorage.setItem("isLoggedIn", "true");
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+          pageContent.classList.remove("blur");
+        }
+      });
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // localStorage.setItem("isLoggedIn", "true");
         sessionStorage.setItem("isLoggedIn", "true");
 
-      modal.classList.remove("active");
-      pageContent.classList.remove("blur");
+        modal.classList.remove("active");
+        pageContent.classList.remove("blur");
 
-      alert("🛒 Login successful!");
+        alert("🛒 Login successful!");
 
-      logoutBtn?.classList.remove("hidden");
-      logoutBtnMobile?.classList.remove("hidden");
-      loginButtons.forEach(btn => btn.classList.add("hidden"));
+        logoutBtn?.classList.remove("hidden");
+        logoutBtnMobile?.classList.remove("hidden");
+        loginButtons.forEach(btn => btn.classList.add("hidden"));
+
+        setupLoginRequiredLinks();
+
+        const redirectURL = localStorage.getItem("redirectAfterLogin");
+        if (redirectURL) {
+          localStorage.removeItem("redirectAfterLogin");
+          window.location.href = redirectURL;
+        }
+      });
+
+      logoutBtn?.addEventListener("click", () => {
+        //localStorage.removeItem("isLoggedIn");
+        //sessionStorage.setItem("isLoggedIn", "true");
+        sessionStorage.removeItem("isLoggedIn");
+        alert("🔒 You have been logged out.");
+        window.location.reload();
+      });
+
+      logoutBtnMobile?.addEventListener("click", () => {
+        // localStorage.removeItem("isLoggedIn");
+        sessionStorage.setItem("isLoggedIn", "true");
+        alert("🔒 You have been logged out.");
+        window.location.reload();
+      });
 
       setupLoginRequiredLinks();
+    });
+  </script>
 
-      const redirectURL = localStorage.getItem("redirectAfterLogin");
-      if (redirectURL) {
-        localStorage.removeItem("redirectAfterLogin");
-        window.location.href = redirectURL;
+  <script>
+    // 2. Product, Cart, Filter, Render Logic
+    const products = [
+      { name: "Syltherine", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 1.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-30%" },
+      { name: "Lolito", price: 15000, material: "metal", country: "japan", seating: "1", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "Luxury big sofa", badge: "-50%" },
+      { name: "Pingky", price: 50000, material: "leather", country: "italy", seating: "3", isNew: false, image: "images/image 3.png", oldprice: 14000, desc: "Cute bed set", badge: "-30%" },
+      { name: "Patio", price: 30000, material: "wood", country: "japan", seating: "2", isNew: true, image: "images/Images q.png", oldprice: 35000, desc: "Wooden chair", badge: "-45%" },
+      { name: "Grifo", price: 20000, material: "metal", country: "china", seating: "2", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "China made", badge: "-45%" },
+      { name: "Leviosa", price: 18000, material: "fabric", country: "china", seating: "1", isNew: false, image: "images/Images i.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-45%" },
+    ];
+
+    const newArrivalProducts = [
+      { name: "Respira", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
+      { name: "Muggo", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "leather based sofa", badge: "New" },
+      { name: "Potty", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Metal Chair", badge: "New" },
+      { name: "Asgaardsofa", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
+      { name: "Oak Wood Chair", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "Elegant and durable", badge: "New" },
+      { name: "Teak Dining Table", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Perfect for families", badge: "New" }
+    ];
+
+    let filteredProducts = [...products];
+    let itemsToShow = 16;
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const resultCount = document.querySelector('.result-count');
+    const showInput = document.querySelector('.show-control input');
+    const sortSelect = document.querySelector('.sort-control select');
+    const productsContainer = document.querySelector('.products');
+    const cartCount = document.querySelector('.cart-count');
+
+    function updateResultCount() {
+      if (resultCount) {
+        resultCount.textContent = `Showing 1–${Math.min(itemsToShow, filteredProducts.length)} of ${filteredProducts.length} results`;
       }
-    });
-
-    logoutBtn?.addEventListener("click", () => {
-      //localStorage.removeItem("isLoggedIn");
-      //sessionStorage.setItem("isLoggedIn", "true");
-      sessionStorage.removeItem("isLoggedIn");
-      alert("🔒 You have been logged out.");
-      window.location.reload();
-    });
-
-    logoutBtnMobile?.addEventListener("click", () => {
-     // localStorage.removeItem("isLoggedIn");
-      sessionStorage.setItem("isLoggedIn", "true");
-      alert("🔒 You have been logged out.");
-      window.location.reload();
-    });
-
-    setupLoginRequiredLinks();
-  });
-</script>
-
-<script>
-  // 2. Product, Cart, Filter, Render Logic
-  const products = [
-    { name: "Syltherine", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 1.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-30%" },
-    { name: "Lolito", price: 15000, material: "metal", country: "japan", seating: "1", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "Luxury big sofa", badge: "-50%" },
-    { name: "Pingky", price: 50000, material: "leather", country: "italy", seating: "3", isNew: false, image: "images/image 3.png", oldprice: 14000, desc: "Cute bed set", badge: "-30%" },
-    { name: "Patio", price: 30000, material: "wood", country: "japan", seating: "2", isNew: true, image: "images/Images q.png", oldprice: 35000, desc: "Wooden chair", badge: "-45%" },
-    { name: "Grifo", price: 20000, material: "metal", country: "china", seating: "2", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "China made", badge: "-45%" },
-    { name: "Leviosa", price: 18000, material: "fabric", country: "china", seating: "1", isNew: false, image: "images/Images i.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-45%" },
-  ];
-
-  const newArrivalProducts = [
-    { name: "Respira", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
-    { name: "Muggo", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "leather based sofa", badge: "New" },
-    { name: "Potty", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Metal Chair", badge: "New" },
-    { name: "Asgaardsofa", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
-    { name: "Oak Wood Chair", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "Elegant and durable", badge: "New" },
-    { name: "Teak Dining Table", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Perfect for families", badge: "New" }
-  ];
-
-  let filteredProducts = [...products];
-  let itemsToShow = 16;
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  const resultCount = document.querySelector('.result-count');
-  const showInput = document.querySelector('.show-control input');
-  const sortSelect = document.querySelector('.sort-control select');
-  const productsContainer = document.querySelector('.products');
-  const cartCount = document.querySelector('.cart-count');
-
-  function updateResultCount() {
-    if (resultCount) {
-      resultCount.textContent = `Showing 1–${Math.min(itemsToShow, filteredProducts.length)} of ${filteredProducts.length} results`;
     }
-  }
 
-  function updateCartBadge() {
-    if (cartCount) cartCount.textContent = cart.length;
-  }
+    function updateCartBadge() {
+      if (cartCount) cartCount.textContent = cart.length;
+    }
 
-  function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartBadge();
-  }
+    function saveCart() {
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartBadge();
+    }
 
-  function renderProducts() {
-    if (!productsContainer) return;
-    productsContainer.innerHTML = "";
-    filteredProducts.slice(0, itemsToShow).forEach(product => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
+    function renderProducts() {
+      if (!productsContainer) return;
+      productsContainer.innerHTML = "";
+      filteredProducts.slice(0, itemsToShow).forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
         <div class="badge-container">
           ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
         </div>
@@ -644,27 +655,27 @@ function setupLoginRequiredLinks() {
         </div>
         <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
       `;
-      productsContainer.appendChild(card);
-    });
+        productsContainer.appendChild(card);
+      });
 
-    document.querySelectorAll(".add-to-cart").forEach(btn => {
-      btn.addEventListener("click", () => addToCart(btn.dataset.name));
-    });
+      document.querySelectorAll(".add-to-cart").forEach(btn => {
+        btn.addEventListener("click", () => addToCart(btn.dataset.name));
+      });
 
-    updateResultCount();
-    localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
-  }
+      updateResultCount();
+      localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
+    }
 
-  function renderNewArrivals() {
-    const newArrivalsContainer = document.querySelector(".new-arrivals-products");
-    if (!newArrivalsContainer) return;
+    function renderNewArrivals() {
+      const newArrivalsContainer = document.querySelector(".new-arrivals-products");
+      if (!newArrivalsContainer) return;
 
-    newArrivalsContainer.innerHTML = "";
+      newArrivalsContainer.innerHTML = "";
 
-    newArrivalProducts.forEach(product => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
+      newArrivalProducts.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
         <div class="badge-container">
           ${product.badge ? `<span class="newbadge">${product.badge}</span>` : ""}
         </div>
@@ -677,73 +688,60 @@ function setupLoginRequiredLinks() {
         </div>
         <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
       `;
-      newArrivalsContainer.appendChild(card);
-    });
-
-    newArrivalsContainer.querySelectorAll(".add-to-cart").forEach(btn => {
-      btn.addEventListener("click", () => addToCart(btn.dataset.name));
-    });
-  }
-
-  function applyFilters() {
-    const materials = Array.from(document.querySelectorAll("input[name='material']:checked"), el => el.value);
-    const countries = Array.from(document.querySelectorAll("input[name='country']:checked"), el => el.value);
-    const seatings = Array.from(document.querySelectorAll("input[name='seating']:checked"), el => el.value);
-    const prices = Array.from(document.querySelectorAll("input[name='price']:checked"), el => el.value);
-
-    filteredProducts = products.filter(p => {
-      const matchMaterial = materials.length === 0 || materials.includes(p.material);
-      const matchCountry = countries.length === 0 || countries.includes(p.country);
-      const matchSeating = seatings.length === 0 || seatings.includes(p.seating);
-      const matchPrice = prices.length === 0 || prices.some(range => {
-        const [min, max] = range.split('-').map(Number);
-        return p.price >= min && (isNaN(max) || p.price <= max);
+        newArrivalsContainer.appendChild(card);
       });
 
-      return matchMaterial && matchCountry && matchSeating && matchPrice;
+      newArrivalsContainer.querySelectorAll(".add-to-cart").forEach(btn => {
+        btn.addEventListener("click", () => addToCart(btn.dataset.name));
+      });
+    }
+
+    function applyFilters() {
+      const materials = Array.from(document.querySelectorAll("input[name='material']:checked"), el => el.value);
+      const countries = Array.from(document.querySelectorAll("input[name='country']:checked"), el => el.value);
+      const seatings = Array.from(document.querySelectorAll("input[name='seating']:checked"), el => el.value);
+      const prices = Array.from(document.querySelectorAll("input[name='price']:checked"), el => el.value);
+
+      filteredProducts = products.filter(p => {
+        const matchMaterial = materials.length === 0 || materials.includes(p.material);
+        const matchCountry = countries.length === 0 || countries.includes(p.country);
+        const matchSeating = seatings.length === 0 || seatings.includes(p.seating);
+        const matchPrice = prices.length === 0 || prices.some(range => {
+          const [min, max] = range.split('-').map(Number);
+          return p.price >= min && (isNaN(max) || p.price <= max);
+        });
+
+        return matchMaterial && matchCountry && matchSeating && matchPrice;
+      });
+
+      renderProducts();
+    }
+
+    function addToCart(productName) {
+      const product = [...products, ...newArrivalProducts].find(p => p.name === productName);
+      if (product) {
+        cart.push(product);
+        saveCart();
+      }
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      document.querySelectorAll(".cart-count").forEach(el => el.textContent = "0");
+      alert("🛒 Cart cleared!");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const clearCartBtn = document.getElementById("clear-cart");
+      if (clearCartBtn) {
+        clearCartBtn.addEventListener("click", clearCart);
+      }
+
+      renderProducts();
+      renderNewArrivals();
+      updateCartBadge();
     });
 
-    renderProducts();
-  }
-
-  function addToCart(productName) {
-    const product = [...products, ...newArrivalProducts].find(p => p.name === productName);
-    if (product) {
-      cart.push(product);
-      saveCart();
-    }
-  }
-
-  function clearCart() {
-    localStorage.removeItem("cart");
-    document.querySelectorAll(".cart-count").forEach(el => el.textContent = "0");
-    alert("🛒 Cart cleared!");
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const clearCartBtn = document.getElementById("clear-cart");
-    if (clearCartBtn) {
-      clearCartBtn.addEventListener("click", clearCart);
-    }
-
-    renderProducts();
-    renderNewArrivals();
-    updateCartBadge();
-  });
-
-  document.querySelector('.buy-now')?.addEventListener('click', function () {
-    window.location.href = 'shop.html';
-  });
-</script>
-
-    
-    
-
-  
-
-
-
-
+ </script>
 </body>
-
 </html>
