@@ -7,11 +7,11 @@
   <title>Wooden Dreams</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .section-tabs div.active {
-      border-bottom: 2px solid #b88e2f;
-      color: #b88e2f;
-    }
+<style>
+  .section-tabs div.active {
+  border-bottom: 2px solid #b88e2f;
+  color: #b88e2f;
+}
 
     .cart-actions {
       text-align: right;
@@ -143,7 +143,6 @@
       background-color: #8a6717;
       transform: translateY(0);
     }
-
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -269,458 +268,455 @@
     .hidden {
       display: none;
     }
-
     .wishlist-icon {
-      cursor: pointer;
-      font-size: 20px;
-      color: #ccc;
-      transition: color 0.3s ease;
-    }
+  cursor: pointer;
+  font-size: 20px;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+.wishlist-icon.added {
+  color: red;
+}
+.view-compare-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #B88E2F;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px 0;
+}
 
-    .wishlist-icon.added {
-      color: red;
-    }
+.view-compare-btn:hover {
+  color: #fff;
+}
+.add-to-compare.added {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+.button-group {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
 
-    .view-compare-btn {
-      display: inline-block;
-      padding: 10px 15px;
-      background: #B88E2F;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      margin: 10px 0;
-    }
+.button-group button {
+   flex: 1;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 5px;
+  cursor: pointer;
 
-    .view-compare-btn:hover {
-      color: #fff;
-    }
+}
 
-    .add-to-compare.added {
-      background-color: #28a745;
-      color: white;
-      border: none;
-    }
+.add-to-cart {
+  background-color: #B88E2F;
+  color: white;
+}
 
-    .button-group {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
+.add-to-cart:hover {
+  background-color: #916d23;
+}
 
-    .button-group button {
-      flex: 1;
-      padding: 6px 12px;
-      font-size: 0.85rem;
-      border-radius: 5px;
-      cursor: pointer;
+.add-to-compare {
+  background-color: #ccc;
+  color: #333;
+}
 
-    }
+.add-to-compare.added {
+  background-color: #5cb85c;
+  color: white;
+}
 
-    .add-to-cart {
-      background-color: #B88E2F;
-      color: white;
-    }
 
-    .add-to-cart:hover {
-      background-color: #916d23;
-    }
-
-    .add-to-compare {
-      background-color: #ccc;
-      color: #333;
-    }
-
-    .add-to-compare.added {
-      background-color: #5cb85c;
-      color: white;
-    }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo-section">
-      <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
-      <h1>Wooden Dreams</h1>
+   <header>
+  <div class="logo-section">
+    <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="logo">
+    <h1>Wooden Dreams</h1>
+  </div>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="categories.html">Categories</a>
+    <a href="shop.html" class="active" >Shop</a>
+    <a href="blog.html">Blog</a>
+     <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-icons">
+    <div>
+      <img src="images/material-symbols_search.png" alt="Search">
+      <p>Search</p>
     </div>
-    <nav class="navbar">
-      <a href="home.html">Home</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="categories.html">Categories</a>
-      <a href="shop.html" class="active">Shop</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="header-icons">
-      <div>
-        <img src="images/material-symbols_search.png" alt="Search">
-        <p>Search</p>
-      </div>
-      <div class="cart-icon">
-        <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
-          <img src="images/Group 189.png" alt="Cart Icon">
-          <p>Cart <span class="cart-count">0</span></p>
-        </a>
-      </div>
-      <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
-        <div>
-          <img src="images/Heart.png" alt="Liked">
-          <p>Liked</p>
-        </div>
+    <div class="cart-icon">
+      <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
+        <img src="images/Group 189.png" alt="Cart Icon">
+        <p>Cart <span class="cart-count">0</span></p>
       </a>
-      <button class="login-btn">Sign Up / Sign In</button>
-
     </div>
-  </header>
-  <div class="page-content">
+    <a style="text-decoration:none;color:white" href="wishlist.html" class="nav-link">
+      <div>
+        <img src="images/Heart.png" alt="Liked">
+        <p>Liked</p>
+      </div>
+    </a>
+    <button class="login-btn">Sign Up / Sign In</button>
+    
+  </div>
+</header>
+ <div class="page-content">
     <div class="mobile-nav">
-      <div class="mobile-nav-bar">
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <div class="mobile-header-icons">
-          <div>
-            <img src="images/material-symbols_search.png" alt="Search">
-            <p>Search</p>
-          </div>
-          <div class="cart-icon">
-            <a style="text-decoration:none;color:white" href="cart.html">
-              <img src="images/Group 189.png" alt="Cart Icon">
-              <p>Cart <span class="cart-count">0</span></p>
-            </a>
+        <div class="mobile-nav-bar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="mobile-header-icons">
+                <div>
+                    <img src="images/material-symbols_search.png" alt="Search">
+                    <p>Search</p>
+                </div>
+                 <div class="cart-icon">
+                   <a style="text-decoration:none;color:white" href="cart.html">
+                    <img src="images/Group 189.png" alt="Cart Icon">
+                    <p>Cart <span class="cart-count">0</span></p>
+                    </a>
 
-          </div>
-
-
-          <div>
-            <img src="images/Group 190.png" alt="Liked">
-            <p>Liked</p>
-          </div>
-          <button class="login-btn">Sign Up / Sign In</button>
-        </div>
-      </div>
-
-      <div id="mobile-menu" class="hidden">
-        <div class="mobile-logo-section">
-          <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
-          <h1>Wooden Dreams</h1>
-        </div>
-        <a href="home.html">Home</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="categories.html">Categories</a>
-        <a href="shop.html" class="active">Shop</a>
-        <a href="blog.html">Blog</a>
-        <a href="#footer-social">Contact</a>
-      </div>
-    </div>
+                </div>
 
 
-    <!-- Shop Banner Section -->
-    <section class="shop-banner">
-      <div class="shop-banner-overlay">
-        <div class="shop-banner-content">
-          <h2>Shop</h2>
-          <nav class="breadcrumb">
-            <a href="home.html">Home</a> <span>›</span> <span><a href="shop.html">Shop</a></span>
-          </nav>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Filters and Sort Section -->
-    <section class="controls-container">
-      <div id="filter-control" class="open-filter-btn">
-        <img src="images/download.png" alt="Filter Icon">
-        <span>Filter</span>
-      </div>
-      <div class="result-count">Showing 1–8 of 8 results</div>
-      <div class="show-control">
-        Show <input type="number" min="1" max="100" value="8">
-      </div>
-      <div class="sort-control">
-        Sort by
-        <select>
-          <option value="">Default</option>
-          <option value="price-low-high">Price: Low to High</option>
-          <option value="price-high-low">Price: High to Low</option>
-          <option value="newest">Newest</option>
-        </select>
-      </div>
-      <div class="cart-actions">
-        <button id="clear-cart">🗑️ Clear Cart</button>
-      </div>
-      <a href="product-comparison.html" class="view-compare-btn">View Comparison</a>
-    </section>
-    <!-- Filter Modal -->
-    <div id="filter-modal" class="filter-modal">
-      <div class="filter-modal-content">
-        <div class="filter-header">
-          <h2>Filter</h2>
-          <span class="close-filter">&times;</span>
-        </div>
-
-        <div class="filter-section">
-          <h3>Material</h3>
-          <label><input type="checkbox" name="material" value="wood"> Wood</label>
-          <label><input type="checkbox" name="material" value="metal"> Metal</label>
-          <label><input type="checkbox" name="material" value="leather"> Leather</label>
-          <label><input type="checkbox" name="material" value="fabric"> Fabric</label>
-        </div>
-
-        <div class="filter-section">
-          <h3>Country Collection</h3>
-          <label><input type="checkbox" name="country" value="india"> India</label>
-          <label><input type="checkbox" name="country" value="japan"> Japan</label>
-          <label><input type="checkbox" name="country" value="italy"> Italy</label>
-          <label><input type="checkbox" name="country" value="china"> China</label>
-        </div>
-
-        <div class="filter-section">
-          <h3>Seating Capacity</h3>
-          <label><input type="checkbox" name="seating" value="1"> 1</label>
-          <label><input type="checkbox" name="seating" value="2"> 2</label>
-          <label><input type="checkbox" name="seating" value="3"> 3</label>
-          <label><input type="checkbox" name="seating" value="4+"> 4+</label>
-        </div>
-
-        <div class="filter-section">
-          <h3>Price</h3>
-          <label><input type="checkbox" name="price" value="0-15000"> Below ₹15,000</label>
-          <label><input type="checkbox" name="price" value="15001-30000"> ₹15,001 - ₹30,000</label>
-          <label><input type="checkbox" name="price" value="30001-50000"> ₹30,001 - ₹50,000</label>
-          <label><input type="checkbox" name="price" value="50001-100000"> Above ₹50,000</label>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Product Grid -->
-    <h2>Shop By Categories</h2>
-    <section class="best-sellers">
-      <h2 class="best-sellers-title">Best Sellars</h2>
-      <p class="subtitle">Our Most Loved Pieces</p>
-      <div class="products">
-
-      </div>
-    </section>
-    <!-- Features Section -->
-    <section class="features-section">
-      <div class="features-container">
-        <div class="feature-item">
-          <img src="images/trophy 1.png" alt="High Quality Icon">
-          <div class="feature-text">
-            <h3>High Quality</h3>
-            <p>crafted from top materials</p>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <img src="images/guarantee.png" alt="Warranty Protection Icon">
-          <div class="feature-text">
-            <h3>Warranty Protection</h3>
-            <p>Over 2 years</p>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <img src="images/Vectorm.png" alt="Free Shipping Icon">
-          <div class="feature-text">
-            <h3>Free ShippiVectorm.png
-              <p>Order over 150 $</p>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <img src="images/Vector  k.png" alt="24/7 Support Icon">
-          <div class="feature-text">
-            <h3>24 / 7 Support</h3>
-            <p>Dedicated support</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="new-arrivals">
-      <div class="new-arrivals-header">
-        <h2>New Arrivals</h2>
-        <!-- <a href="#">EXPLORE ALL</a> -->
-      </div>
-      <p class="new-arrivals-subtitle">Discover What's New</p>
-      <div class="new-arrivals-products"></div>
-    </section>
-
-    <!-- Footer Section-->
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-left">
-          <div class="footer-logo">
-            <img src="images/Group 206.png" alt="Logo">
-            <h3>Wooden Dreams</h3>
-          </div>
-          <p class="footer-desc">
-            "At Wooden Dreams, we craft furniture that brings warmth and comfort to your home. Our wooden creations are
-            designed to inspire sweet dreams and peaceful nights. Every piece is carefully crafted to provide a haven of
-            relaxation and tranquility. Sleep tight, dream big with Wooden Dreams."
-          </p>
-          <p class="footer-contact"><img src="images/raphael_loaction2.png" alt="Location Icon"> Head Office 13/5, Post
-            office oppsite, Chennai.876543</p>
-          <p class="footer-contact"><img src="images/mdi_internet.png" alt="Website Icon"> www.woodendreams.in</p>
-          <p class="footer-contact"><img src="images/material-symbols_mail-outline.png" alt="Mail Icon">
-            woodendreams@gamil.com</p>
-        </div>
-        <div class="footer-links">
-          <div class="links-section">
-            <h4>LINKS</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="aboutus.html">About</a></li>
-              <li><a href="categories.html">Categories</a></li>
-              <li><a href="shop.html" class="active">Shop</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#footer-social">Contact</a></li>
-            </ul>
-          </div>
-          <div class="help-section">
-            <h4>HELP</h4>
-            <ul>
-              <li><a href="#">Payment Options</a></li>
-              <li><a href="#">Returns</a></li>
-              <li><a href="#">Privacy Policies</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-subscribe" id="footer-social">
-          <h4>Subscribe</h4>
-          <form>
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit">SIGN UP</button>
-          </form>
-          <div class="footer-social">
-            <p>Follow Us</p>
-            <div>
-              <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
-              <a href="#"><img src="images/Google.png" alt="Google"></a>
-              <a href="#"><img src="images/SVG.png" alt="Facebook"></a>
+                <div>
+                    <img src="images/Group 190.png" alt="Liked">
+                    <p>Liked</p>
+                </div>
+                <button class="login-btn">Sign Up / Sign In</button>
             </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <p class="footer-bottom">2025 Wooden Dreams. All rights reserved</p>
-    </footer>
-    </section>
-
-
-    <div id="hover-modal" class="hover-modal">
-      <div class="modal-content">
-
-        <div class="dark-area">
-          <div class="dark-overlay"></div>
-
-          <div class="modal-image-wrapper">
-            <img id="modal-image" src="" alt="" />
-          </div>
-
-          <div class="modal-overlay-text">
-            <h4 id="modal-title"></h4>
-            <p id="modal-subtitle"></p>
-            <p id="modal-price"></p>
-          </div>
         </div>
 
-        <a id="modal-add-to-cart" href="#" class="add-to-cart-btn">Add to Cart</a>
-
-        <div class="overlay-actions">
-          <a id="modal-share" href="#"><img src="images/gridicons_share.png">Share</a>
-          <a id="modal-quick-view" href="#"> <img src="images/Group.png">Quick View</a>
-          <a id="modal-like" href="#"><img src="images/Heart.png">Like</a>
+        <div id="mobile-menu" class="hidden">
+            <div class="mobile-logo-section">
+                <img src="images/Group 206.png" alt="Wooden Dreams Logo" class="mobile-logo">
+                <h1>Wooden Dreams</h1>
+            </div>
+            <a href="index.html" >Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="categories.html">Categories</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="blog.html">Blog</a>
+            <a href="#footer-social">Contact</a>
         </div>
-
-      </div>
     </div>
 
-    <!-- Cart Modal -->
-    <div id="cartModal" class="cart-modal hidden">
-      <div class="cart-modal-content">
-        <span class="close-cart">&times;</span>
-        <h2>Your Cart</h2>
-        <div class="cart-items"></div>
-        <div class="cart-total">Total: Rp <span id="cart-total">0</span></div>
-        <div class="cart-footer">
-          <button id="checkoutBtn">Proceed to Checkout</button>
+
+  <!-- Shop Banner Section -->
+  <section class="shop-banner">
+    <div class="shop-banner-overlay">
+      <div class="shop-banner-content">
+        <h2>Shop</h2>
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a> <span>›</span> <span><a href="shop.html">Shop</a></span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Filters and Sort Section -->
+  <section class="controls-container">
+    <div id="filter-control" class="open-filter-btn">
+      <img src="images/download.png" alt="Filter Icon">
+      <span>Filter</span>
+    </div>
+    <div class="result-count">Showing 1–8 of 8 results</div>
+    <div class="show-control">
+      Show <input type="number" min="1" max="100" value="8">
+    </div>
+    <div class="sort-control">
+      Sort by
+      <select>
+        <option value="">Default</option>
+        <option value="price-low-high">Price: Low to High</option>
+        <option value="price-high-low">Price: High to Low</option>
+        <option value="newest">Newest</option>
+      </select>
+    </div>
+    <div class="cart-actions">
+      <button id="clear-cart">🗑️ Clear Cart</button>
+    </div>
+    <a href="product-comparison.html" class="view-compare-btn">View Comparison</a>
+  </section>
+  <!-- Filter Modal -->
+  <div id="filter-modal" class="filter-modal">
+    <div class="filter-modal-content">
+      <div class="filter-header">
+        <h2>Filter</h2>
+        <span class="close-filter">&times;</span>
+      </div>
+
+      <div class="filter-section">
+        <h3>Material</h3>
+        <label><input type="checkbox" name="material" value="wood"> Wood</label>
+        <label><input type="checkbox" name="material" value="metal"> Metal</label>
+        <label><input type="checkbox" name="material" value="leather"> Leather</label>
+        <label><input type="checkbox" name="material" value="fabric"> Fabric</label>
+      </div>
+
+      <div class="filter-section">
+        <h3>Country Collection</h3>
+        <label><input type="checkbox" name="country" value="india"> India</label>
+        <label><input type="checkbox" name="country" value="japan"> Japan</label>
+        <label><input type="checkbox" name="country" value="italy"> Italy</label>
+        <label><input type="checkbox" name="country" value="china"> China</label>
+      </div>
+
+      <div class="filter-section">
+        <h3>Seating Capacity</h3>
+        <label><input type="checkbox" name="seating" value="1"> 1</label>
+        <label><input type="checkbox" name="seating" value="2"> 2</label>
+        <label><input type="checkbox" name="seating" value="3"> 3</label>
+        <label><input type="checkbox" name="seating" value="4+"> 4+</label>
+      </div>
+
+      <div class="filter-section">
+        <h3>Price</h3>
+        <label><input type="checkbox" name="price" value="0-15000"> Below ₹15,000</label>
+        <label><input type="checkbox" name="price" value="15001-30000"> ₹15,001 - ₹30,000</label>
+        <label><input type="checkbox" name="price" value="30001-50000"> ₹30,001 - ₹50,000</label>
+        <label><input type="checkbox" name="price" value="50001-100000"> Above ₹50,000</label>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Product Grid -->
+  <h2>Shop By Categories</h2>
+  <section class="best-sellers">
+    <h2 class="best-sellers-title">Best Sellars</h2>
+    <p class="subtitle">Our Most Loved Pieces</p>
+    <div class="products">
+
+    </div>
+  </section>
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="features-container">
+      <div class="feature-item">
+        <img src="images/trophy 1.png" alt="High Quality Icon">
+        <div class="feature-text">
+          <h3>High Quality</h3>
+          <p>crafted from top materials</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <img src="images/guarantee.png" alt="Warranty Protection Icon">
+        <div class="feature-text">
+          <h3>Warranty Protection</h3>
+          <p>Over 2 years</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <img src="images/Vectorm.png" alt="Free Shipping Icon">
+        <div class="feature-text">
+          <h3>Free ShippiVectorm.png
+            <p>Order over 150 $</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <img src="images/Vector  k.png" alt="24/7 Support Icon">
+        <div class="feature-text">
+          <h3>24 / 7 Support</h3>
+          <p>Dedicated support</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <script src="products.js"></script>
+  <section class="new-arrivals">
+    <div class="new-arrivals-header">
+      <h2>New Arrivals</h2>
+      <!-- <a href="#">EXPLORE ALL</a> -->
+    </div>
+    <p class="new-arrivals-subtitle">Discover What's New</p>
+    <div class="new-arrivals-products"></div>
+  </section>
 
-    <!-- Filter Modal Script -->
-    <script>
-      const filterModal = document.getElementById("filter-modal");
-      const openFilterBtn = document.getElementById("filter-control");
-      const closeFilterBtn = document.querySelector(".close-filter");
+  <!-- Footer Section-->
 
-      openFilterBtn.addEventListener("click", () => {
-        filterModal.classList.add("open");
-      });
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <img src="images/Group 206.png" alt="Logo">
+          <h3>Wooden Dreams</h3>
+        </div>
+        <p class="footer-desc">
+          "At Wooden Dreams, we craft furniture that brings warmth and comfort to your home. Our wooden creations are
+          designed to inspire sweet dreams and peaceful nights. Every piece is carefully crafted to provide a haven of
+          relaxation and tranquility. Sleep tight, dream big with Wooden Dreams."
+        </p>
+        <p class="footer-contact"><img src="images/raphael_loaction2.png" alt="Location Icon"> Head Office 13/5, Post
+          office oppsite, Chennai.876543</p>
+        <p class="footer-contact"><img src="images/mdi_internet.png" alt="Website Icon"> www.woodendreams.in</p>
+        <p class="footer-contact"><img src="images/material-symbols_mail-outline.png" alt="Mail Icon">
+          woodendreams@gamil.com</p>
+      </div>
+      <div class="footer-links">
+        <div class="links-section">
+          <h4>LINKS</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="shop.html" class="active">Shop</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#footer-social">Contact</a></li>
+          </ul>
+        </div>
+        <div class="help-section">
+          <h4>HELP</h4>
+          <ul>
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Privacy Policies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-subscribe" id="footer-social">
+        <h4>Subscribe</h4>
+        <form>
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">SIGN UP</button>
+        </form>
+        <div class="footer-social">
+          <p>Follow Us</p>
+          <div>
+            <a href="#"><img src="images/icon-instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="images/Google.png" alt="Google"></a>
+            <a href="#"><img src="images/SVG.png" alt="Facebook"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p class="footer-bottom">2025 Wooden Dreams. All rights reserved</p>
+  </footer>
+  </section>
 
-      closeFilterBtn.addEventListener("click", () => {
-        filterModal.classList.remove("open");
-      });
 
-    </script>
+  <div id="hover-modal" class="hover-modal">
+    <div class="modal-content">
 
-    <script>
+      <div class="dark-area">
+        <div class="dark-overlay"></div>
 
-      const products = [
-        { name: "Syltherine", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/Rectangle 286 p.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-30%" },
-        { name: "Lolito", price: 15000, material: "metal", country: "japan", seating: "1", isNew: false, image: "images/Rectangle 286 q.png", oldprice: 14000, desc: "Luxury big sofa", badge: "-50%" },
-        { name: "Pingky", price: 50000, material: "leather", country: "italy", seating: "3", isNew: false, image: "images/Images i.png", oldprice: 14000, desc: "Cute bed set", badge: "-30%" },
-        { name: "Patio", price: 30000, material: "wood", country: "japan", seating: "2", isNew: true, image: "images/Images q.png", oldprice: 35000, desc: "Wooden chair", badge: "-45%" },
-        { name: "Grifo", price: 20000, material: "metal", country: "china", seating: "2", isNew: false, image: "images/Images j.png", oldprice: 14000, desc: "China made", badge: "-45%" },
-        { name: "Leviosa", price: 18000, material: "fabric", country: "china", seating: "1", isNew: false, image: "images/Rectangle 276 h.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-45%" },
-      ];
+        <div class="modal-image-wrapper">
+          <img id="modal-image" src="" alt="" />
+        </div>
+
+        <div class="modal-overlay-text">
+          <h4 id="modal-title"></h4>
+          <p id="modal-subtitle"></p>
+          <p id="modal-price"></p>
+        </div>
+      </div>
+
+      <a id="modal-add-to-cart" href="#" class="add-to-cart-btn">Add to Cart</a>
+
+      <div class="overlay-actions">
+        <a id="modal-share" href="#"><img src="images/gridicons_share.png">Share</a>
+        <a id="modal-quick-view" href="#"> <img src="images/Group.png">Quick View</a>
+        <a id="modal-like" href="#"><img src="images/Heart.png">Like</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div id="cartModal" class="cart-modal hidden">
+    <div class="cart-modal-content">
+      <span class="close-cart">&times;</span>
+      <h2>Your Cart</h2>
+      <div class="cart-items"></div>
+      <div class="cart-total">Total: Rp <span id="cart-total">0</span></div>
+      <div class="cart-footer">
+        <button id="checkoutBtn">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="products.js"></script>
+
+  <!-- Filter Modal Script -->
+  <script>
+    const filterModal = document.getElementById("filter-modal");
+    const openFilterBtn = document.getElementById("filter-control");
+    const closeFilterBtn = document.querySelector(".close-filter");
+
+    openFilterBtn.addEventListener("click", () => {
+      filterModal.classList.add("open");
+    });
+
+    closeFilterBtn.addEventListener("click", () => {
+      filterModal.classList.remove("open");
+    });
+
+  </script>
+
+  <script>
+
+    const products = [
+      { name: "Syltherine", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/Rectangle 286 p.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-30%" },
+      { name: "Lolito", price: 15000, material: "metal", country: "japan", seating: "1", isNew: false, image: "images/Rectangle 286 q.png", oldprice: 14000, desc: "Luxury big sofa", badge: "-50%" },
+      { name: "Pingky", price: 50000, material: "leather", country: "italy", seating: "3", isNew: false, image: "images/Images i.png", oldprice: 14000, desc: "Cute bed set", badge: "-30%" },
+      { name: "Patio", price: 30000, material: "wood", country: "japan", seating: "2", isNew: true, image: "images/Images q.png", oldprice: 35000, desc: "Wooden chair", badge: "-45%" },
+      { name: "Grifo", price: 20000, material: "metal", country: "china", seating: "2", isNew: false, image: "images/Images j.png", oldprice: 14000, desc: "China made", badge: "-45%" },
+      { name: "Leviosa", price: 18000, material: "fabric", country: "china", seating: "1", isNew: false, image: "images/Rectangle 276 h.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-45%" },
+    ];
 
 
 
-      let filteredProducts = [...products];
-      let itemsToShow = 16;
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let filteredProducts = [...products];
+    let itemsToShow = 16;
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      const resultCount = document.querySelector('.result-count');
-      const showInput = document.querySelector('.show-control input');
-      const sortSelect = document.querySelector('.sort-control select');
-      const productsContainer = document.querySelector('.products');
-      const cartCount = document.querySelector('.cart-count');
+    const resultCount = document.querySelector('.result-count');
+    const showInput = document.querySelector('.show-control input');
+    const sortSelect = document.querySelector('.sort-control select');
+    const productsContainer = document.querySelector('.products');
+    const cartCount = document.querySelector('.cart-count');
 
-      function updateResultCount() {
-        resultCount.textContent = `Showing 1–${Math.min(itemsToShow, filteredProducts.length)} of ${filteredProducts.length} results`;
-      }
+    function updateResultCount() {
+      resultCount.textContent = `Showing 1–${Math.min(itemsToShow, filteredProducts.length)} of ${filteredProducts.length} results`;
+    }
 
-      function updateCartBadge() {
-        const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
-        if (cartCount) {
-          const totalItems = currentCart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-          cartCount.textContent = totalItems;
-        }
-      }
+    function updateCartBadge() {
+  const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cartCount) {
+    const totalItems = currentCart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    cartCount.textContent = totalItems;
+  }
+}
 
 
-      function saveCart() {
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartBadge();
-      }
+    function saveCart() {
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartBadge();
+    }
 
-      function renderProducts() {
-        if (!productsContainer) return;
-        productsContainer.innerHTML = "";
+ function renderProducts() {
+  if (!productsContainer) return;
+  productsContainer.innerHTML = "";
 
-        filteredProducts.slice(0, itemsToShow).forEach(product => {
-          const card = document.createElement("div");
-          card.className = "product-card";
-          card.innerHTML = `
+  filteredProducts.slice(0, itemsToShow).forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
       <div class="badge-container">
         ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
       </div>
@@ -743,76 +739,76 @@
     </div>
     `;
 
-          // ✅ Define the compare button first
-          const compareBtn = card.querySelector(".add-to-compare");
+    // ✅ Define the compare button first
+    const compareBtn = card.querySelector(".add-to-compare");
 
-          // ✅ Then add event listener
-          compareBtn.addEventListener("click", () => {
-            addToCompare(product);
-            compareBtn.textContent = "Added ✓";
-            compareBtn.classList.add("added");
-            compareBtn.disabled = true;
-          });
+    // ✅ Then add event listener
+    compareBtn.addEventListener("click", () => {
+      addToCompare(product);
+      compareBtn.textContent = "Added ✓";
+      compareBtn.classList.add("added");
+      compareBtn.disabled = true;
+    });
 
-          productsContainer.appendChild(card);
-        });
+    productsContainer.appendChild(card);
+  });
 
-        // Add to Cart event listeners
-        document.querySelectorAll(".add-to-cart").forEach(btn => {
-          btn.addEventListener("click", () => addToCart(btn.dataset.name));
-        });
+  // Add to Cart event listeners
+  document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", () => addToCart(btn.dataset.name));
+  });
 
-        updateResultCount();
-        localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
-      }
+  updateResultCount();
+  localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
+}
 
 
-      function isAlreadyCompared(product) {
-        const compared = JSON.parse(localStorage.getItem("compareList")) || [];
-        return compared.some(p => p.name === product.name);
-      }
+function isAlreadyCompared(product) {
+  const compared = JSON.parse(localStorage.getItem("compareList")) || [];
+  return compared.some(p => p.name === product.name);
+}
 
-      if (showInput) {
-        showInput.addEventListener("input", () => {
-          itemsToShow = parseInt(showInput.value) || 1;
-          renderProducts();
-        });
-      }
+    if (showInput) {
+      showInput.addEventListener("input", () => {
+        itemsToShow = parseInt(showInput.value) || 1;
+        renderProducts();
+      });
+    }
 
-      if (sortSelect) {
-        sortSelect.addEventListener("change", () => {
-          const val = sortSelect.value;
-          if (val === "price-low-high") {
-            filteredProducts.sort((a, b) => a.price - b.price);
-          } else if (val === "price-high-low") {
-            filteredProducts.sort((a, b) => b.price - a.price);
-          } else if (val === "newest") {
-            filteredProducts.sort((a, b) => b.isNew - a.isNew);
-          } else {
-            filteredProducts = [...products];
-          }
-          renderProducts();
-        });
-      }
-      const newArrivalProducts = [
-        { name: "Respira", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/Rectangle 281.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
-        { name: "Muggo", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/Group 146.png", oldprice: 15000, subtitle: "leather based sofa", badge: "New" },
-        { name: "Potty", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/image 2.png", oldprice: 35000, subtitle: "Metal Chair", badge: "New" },
-        { name: "Asgaardsofa", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/Asgaard sofa 4.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
-        { name: "Oak Wood Chair", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "Elegant and durable", badge: "New" },
-        { name: "Teak Dining Table", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Group 206 h.png", oldprice: 35000, subtitle: "Perfect for families", badge: "New" }
-      ];
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        const val = sortSelect.value;
+        if (val === "price-low-high") {
+          filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (val === "price-high-low") {
+          filteredProducts.sort((a, b) => b.price - a.price);
+        } else if (val === "newest") {
+          filteredProducts.sort((a, b) => b.isNew - a.isNew);
+        } else {
+          filteredProducts = [...products];
+        }
+        renderProducts();
+      });
+    }
+    const newArrivalProducts = [
+      { name: "Respira", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/Rectangle 281.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
+      { name: "Muggo", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/Group 146.png", oldprice: 15000, subtitle: "leather based sofa", badge: "New" },
+      { name: "Potty", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/image 2.png", oldprice: 35000, subtitle: "Metal Chair", badge: "New" },
+      { name: "Asgaardsofa", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/Asgaard sofa 4.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
+      { name: "Oak Wood Chair", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "Elegant and durable", badge: "New" },
+      { name: "Teak Dining Table", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Group 206 h.png", oldprice: 35000, subtitle: "Perfect for families", badge: "New" }
+    ];
 
-      function renderNewArrivals() {
-        const newArrivalsContainer = document.querySelector(".new-arrivals-products");
-        if (!newArrivalsContainer) return;
+    function renderNewArrivals() {
+      const newArrivalsContainer = document.querySelector(".new-arrivals-products");
+      if (!newArrivalsContainer) return;
 
-        newArrivalsContainer.innerHTML = "";
+      newArrivalsContainer.innerHTML = "";
 
-        newArrivalProducts.forEach(product => {
-          const card = document.createElement("div");
-          card.className = "product-card";
-          card.innerHTML = `
+      newArrivalProducts.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
       <div class="badge-container">
         ${product.badge ? `<span class="newbadge">${product.badge}</span>` : ""}
       </div>
@@ -835,202 +831,204 @@
     </div>
     `;
 
-          const compareBtn = card.querySelector(".add-to-compare");
+      const compareBtn = card.querySelector(".add-to-compare");
 
-          // ✅ Then add event listener
-          compareBtn.addEventListener("click", () => {
-            addToCompare(product);
-            compareBtn.textContent = "Added ✓";
-            compareBtn.classList.add("added");
-            compareBtn.disabled = true;
-          });
-          newArrivalsContainer.appendChild(card);
-        });
-
-        newArrivalsContainer.querySelectorAll(".add-to-cart").forEach(btn => {
-          btn.addEventListener("click", () => addToCart(btn.dataset.name));
-        });
-      }
-
-
-
-      function applyFilters() {
-        const materials = Array.from(document.querySelectorAll("input[name='material']:checked"), el => el.value);
-        const countries = Array.from(document.querySelectorAll("input[name='country']:checked"), el => el.value);
-        const seatings = Array.from(document.querySelectorAll("input[name='seating']:checked"), el => el.value);
-        const prices = Array.from(document.querySelectorAll("input[name='price']:checked"), el => el.value);
-
-        filteredProducts = products.filter(p => {
-          const matchMaterial = materials.length === 0 || materials.includes(p.material);
-          const matchCountry = countries.length === 0 || countries.includes(p.country);
-          const matchSeating = seatings.length === 0 || seatings.includes(p.seating);
-          const matchPrice = prices.length === 0 || prices.some(range => {
-            const [min, max] = range.split('-').map(Number);
-            return p.price >= min && (isNaN(max) || p.price <= max);
-          });
-
-          return matchMaterial && matchCountry && matchSeating && matchPrice;
-        });
-
-        renderProducts();
-      }
-
-      // function addToCart(productName) {
-      //   const product = [...products, ...newArrivalProducts].find(p => p.name === productName);
-      //   if (product) {
-      //     cart.push(product);
-      //    saveCart();
-      //   }
-      //}
-      function addToCart(productName) {
-        const productList = [...products, ...newArrivalProducts];
-        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        const existingItem = existingCart.find(item => item.name === productName);
-        if (existingItem) {
-          existingItem.quantity += 1;
-        } else {
-          const product = productList.find(p => p.name === productName);
-          if (product) {
-            existingCart.push({ ...product, quantity: 1 });
-          }
-        }
-
-        localStorage.setItem("cart", JSON.stringify(existingCart));
-        updateCartBadge();
-      }
-
-      const openCartBtn = document.querySelector(".cart-icon");
-      const cartModal = document.getElementById("cartModal");
-      const closeCartBtn = document.querySelector(".close-cart");
-      const cartItemsContainer = document.querySelector(".cart-items");
-      const cartTotalEl = document.getElementById("cart-total");
-
-      openCartBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        renderCartItems();
-        cartModal.classList.remove("hidden");
+    // ✅ Then add event listener
+    compareBtn.addEventListener("click", () => {
+      addToCompare(product);
+      compareBtn.textContent = "Added ✓";
+      compareBtn.classList.add("added");
+      compareBtn.disabled = true;
+    });
+        newArrivalsContainer.appendChild(card);
       });
 
-      closeCartBtn.addEventListener("click", () => {
-        cartModal.classList.add("hidden");
+      newArrivalsContainer.querySelectorAll(".add-to-cart").forEach(btn => {
+        btn.addEventListener("click", () => addToCart(btn.dataset.name));
+      });
+    }
+
+
+
+    function applyFilters() {
+      const materials = Array.from(document.querySelectorAll("input[name='material']:checked"), el => el.value);
+      const countries = Array.from(document.querySelectorAll("input[name='country']:checked"), el => el.value);
+      const seatings = Array.from(document.querySelectorAll("input[name='seating']:checked"), el => el.value);
+      const prices = Array.from(document.querySelectorAll("input[name='price']:checked"), el => el.value);
+
+      filteredProducts = products.filter(p => {
+        const matchMaterial = materials.length === 0 || materials.includes(p.material);
+        const matchCountry = countries.length === 0 || countries.includes(p.country);
+        const matchSeating = seatings.length === 0 || seatings.includes(p.seating);
+        const matchPrice = prices.length === 0 || prices.some(range => {
+          const [min, max] = range.split('-').map(Number);
+          return p.price >= min && (isNaN(max) || p.price <= max);
+        });
+
+        return matchMaterial && matchCountry && matchSeating && matchPrice;
       });
 
-      function renderCartItems() {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cartItemsContainer.innerHTML = "";
-        let total = 0;
+      renderProducts();
+    }
 
-        if (cart.length === 0) {
-          cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-          cartTotalEl.textContent = "0";
-          return;
-        }
+   // function addToCart(productName) {
+   //   const product = [...products, ...newArrivalProducts].find(p => p.name === productName);
+   //   if (product) {
+   //     cart.push(product);
+    //    saveCart();
+   //   }
+    //}
+function addToCart(productName) {
+  const productList = [...products, ...newArrivalProducts];
+  const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        cart.forEach(item => {
-          const cleanPrice = typeof item.price === "string"
-            ? parseInt(item.price.replace(/[^\d]/g, ""), 10)
-            : item.price;
+  const existingItem = existingCart.find(item => item.name === productName);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    const product = productList.find(p => p.name === productName);
+    if (product) {
+      existingCart.push({ ...product, quantity: 1 });
+    }
+  }
 
-          const subtotal = cleanPrice * item.quantity;
-          total += subtotal;
+  localStorage.setItem("cart", JSON.stringify(existingCart));
+    updateCartBadge();
+}
 
-          const itemDiv = document.createElement("div");
-          itemDiv.className = "cart-item";
-          itemDiv.innerHTML = `
+    const openCartBtn = document.querySelector(".cart-icon");
+    const cartModal = document.getElementById("cartModal");
+    const closeCartBtn = document.querySelector(".close-cart");
+    const cartItemsContainer = document.querySelector(".cart-items");
+    const cartTotalEl = document.getElementById("cart-total");
+
+    openCartBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      renderCartItems();
+      cartModal.classList.remove("hidden");
+    });
+
+    closeCartBtn.addEventListener("click", () => {
+      cartModal.classList.add("hidden");
+    });
+
+function renderCartItems() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartItemsContainer.innerHTML = "";
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+    cartTotalEl.textContent = "0";
+    return;
+  }
+
+  cart.forEach(item => {
+    const cleanPrice = typeof item.price === "string" 
+      ? parseInt(item.price.replace(/[^\d]/g, ""), 10) 
+      : item.price;
+
+    const subtotal = cleanPrice * item.quantity;
+    total += subtotal;
+
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "cart-item";
+    itemDiv.innerHTML = `
       <p><strong>${item.name}</strong> × ${item.quantity}</p>
       <p>Rp ${subtotal.toLocaleString()}</p>
     `;
-          cartItemsContainer.appendChild(itemDiv);
-        });
+    cartItemsContainer.appendChild(itemDiv);
+  });
 
-        cartTotalEl.textContent = total.toLocaleString();
-      }
+  cartTotalEl.textContent = total.toLocaleString();
+}
 
-      document.getElementById("checkoutBtn").addEventListener("click", () => {
-        window.location.href = "cart.html";
-      });
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      window.location.href = "cart.html";
+    });
 
-      const clearCartBtn = document.getElementById("clear-cart");
+    const clearCartBtn = document.getElementById("clear-cart");
 
-      function clearCart() {
-        cart.length = 0;
-        saveCart();
-      }
-
-      if (clearCartBtn) {
-        clearCartBtn.addEventListener("click", clearCart);
-      }
-
-      document.querySelectorAll("input[name='material'], input[name='country'], input[name='seating'], input[name='price']").forEach(input => {
-        input.addEventListener("change", applyFilters);
-      });
-
-      // Initial render
-      document.addEventListener("DOMContentLoaded", () => {
-        renderProducts();
-        renderNewArrivals();
-        updateCartBadge();
-      });
-
-    </script>
-    <script>
-      function addToWishlist(iconElement) {
-        const card = iconElement.closest(".product-card");
-        const name = card.querySelector("h2").textContent;
-
-
-        const priceText = card.querySelector(".price .new").textContent.replace(/[^\d]/g, "");
-        const oldPriceText = card.querySelector(".price .old-price").textContent.replace(/[^\d]/g, "");
-
-        const img = card.querySelector("img").src;
-        const desc = card.querySelector(".product-subtitle").textContent;
-
-        const wishlistItem = {
-          name: name,
-          price: parseInt(priceText),
-          oldprice: parseInt(oldPriceText),
-          image: img,
-          desc: desc
-        };
-
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-        const exists = wishlist.some(item => item.name === wishlistItem.name);
-        if (!exists) {
-          wishlist.push(wishlistItem);
-          localStorage.setItem("wishlist", JSON.stringify(wishlist));
-          iconElement.textContent = "💖"; // Visual feedback
-        }
-      }
-
-    </script>
-    <script>
-      function addToCompare(product) {
-        const compareList = JSON.parse(localStorage.getItem("compareList")) || [];
-
-        if (!compareList.some(p => p.name === product.name)) {
-          compareList.push({
-            name: product.name,
-            price: product.price,
-            oldprice: product.oldprice,
-            material: product.material,
-            image: product.image,
-            size: product.size || "Standard", // default if missing
-            color: product.color || "Varies",
-            description: product.desc || product.subtitle || "No description"
-          });
-
-          localStorage.setItem("compareList", JSON.stringify(compareList));
-        }
-      }
-
-
-    </script>
-    function isAlreadyCompared(product) {
-    const compareList = JSON.parse(localStorage.getItem("compareList")) || [];
-    return compareList.some(p => p.id === product.id || p.name === product.name);
+    function clearCart() {
+      cart.length = 0;
+      saveCart();
     }
+
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener("click", clearCart);
+    }
+
+    document.querySelectorAll("input[name='material'], input[name='country'], input[name='seating'], input[name='price']").forEach(input => {
+      input.addEventListener("change", applyFilters);
+    });
+
+    // Initial render
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      renderNewArrivals();
+      updateCartBadge();
+    });
+    
+  </script>
+  <script>
+  function addToWishlist(iconElement) {
+  const card = iconElement.closest(".product-card");
+  const name = card.querySelector("h2").textContent;
+  
+  
+  const priceText = card.querySelector(".price .new").textContent.replace(/[^\d]/g, "");
+const oldPriceText = card.querySelector(".price .old-price").textContent.replace(/[^\d]/g, "");
+
+  const img = card.querySelector("img").src;
+  const desc = card.querySelector(".product-subtitle").textContent;
+
+  const wishlistItem = {
+    name: name,
+    price: parseInt(priceText),
+    oldprice: parseInt(oldPriceText),
+    image: img,
+    desc: desc
+  };
+
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  const exists = wishlist.some(item => item.name === wishlistItem.name);
+  if (!exists) {
+    wishlist.push(wishlistItem);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    iconElement.textContent = "💖"; // Visual feedback
+  }
+}
+
+</script>
+<script>
+  function addToCompare(product) {
+  const compareList = JSON.parse(localStorage.getItem("compareList")) || [];
+
+  if (!compareList.some(p => p.name === product.name)) {
+    compareList.push({
+      name: product.name,
+      price: product.price,
+      oldprice: product.oldprice,
+      material: product.material,
+      image: product.image,
+      size: product.size || "Standard", // default if missing
+      color: product.color || "Varies",
+      description: product.desc || product.subtitle || "No description"
+    });
+
+    localStorage.setItem("compareList", JSON.stringify(compareList));
+  }
+}
+
+
+</script>
+
+
+function isAlreadyCompared(product) {
+  const compareList = JSON.parse(localStorage.getItem("compareList")) || [];
+  return compareList.some(p => p.id === product.id || p.name === product.name);
+}
 
 </body>
 

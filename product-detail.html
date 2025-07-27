@@ -284,7 +284,7 @@
     <h1>Wooden Dreams</h1>
   </div>
   <nav class="navbar">
-    <a href="home.html">Home</a>
+    <a href="index.html">Home</a>
     <a href="aboutus.html">About Us</a>
     <a href="categories.html">Categories</a>
     <a href="shop.html"  class="active">Shop</a>
@@ -316,7 +316,7 @@
 </header>
 
 
-  <div style="background-color: #f9f4ef;padding:40px"><a style="text-decoration: none;color:black" href="home.html">Home</a> › <a
+  <div style="background-color: #f9f4ef;padding:40px"><a style="text-decoration: none;color:black" href="index.html">Home</a> › <a
       style="text-decoration: none;color:black" href="shop.html">Shop ></a><span
       id="breadcrumb-product-name">Product</span></div>
   </header>
@@ -735,7 +735,26 @@ material: "metal"
       }
     ];
   </script>
+<script>
+        function clearCart() {
+            localStorage.removeItem("cart"); // Clear from localStorage
+            const cartCountElements = document.querySelectorAll(".cart-count");
+            cartCountElements.forEach(el => el.textContent = "0"); // Update UI
+            alert("🛒 Cart cleared!");
+        }
 
+        document.addEventListener("DOMContentLoaded", function () {
+            const clearCartBtn = document.getElementById("clear-cart");
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener("click", clearCart);
+            }
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            renderProducts();
+            renderNewArrivals();
+            updateCartBadge();
+        });
+    </script>
   <script>
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
@@ -990,6 +1009,9 @@ material: "metal"
   // Run it on every page load
   document.addEventListener("DOMContentLoaded", updateCartCount);
 </script>
+
+
+
 </body>
 
 </html>

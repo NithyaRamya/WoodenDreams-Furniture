@@ -23,15 +23,16 @@
     <a href="home.html" class="active">Home</a>
     <a href="aboutus.html" >About Us</a>
     <a href="categories.html">Categories</a>
-    <a href="shop.html">Shop</a>
+    <a href="shop.html" class="login-required">Shop</a>
     <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
   </nav>
   <div class="header-icons">
-    <div>
-      <img src="images/material-symbols_search.png" alt="Search">
-      <p>Search</p>
-    </div>
+  <div id="search-icon">
+    <img src="images/material-symbols_search.png" alt="Search">
+    <p>Search</p>
+  </div>
+
     <div class="cart-icon">
       <a style="text-decoration:none;color:white" href="cart.html" class="nav-link login-required">
         <img src="images/Group 189.png" alt="Cart Icon">
@@ -45,9 +46,10 @@
       </div>
     </a>
     <button class="login-btn">Sign Up / Sign In</button>
-    <div class="cart-actions">
+    <button id="logout-btn" class="logout-btn hidden">Logout</button>
+    <!-- <div class="cart-actions">
       <button id="clear-cart">🗑️</button>
-    </div>
+    </div> -->
   </div>
 </header>
 <div class="page-content"></div>
@@ -71,6 +73,7 @@
                     <p>Liked</p>
                 </div>
                 <button class="login-btn">Sign Up / Sign In</button>
+                <button id="logout-btn-mobile" class="logout-btn hidden">Logout</button>
             </div>
         </div>
 
@@ -88,7 +91,29 @@
         </div>
     </div>
 
+<div class="enhanced-search hidden">
 
+  <div class="search-select">
+    <select id="category-select">
+      <option value="">All Categories</option>
+      <option value="sofa">Sofa</option>
+      <option value="chair">Chair</option>
+      <option value="table">Table</option>
+    </select>
+  </div>
+  <div class="search-subcategory hidden" id="sofa-options">
+    <select id="sofa-seaters">
+      <option value="">Select Seater</option>
+      <option value="1">1 Seater</option>
+      <option value="2">2 Seater</option>
+      <option value="3">3 Seater</option>
+    </select>
+  </div>
+  <input type="text" id="search-query" placeholder="Search Products..." />
+  <button id="search-btn">
+    <img src="images/material-symbols_search.png" alt="Search" />
+  </button>
+</div>
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-box">
@@ -443,272 +468,281 @@
             </div>
         </div>
     </div>
+    <script src="enhanced-search.js"></script>
+<script>
+  // 1. General UI + Modal Logic + Login Handling + Redirect Support
+  function toggleMenu() {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  }
 
-    <script>
-        function toggleMenu() {
-            document.getElementById("mobile-menu").classList.toggle("hidden");
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const modal = document.querySelector(".modal-overlay");
-            const pageContent = document.querySelector(".page-content");
-            const loginButtons = document.querySelectorAll(".login-btn");
-            const closeBtn = document.querySelector(".close-btn");
-            const loginForm = document.getElementById("login-form");
-
-            loginButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    modal.classList.add("active");
-                    pageContent.classList.add("blur");
-                });
-            });
-
-            closeBtn.addEventListener("click", () => {
-                modal.classList.remove("active");
-                pageContent.classList.remove("blur");
-            });
-
-            modal.addEventListener("click", (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove("active");
-                    pageContent.classList.remove("blur");
-                }
-            });
-
-            loginForm.addEventListener("submit", function (e) {
-                e.preventDefault();
-                // Set login status
-                localStorage.setItem("isLoggedIn", "true");
-
-                modal.classList.remove("active");
-                pageContent.classList.remove("blur");
-
-                alert("🛒 Login successful!");
-
-                // Optional: redirect to previously intended page
-            });
-        });
-
-    </script>
-    <script>
-        const products = [
-            { name: "Syltherine", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 1.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-30%" },
-            { name: "Lolito", price: 15000, material: "metal", country: "japan", seating: "1", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "Luxury big sofa", badge: "-50%" },
-            { name: "Pingky", price: 50000, material: "leather", country: "italy", seating: "3", isNew: false, image: "images/image 3.png", oldprice: 14000, desc: "Cute bed set", badge: "-30%" },
-            { name: "Patio", price: 30000, material: "wood", country: "japan", seating: "2", isNew: true, image: "images/Images q.png", oldprice: 35000, desc: "Wooden chair", badge: "-45%" },
-            { name: "Grifo", price: 20000, material: "metal", country: "china", seating: "2", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "China made", badge: "-45%" },
-            { name: "Leviosa", price: 18000, material: "fabric", country: "china", seating: "1", isNew: false, image: "images/Images i.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-45%" },
-        ];
+function setupLoginRequiredLinks() {
+  document.querySelectorAll(".login-required").forEach(link => {
+    link.onclick = function (e) {
+      //const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+        const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
+      if (!isLoggedIn) {
+        e.preventDefault();
+        localStorage.setItem("redirectAfterLogin", link.getAttribute("href"));
+        document.querySelector(".modal-overlay").classList.add("active");
+        document.querySelector(".page-content").classList.add("blur");
+        alert("🚫 Please login to access the Shop and Cart.");
+      }
+    };
+  });
+}
 
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.querySelector(".modal-overlay");
+    const pageContent = document.querySelector(".page-content");
+    const loginButtons = document.querySelectorAll(".login-btn");
+    const closeBtn = document.querySelector(".close-btn");
+    const loginForm = document.getElementById("login-form");
+    const logoutBtn = document.getElementById("logout-btn");
+    const logoutBtnMobile = document.getElementById("logout-btn-mobile");
 
-        let filteredProducts = [...products];
-        let itemsToShow = 16;
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    //const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
 
-        const resultCount = document.querySelector('.result-count');
-        const showInput = document.querySelector('.show-control input');
-        const sortSelect = document.querySelector('.sort-control select');
-        const productsContainer = document.querySelector('.products');
-        const cartCount = document.querySelector('.cart-count');
+    if (isLoggedIn) {
+      logoutBtn?.classList.remove("hidden");
+      logoutBtnMobile?.classList.remove("hidden");
+      loginButtons.forEach(btn => btn.classList.add("hidden"));
+    } else {
+      logoutBtn?.classList.add("hidden");
+      logoutBtnMobile?.classList.add("hidden");
+      loginButtons.forEach(btn => btn.classList.remove("hidden"));
+    }
 
-        function updateResultCount() {
-            resultCount.textContent = `Showing 1–${Math.min(itemsToShow, filteredProducts.length)} of ${filteredProducts.length} results`;
-        }
+    document.querySelectorAll(".cart-count").forEach(el => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      el.textContent = cart.length;
+    });
 
-        function updateCartBadge() {
-            if (cartCount) cartCount.textContent = cart.length;
-        }
+    loginButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        modal.classList.add("active");
+        pageContent.classList.add("blur");
+      });
+    });
 
-        function saveCart() {
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartBadge();
-        }
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+      pageContent.classList.remove("blur");
+    });
 
-        function renderProducts() {
-            if (!productsContainer) return;
-            productsContainer.innerHTML = "";
-            filteredProducts.slice(0, itemsToShow).forEach(product => {
-                const card = document.createElement("div");
-                card.className = "product-card";
-                card.innerHTML = `
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        pageContent.classList.remove("blur");
+      }
+    });
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+     // localStorage.setItem("isLoggedIn", "true");
+        sessionStorage.setItem("isLoggedIn", "true");
+
+      modal.classList.remove("active");
+      pageContent.classList.remove("blur");
+
+      alert("🛒 Login successful!");
+
+      logoutBtn?.classList.remove("hidden");
+      logoutBtnMobile?.classList.remove("hidden");
+      loginButtons.forEach(btn => btn.classList.add("hidden"));
+
+      setupLoginRequiredLinks();
+
+      const redirectURL = localStorage.getItem("redirectAfterLogin");
+      if (redirectURL) {
+        localStorage.removeItem("redirectAfterLogin");
+        window.location.href = redirectURL;
+      }
+    });
+
+    logoutBtn?.addEventListener("click", () => {
+      //localStorage.removeItem("isLoggedIn");
+      //sessionStorage.setItem("isLoggedIn", "true");
+      sessionStorage.removeItem("isLoggedIn");
+      alert("🔒 You have been logged out.");
+      window.location.reload();
+    });
+
+    logoutBtnMobile?.addEventListener("click", () => {
+     // localStorage.removeItem("isLoggedIn");
+      sessionStorage.setItem("isLoggedIn", "true");
+      alert("🔒 You have been logged out.");
+      window.location.reload();
+    });
+
+    setupLoginRequiredLinks();
+  });
+</script>
+
+<script>
+  // 2. Product, Cart, Filter, Render Logic
+  const products = [
+    { name: "Syltherine", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 1.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-30%" },
+    { name: "Lolito", price: 15000, material: "metal", country: "japan", seating: "1", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "Luxury big sofa", badge: "-50%" },
+    { name: "Pingky", price: 50000, material: "leather", country: "italy", seating: "3", isNew: false, image: "images/image 3.png", oldprice: 14000, desc: "Cute bed set", badge: "-30%" },
+    { name: "Patio", price: 30000, material: "wood", country: "japan", seating: "2", isNew: true, image: "images/Images q.png", oldprice: 35000, desc: "Wooden chair", badge: "-45%" },
+    { name: "Grifo", price: 20000, material: "metal", country: "china", seating: "2", isNew: false, image: "images/image 2.png", oldprice: 14000, desc: "China made", badge: "-45%" },
+    { name: "Leviosa", price: 18000, material: "fabric", country: "china", seating: "1", isNew: false, image: "images/Images i.png", oldprice: 35000, desc: "Stylish cafe chair", badge: "-45%" },
+  ];
+
+  const newArrivalProducts = [
+    { name: "Respira", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
+    { name: "Muggo", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "leather based sofa", badge: "New" },
+    { name: "Potty", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Metal Chair", badge: "New" },
+    { name: "Asgaardsofa", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
+    { name: "Oak Wood Chair", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "Elegant and durable", badge: "New" },
+    { name: "Teak Dining Table", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Perfect for families", badge: "New" }
+  ];
+
+  let filteredProducts = [...products];
+  let itemsToShow = 16;
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const resultCount = document.querySelector('.result-count');
+  const showInput = document.querySelector('.show-control input');
+  const sortSelect = document.querySelector('.sort-control select');
+  const productsContainer = document.querySelector('.products');
+  const cartCount = document.querySelector('.cart-count');
+
+  function updateResultCount() {
+    if (resultCount) {
+      resultCount.textContent = `Showing 1–${Math.min(itemsToShow, filteredProducts.length)} of ${filteredProducts.length} results`;
+    }
+  }
+
+  function updateCartBadge() {
+    if (cartCount) cartCount.textContent = cart.length;
+  }
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartBadge();
+  }
+
+  function renderProducts() {
+    if (!productsContainer) return;
+    productsContainer.innerHTML = "";
+    filteredProducts.slice(0, itemsToShow).forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
         <div class="badge-container">
-  ${product.badge ? <span class="badge">${product.badge}</span> : ""}
-</div>
-<a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
-      <img src="${product.image}" alt="${product.name}" />   
-      <div class="gray">   
-      <h2>${product.name}</h2>
-           <p class="product-subtitle">${product.desc}</p>
-           <p class="price"> Rp ${product.price}  <span class="old-price">Rp ${product.oldprice}</span> 
-           </div>    
-      <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
-    `;
-                productsContainer.appendChild(card);
-            });
+          ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
+        </div>
+        <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
+        <img src="${product.image}" alt="${product.name}" />
+        <div class="gray">
+          <h2>${product.name}</h2>
+          <p class="product-subtitle">${product.desc}</p>
+          <p class="price">Rp ${product.price} <span class="old-price">Rp ${product.oldprice}</span></p>
+        </div>
+        <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
+      `;
+      productsContainer.appendChild(card);
+    });
 
-            document.querySelectorAll(".add-to-cart").forEach(btn => {
-                btn.addEventListener("click", () => addToCart(btn.dataset.name));
-            });
+    document.querySelectorAll(".add-to-cart").forEach(btn => {
+      btn.addEventListener("click", () => addToCart(btn.dataset.name));
+    });
 
-            updateResultCount();
-            localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
-        }
+    updateResultCount();
+    localStorage.setItem("filteredProducts", JSON.stringify(filteredProducts));
+  }
 
-        if (showInput) {
-            showInput.addEventListener("input", () => {
-                itemsToShow = parseInt(showInput.value) || 1;
-                renderProducts();
-            });
-        }
+  function renderNewArrivals() {
+    const newArrivalsContainer = document.querySelector(".new-arrivals-products");
+    if (!newArrivalsContainer) return;
 
-        if (sortSelect) {
-            sortSelect.addEventListener("change", () => {
-                const val = sortSelect.value;
-                if (val === "price-low-high") {
-                    filteredProducts.sort((a, b) => a.price - b.price);
-                } else if (val === "price-high-low") {
-                    filteredProducts.sort((a, b) => b.price - a.price);
-                } else if (val === "newest") {
-                    filteredProducts.sort((a, b) => b.isNew - a.isNew);
-                } else {
-                    filteredProducts = [...products];
-                }
-                renderProducts();
-            });
-        }
-        const newArrivalProducts = [
-            { name: "Respira", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
-            { name: "Muggo", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "leather based sofa", badge: "New" },
-            { name: "Potty", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Metal Chair", badge: "New" },
-            { name: "Asgaardsofa", price: 25000, material: "wood", country: "india", seating: "2", isNew: true, image: "images/image 2.png", oldprice: 14000, subtitle: "Wooden chair", badge: "New" },
-            { name: "Oak Wood Chair", price: 50000, material: "leather", country: "italy", seating: "3", isNew: true, image: "images/image 3.png", oldprice: 15000, subtitle: "Elegant and durable", badge: "New" },
-            { name: "Teak Dining Table", price: 15000, material: "metal", country: "japan", seating: "1", isNew: true, image: "images/Images i.png", oldprice: 35000, subtitle: "Perfect for families", badge: "New" }
-        ];
+    newArrivalsContainer.innerHTML = "";
 
-        function renderNewArrivals() {
-            const newArrivalsContainer = document.querySelector(".new-arrivals-products");
-            if (!newArrivalsContainer) return;
+    newArrivalProducts.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <div class="badge-container">
+          ${product.badge ? `<span class="newbadge">${product.badge}</span>` : ""}
+        </div>
+        <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
+        <img src="${product.image}" alt="${product.name}" />
+        <div class="gray">
+          <h2>${product.name}</h2>
+          <p class="product-subtitle">${product.subtitle}</p>
+          <p class="price">Rp ${product.price.toLocaleString()} <span class="old-price">Rp ${product.oldprice.toLocaleString()}</span></p>
+        </div>
+        <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
+      `;
+      newArrivalsContainer.appendChild(card);
+    });
 
-            newArrivalsContainer.innerHTML = "";
+    newArrivalsContainer.querySelectorAll(".add-to-cart").forEach(btn => {
+      btn.addEventListener("click", () => addToCart(btn.dataset.name));
+    });
+  }
 
-            newArrivalProducts.forEach(product => {
-                const card = document.createElement("div");
-                card.className = "product-card";
-                card.innerHTML = `
-      <div class="badge-container">
-        ${product.badge ? <span class="newbadge">${product.badge}</span> : ""}
-      </div>
-      <a class="quick-view" href="product-detail.html?product=${encodeURIComponent(product.name)}">Quick View</a>
-      <img src="${product.image}" alt="${product.name}" />
-      <div class = "gray">
-      <h2>${product.name}</h2>
-      <p class="product-subtitle">${product.subtitle}</p>
-      <p class="price">Rp ${product.price.toLocaleString()} 
-        <span class="old-price">Rp ${product.oldprice.toLocaleString()}</span>
-      </p> </div>
-      <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
-    `;
-                newArrivalsContainer.appendChild(card);
-            });
+  function applyFilters() {
+    const materials = Array.from(document.querySelectorAll("input[name='material']:checked"), el => el.value);
+    const countries = Array.from(document.querySelectorAll("input[name='country']:checked"), el => el.value);
+    const seatings = Array.from(document.querySelectorAll("input[name='seating']:checked"), el => el.value);
+    const prices = Array.from(document.querySelectorAll("input[name='price']:checked"), el => el.value);
 
-            newArrivalsContainer.querySelectorAll(".add-to-cart").forEach(btn => {
-                btn.addEventListener("click", () => addToCart(btn.dataset.name));
-            });
-        }
+    filteredProducts = products.filter(p => {
+      const matchMaterial = materials.length === 0 || materials.includes(p.material);
+      const matchCountry = countries.length === 0 || countries.includes(p.country);
+      const matchSeating = seatings.length === 0 || seatings.includes(p.seating);
+      const matchPrice = prices.length === 0 || prices.some(range => {
+        const [min, max] = range.split('-').map(Number);
+        return p.price >= min && (isNaN(max) || p.price <= max);
+      });
 
+      return matchMaterial && matchCountry && matchSeating && matchPrice;
+    });
 
+    renderProducts();
+  }
 
-        function applyFilters() {
-            const materials = Array.from(document.querySelectorAll("input[name='material']:checked"), el => el.value);
-            const countries = Array.from(document.querySelectorAll("input[name='country']:checked"), el => el.value);
-            const seatings = Array.from(document.querySelectorAll("input[name='seating']:checked"), el => el.value);
-            const prices = Array.from(document.querySelectorAll("input[name='price']:checked"), el => el.value);
+  function addToCart(productName) {
+    const product = [...products, ...newArrivalProducts].find(p => p.name === productName);
+    if (product) {
+      cart.push(product);
+      saveCart();
+    }
+  }
 
-            filteredProducts = products.filter(p => {
-                const matchMaterial = materials.length === 0 || materials.includes(p.material);
-                const matchCountry = countries.length === 0 || countries.includes(p.country);
-                const matchSeating = seatings.length === 0 || seatings.includes(p.seating);
-                const matchPrice = prices.length === 0 || prices.some(range => {
-                    const [min, max] = range.split('-').map(Number);
-                    return p.price >= min && (isNaN(max) || p.price <= max);
-                });
+  function clearCart() {
+    localStorage.removeItem("cart");
+    document.querySelectorAll(".cart-count").forEach(el => el.textContent = "0");
+    alert("🛒 Cart cleared!");
+  }
 
-                return matchMaterial && matchCountry && matchSeating && matchPrice;
-            });
+  document.addEventListener("DOMContentLoaded", function () {
+    const clearCartBtn = document.getElementById("clear-cart");
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener("click", clearCart);
+    }
 
-            renderProducts();
-        }
+    renderProducts();
+    renderNewArrivals();
+    updateCartBadge();
+  });
 
-        function addToCart(productName) {
-            const product = [...products, ...newArrivalProducts].find(p => p.name === productName);
-            if (product) {
-                cart.push(product);
-                saveCart();
-            }
-        }
+  document.querySelector('.buy-now')?.addEventListener('click', function () {
+    window.location.href = 'shop.html';
+  });
+</script>
+
+    
+    
+
+  
 
 
 
-    </script>
-    <script>
-        function clearCart() {
-            localStorage.removeItem("cart"); // Clear from localStorage
-            const cartCountElements = document.querySelectorAll(".cart-count");
-            cartCountElements.forEach(el => el.textContent = "0"); // Update UI
-            alert("🛒 Cart cleared!");
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const clearCartBtn = document.getElementById("clear-cart");
-            if (clearCartBtn) {
-                clearCartBtn.addEventListener("click", clearCart);
-            }
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-            renderProducts();
-            renderNewArrivals();
-            updateCartBadge();
-        });
-    </script>
-
-
-    <script>
-        document.querySelector('.buy-now').addEventListener('click', function () {
-            window.location.href = 'shop.html';
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", updateCartCount);
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".login-required").forEach(link => {
-                link.addEventListener("click", function (e) {
-                    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-                    if (!isLoggedIn) {
-                        e.preventDefault(); // stop <a> from redirecting
-                        document.querySelector(".modal-overlay").classList.add("active");
-                        document.querySelector(".page-content").classList.add("blur");
-                        alert("Please login to continue shopping");
-                    }
-                });
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cart = JSON.parse(localStorage.getItem("cart")) || [];
-            const cartCountElements = document.querySelectorAll(".cart-count");
-
-            cartCountElements.forEach(el => {
-                el.textContent = cart.length;
-            });
-        });
-    </script>
 
 </body>
 
