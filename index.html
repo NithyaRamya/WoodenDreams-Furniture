@@ -28,7 +28,7 @@
       <a href="contact.html">Contact</a>
     </nav>
     <div class="header-icons">
-      <div id="search-icon">
+      <div id="search-icon" class="login-required">
         <img src="images/material-symbols_search.png" alt="Search">
         <p>Search</p>
       </div>
@@ -110,7 +110,7 @@
       </select>
     </div>
     <input type="text" id="search-query" placeholder="Search Products..." />
-    <button id="search-btn">
+    <button id="search-btn" class="login-required-search">
       <img src="images/material-symbols_search.png" alt="Search" />
     </button>
   </div>
@@ -501,6 +501,7 @@
         });
       });
     }
+// Enhanced search login protection
 
 
     document.addEventListener("DOMContentLoaded", function () {
